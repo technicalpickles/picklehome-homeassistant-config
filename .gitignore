@@ -1,0 +1,7 @@
+# keep this sorted
+
+harmony_harmony_hub.conf
+home-assistant.log
+home-assistant_v2.db
+# manage this separately
+secrets.yaml
