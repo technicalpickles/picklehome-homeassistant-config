@@ -67,7 +67,8 @@ script: !include scripts.yaml
 
 ecobee: !include ecobee.yaml
 input_select: !include input_selects.yaml
+light hue: !include hue.yaml
 mqtt: !include mqtt.yaml
 notify slack: !include notify-slack.yaml
-light hue: !include hue.yaml
-
+sensor bedtime: !include bedtime-sensor.yaml
+sleepiq: !include sleepiq.yaml
