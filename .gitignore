@@ -1,7 +1,17 @@
 # keep this sorted
 
-harmony_harmony_hub.conf
+.*.swp
+
+# homeassistant files
 home-assistant.log
 home-assistant_v2.db
+.HA_VERSION
+.uuid
+
+# generated configs
+ecobee.conf
+harmony_harmony_hub.conf
+phue.conf
+
 # manage this separately
 secrets.yaml
