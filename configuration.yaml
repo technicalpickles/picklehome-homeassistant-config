@@ -70,3 +70,4 @@ notify slack: !include notify-slack.yaml
 sensor bedtime: !include bedtime-sensor.yaml
 sleepiq: !include sleepiq.yaml
 sun:
+switch harmony hub: !include harmony-switches.yaml

@@ -1,0 +1,32 @@
+- platform: mqtt
+  name: "Media Room TV"
+  state_topic:   "harmony-api/state"
+  command_topic: "harmony-api/activities/watch-tv/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+- platform: mqtt
+  name: "DirecTV"
+  state_topic:   "harmony-api/activities/watch-tv/state"
+  command_topic: "harmony-api/activities/watch-tv/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+- platform: mqtt
+  name: "Apple TV"
+  state_topic:   "harmony-api/activities/watch-apple-tv/state"
+  command_topic: "harmony-api/activities/watch-apple-tv/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+- platform: mqtt
+  name: "Media Room Music"
+  state_topic:   "harmony-api/activities/listen-to-music/state"
+  command_topic: "harmony-api/activities/listen-to-music/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"

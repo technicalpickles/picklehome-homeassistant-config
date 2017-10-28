@@ -1,0 +1,10 @@
+platform: template
+sensors:
+  everyone_in_bed:
+    friendly_name: "Everyone in Bed"
+    value_template: >-
+      {%- if is_state('binary_sensor.sleepnumber_ile_josh_is_in_bed', 'on') and is_state('binary_sensor.sleepnumber_ile_tracy_is_in_bed', 'on') %}
+        on
+      {%- else %}
+        off
+      {%- endif %}
