@@ -1,0 +1,4 @@
+platform: hue
+type: alexa
+host: !secret hue_light_host
+allow_unreachable: true

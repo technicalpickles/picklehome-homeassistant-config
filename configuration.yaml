@@ -63,3 +63,11 @@ tts:
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+
+
+ecobee: !include ecobee.yaml
+input_select: !include input_selects.yaml
+mqtt: !include mqtt.yaml
+notify slack: !include notify-slack.yaml
+light hue: !include hue.yaml
+
