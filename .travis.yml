@@ -4,8 +4,10 @@ services:
   - docker
 
 before_install:
-- docker pull homeassistant/home-assistant
+  - docker pull homeassistant/home-assistant
+  - docker pull boiyaa/yamllint
 
 script:
-- cp secrets.yaml.example secrets.yaml
-- docker run -v $(pwd):/config homeassistant/home-assistant python -m homeassistant --config /config --script check_config
+  - "docker run -it --rm -v $(pwd):/workdir boiyaa/yamllint -d '{extends: relaxed, rules: {line-length: disable}}' ."
+  - "cp secrets.yaml.example secrets.yaml"
+  - "docker run -v $(pwd):/config homeassistant/home-assistant python -m homeassistant --config /config --script check_config"
