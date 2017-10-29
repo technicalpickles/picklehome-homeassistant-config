@@ -65,6 +65,7 @@ input_select: !include input_selects.yaml
 light hue: !include hue.yaml
 media_player sonos: !include sonos.yaml
 mqtt: !include mqtt.yaml
+nest: !include nest.yaml
 notify slack: !include notify-slack.yaml
 scene directory: !include_dir_list scenes
 scene: !include scenes.yaml
