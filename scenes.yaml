@@ -16,9 +16,9 @@
 - name: Josh Desk Lights On
   entities:
     group.josh_desk_lamps:
-     state: on
-     brightness: 255
-     profile: reading
+      state: on
+      brightness: 255
+      profile: reading
 
 - name: Sunset
   entities:

@@ -10,4 +10,3 @@ sequence:
   - service: script.turn_on
     data:
       entity_id: script.porch_mode_auto_off
-

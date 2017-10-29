@@ -29,7 +29,7 @@ switches:
     turn_off:
       service: scene.turn_on
       data_template:
-        entity_id:  >
+        entity_id: >
           {% if is_state('sun.sun', 'below_horizon') %}
             scene.josh_desk_lamps_on
           {% else %}
