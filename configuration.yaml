@@ -65,13 +65,12 @@ input_select: !include input_selects.yaml
 light hue: !include hue.yaml
 mqtt: !include mqtt.yaml
 notify slack: !include notify-slack.yaml
+scene directory: !include_dir_list scenes
+scene: !include scenes.yaml
+script: !include_dir_named scripts
 sensor bedtime: !include bedtime-sensor.yaml
 sleepiq: !include sleepiq.yaml
 sun:
 switch harmony hub: !include harmony-switches.yaml
 switch house modes: !include house-modes.yaml
 vera: !include vera.yaml
-
-scene: !include scenes.yaml
-scene directory: !include_dir_list scenes
-script: !include_dir_named scripts

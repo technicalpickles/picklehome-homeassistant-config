@@ -1,0 +1,298 @@
+dashboard:
+  view: yes
+  entities:
+    - group.family
+    - input_select.house_mode
+    - lock.kitchen_door
+    - climate.home
+    - group.interior_temperature
+    - group.weather
+    - script.sunset
+    - switch.bath_mode
+    - switch.porch_mode
+    - scene.sunrise
+    - scene.good_bye
+    - scene.sunset
+    - scene.good_night
+    - scene.everything_off
+
+family:
+  entities:
+    - device_tracker.josh_iphone
+
+interior_temperature:
+ name: Interior Temperature
+ entities:
+   - sensor.master_bedroom_temperature
+   - sensor.media_room_temperature
+   - sensor.my_ecobee3_temperature
+   - sensor.nursery_temperature
+   - sensor.office__josh_temperature
+   - sensor.office__tracy_temperature
+
+weather:
+  name: Weather Forecast
+  entities:
+    - sensor.weather_summary
+    - sensor.weather_temperature
+    - sensor.weather_cloud_coverage
+    - sensor.weather_humidity
+    - sensor.weather_precip_probability
+    - sensor.weather_apparent_temperature
+
+front_door_lights:
+  name: Front Door Lights
+  entities:
+    - light.front_door_1
+    - light.front_door_2
+
+kitchen_door_lights:
+  name: Kitchen Door Lights
+  entities:
+    - light.kitchen_door_1
+    - light.kitchen_door_2
+
+cottage_outside_lights:
+  name: Cottage Outside Lights
+  entities:
+    - light.cottage_back_yard # FIXME this doesn't seem to be reachable, but can control from hue group?!
+    - light.cottage_courtyard
+
+exterior_lights:
+  name: Exterior Lights
+  entities:
+    - group.front_door_lights
+    - group.kitchen_door_lights
+    - group.cottage_outside_lights
+
+exterior_christmas_lights:
+  name: Exterior Christmas Lights
+  entities:
+    - switch.exterior_christmas_lights_1
+    - switch.exterior_christmas_lights_2
+
+exterior:
+  name: Exterior
+  view: yes
+  entities:
+    - group.weather
+    - group.exterior_lights
+    - group.exterior_christmas_lights
+    - input_select.exterior_christmas_lights_1_mode
+    - input_select.exterior_christmas_lights_1_color
+
+kitchen:
+  name: Kitchen
+  view: yes
+  entities:
+    - lock.kitchen_door
+    - group.kitchen_door_lights
+    - media_player.kitchen
+
+master_bedroom_scenes:
+  name: Master Bedroom Scenes
+  entities:
+    - scene.master_bedroom_artic_aurora
+    - scene.master_bedroom_tropical_twilight
+
+master_bedroom_network:
+  name: Master Bedroom Network
+  entities:
+    - sensor.sleepiq_online
+    - sensor.nest_cam_online
+
+bed:
+  name: Bed
+  entities:
+    - binary_sensor.sleepnumber_ile_josh_is_in_bed
+    - sensor.sleepnumber_ile_josh_sleepnumber
+    - binary_sensor.sleepnumber_ile_tracy_is_in_bed
+    - sensor.sleepnumber_ile_tracy_sleepnumber
+    - sensor.everyone_in_bed
+
+master_bedroom_lights:
+  entities:
+    - light.josh_night_stand
+    - light.tracy_night_stand
+    - light.makeup_table
+
+bedroom_lights:
+  entities:
+    - light.josh_night_stand
+    - light.tracy_night_stand
+    - light.makeup_table
+
+master_bedroom:
+  name: Master Bedroom
+  view: yes
+  entities:
+    - group.master_bedroom_lights
+    - binary_sensor.master_bedroom_occupancy
+    - sensor.master_bedroom_temperature
+    - group.bed
+    - group.master_bedroom_network
+    - group.master_bedroom_scenes
+    - media_player.bedroom
+
+sun_room_lights:
+  name: Sun Room Lights
+  entities:
+    - light.sun_room_lamp
+
+sun_room_network:
+  name: Sun Room Network
+  entities: []
+
+sun_room:
+  name: Sun Room
+  view: yes
+  entities:
+    - group.sun_room_lights
+    - group.sun_room_network
+    - media_player.sun_room
+
+media_room_network:
+  name: Media Room Network
+  entities:
+    - sensor.airport_extreme_online
+    - sensor.apple_tv_online
+    - sensor.phillips_hue_bridge_online
+
+media_room_tv:
+  name: TV
+  entities:
+    - switch.media_room_tv
+    - switch.directv
+    - switch.apple_tv
+    - switch.media_room_music
+
+media_room_lights:
+  name: Media Room Lights
+  entities:
+    - light.media_room_strip
+    - light.media_room_backlight
+    - light.media_room_standing_lamp
+
+media_room:
+  name: Media Room
+  view: yes
+  entities:
+    - binary_sensor.media_room_occupancy
+    - sensor.media_room_temperature
+    - media_player.directv_rid035583549726
+    - group.media_room_lights
+    - group.media_room_network
+    - group.media_room_tv
+
+nursery_lights:
+  name: Nursery Lights
+  entities: []
+
+nursery:
+  name: Nursery
+  view: yes
+  entities:
+    - binary_sensor.nursery_occupancy
+    - sensor.nursery_temperature
+    - group.nursery_lights
+    - switch.nursery_night_lights
+
+living_room_lights:
+  name: Living Room Lights
+  entities:
+    - light.living_room_spotlight
+    - light.living_room_lamp
+    - light.living_room_corner
+
+living_room:
+  name: Living Room
+  view: yes
+  entities:
+    - group.living_room_lights
+    - scene.living_room_artic_aurora
+    - scene.living_room_bright
+    - switch.christmas_lights
+    - media_player.living_room
+
+josh_desk_lamps:
+  name: Josh's Desk Lamps
+  entities:
+    - light.josh_desk_left
+    - light.josh_desk_right
+
+josh_office:
+  name: Josh's Office
+  entities:
+    - switch.conference_call_mode
+    - binary_sensor.office__josh_occupancy
+    - sensor.office__josh_temperature
+
+tracy_desk_lamp:
+  name: Tracy's Desk Lamp
+  entities:
+    - light.tracy_desk_lamp_bulb_1
+    - light.tracy_desk_lamp_bulb_2
+    - light.tracy_desk_lamp_bulb_3
+
+tracy_office:
+  name: Tracy's Office
+  entities:
+    - group.tracy_desk_lamp
+    - binary_sensor.office__tracy_occupancy
+    - sensor.office__tracy_temperature
+
+attic_network:
+  name: Attic Network
+  entities:
+    - sensor.printer_online
+
+attic_lights:
+  name: Attic Lights
+  entities:
+    - group.josh_desk_lamps
+    - group.tracy_desk_lamp
+
+# for convenience
+office_lights:
+  name: Office Lights
+  entities:
+    - group.attic_lights
+
+attic:
+  name: Attic
+  view: yes
+  entities:
+    - group.josh_office
+    - group.josh_desk_lamps
+    - group.tracy_office
+
+cottage_network:
+  entities:
+    - sensor.fire_stick_tv_online
+    - sensor.airport_express_online
+
+cottage:
+  name: Cottage
+  view: yes
+  entities:
+    - climate.cottage
+    - group.cottage_network
+    - group.cottage_outside_lights
+
+speedtest:
+  name: Speedtest
+  entities:
+    - sensor.speedtest_ping
+    - sensor.speedtest_download
+    - sensor.speedtest_upload
+
+network:
+  name: Network
+  view: yes
+  entities:
+    - group.speedtest
+    - group.media_room_network
+    - light.josh_desk_backlight
+    - group.master_bedroom_network
+    - group.sun_room_network
+    - group.attic_network
