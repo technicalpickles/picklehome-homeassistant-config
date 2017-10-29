@@ -69,6 +69,7 @@ scene directory: !include_dir_list scenes
 scene: !include scenes.yaml
 script: !include_dir_named scripts
 sensor bedtime: !include bedtime-sensor.yaml
+sensor speedtest: !include speedtest.yaml
 sleepiq: !include sleepiq.yaml
 sun:
 switch harmony hub: !include harmony-switches.yaml
