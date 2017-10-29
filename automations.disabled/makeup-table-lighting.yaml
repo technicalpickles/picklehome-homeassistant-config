@@ -1,0 +1,19 @@
+#  - alias: Turn off makeup table light after an hour
+#    trigger:
+#      platform: state
+#      entity_id: light.makeup_table
+#      from: 'off'
+#      to: 'on'
+#    action:
+#      service: script.turn_on
+#      entity_id: script.makeup_table_auto_off
+#
+#  - alias: Disable makeup light auto-off
+#    trigger:
+#      platform: state
+#      entity_id: light.makeup_table
+#      from: 'on'
+#      to: 'off'
+#    action:
+#      service: script.turn_off
+#      entity_id: script.makeup_table_auto_off

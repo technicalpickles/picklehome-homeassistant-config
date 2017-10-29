@@ -58,7 +58,7 @@ tts:
   platform: google
 
 group: !include groups.yaml
-automation: !include automations.yaml
+automation: !include_dir_merge_list automations
 
 ecobee: !include ecobee.yaml
 input_select: !include input_selects.yaml

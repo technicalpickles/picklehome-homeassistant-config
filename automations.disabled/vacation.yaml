@@ -1,0 +1,12 @@
+# Comment this out unless on vacation
+#- alias: Vacation Goodnight
+#  trigger:
+#    platform: time
+#    # When 'after' is used, you cannot also match on hour, minute, seconds.
+#    # Military time format.
+#    after: '00:01:00'
+#  action:
+#  - service: input_select.select_option
+#    data:
+#      entity_id: input_select.house_mode
+#      option: Sleeping

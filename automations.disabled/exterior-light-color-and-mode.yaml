@@ -1,0 +1,18 @@
+- alias: Change Exterior Light Color
+  trigger:
+    platform: state
+    entity_id: input_select.exterior_christmas_lights_1_color
+  action:
+  - service: switch.turn_on
+    data_template:
+      entity_id: 'switch.exterior_christmas_lights_1_{{trigger.to_state.state | lower | replace(" ", "_")}}'
+
+# TODO should be able to be merged with above with the right trigger
+- alias: Change Exterior Light Mode
+  trigger:
+    platform: state
+    entity_id: input_select.exterior_christmas_lights_1_mode
+  action:
+  - service: switch.turn_on
+    data_template:
+      entity_id: 'switch.exterior_christmas_lights_1_{{trigger.to_state.state | lower | replace(" ", "_")}}'

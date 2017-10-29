@@ -1,0 +1,13 @@
+#  - alias: Turn Tracy's Office lamp off when not there
+#    trigger:
+#      platform: state
+#      entity_id: binary_sensor.office__tracy_occupancy
+#      from: 'on'
+#      to: 'off'
+#      for:
+#        minutes: 15
+#    action:
+#      service: script.scene_and_notify
+#      data:
+#        scene: tracy_desk_lamp_off
+#        message: ":bulb: Turning off Tracy's desk lamp since no one is up there :bulb:"
