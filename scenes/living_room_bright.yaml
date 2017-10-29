@@ -1,0 +1,14 @@
+name: Living Room Bright
+entities:
+  light.living_room_spotlight:
+    state: on
+    brightness: 77
+    rgb_color: [179, 139, 80]
+  light.living_room_lamp:
+    state: on
+    brightness: 77
+    rgb_color: [179, 139, 80]
+  light.living_room_corner:
+    state: on
+    brightness: 77
+    rgb_color: [179, 139, 80]

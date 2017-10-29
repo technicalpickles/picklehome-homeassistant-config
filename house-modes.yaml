@@ -1,0 +1,37 @@
+platform: template
+switches:
+  bath_mode:
+    friendly_name: Bath Mode
+    value_template: "{{ is_state('climate.home', 'off') }}"
+    turn_on:
+      service: script.turn_on
+      entity_id: script.bath_mode_on
+    turn_off:
+      service: script.turn_on
+      entity_id: script.bath_mode_off
+
+  porch_mode:
+    friendly_name: Porch Mode
+    value_template: "{{ is_state('climate.cottage', 'off') }}"
+    turn_on:
+      service: script.turn_on
+      entity_id: script.porch_mode_on
+    turn_off:
+      service: script.turn_on
+      entity_id: script.porch_mode_off
+
+  conference_call_mode:
+    friendly_name: Conference Call Mode
+    value_template: "{{ is_state_attr('light.josh_desk_right', 'brightness', 254) and is_state_attr('light.josh_desk_right', 'color_temp', 161) and is_state_attr('light.josh_desk_left', 'brightness', 254) and is_state_attr('light.josh_desk_left', 'color_temp', 161)}}"
+    turn_on:
+      service: scene.turn_on
+      entity_id: scene.josh_desk_conference_call
+    turn_off:
+      service: scene.turn_on
+      data_template:
+        entity_id:  >
+          {% if is_state('sun.sun', 'below_horizon') %}
+            scene.josh_desk_lamps_on
+          {% else %}
+            scene.josh_desk_lamps_off
+          {% endif %}

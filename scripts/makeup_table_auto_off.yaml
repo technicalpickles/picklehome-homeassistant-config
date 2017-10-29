@@ -1,0 +1,9 @@
+alias: Makeup table auto-off after an hour
+sequence:
+  - delay:
+      minutes: 60
+  - service: light.turn_off
+    entity_id: light.makeup_table
+  - service: notify.slack
+    data:
+      message: ":bulb: Turning off makeup table light after an hour :bulb:"

@@ -59,8 +59,6 @@ tts:
 
 group: !include groups.yaml
 automation: !include automations.yaml
-script: !include scripts.yaml
-
 
 ecobee: !include ecobee.yaml
 input_select: !include input_selects.yaml
@@ -71,3 +69,9 @@ sensor bedtime: !include bedtime-sensor.yaml
 sleepiq: !include sleepiq.yaml
 sun:
 switch harmony hub: !include harmony-switches.yaml
+switch house modes: !include house-modes.yaml
+vera: !include vera.yaml
+
+scene: !include scenes.yaml
+scene directory: !include_dir_list scenes
+script: !include_dir_named scripts

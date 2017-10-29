@@ -1,0 +1,73 @@
+- name: Tracy Desk Lamp Off
+  entities:
+    group.tracy_desk_lamp: off
+
+- name: Josh Desk Lamps Off
+  entities:
+    group.josh_desk_lamps: off
+
+- name: Josh Desk Conference Call
+  entities:
+    group.josh_desk_lamps:
+      state: on
+      brightness: 254
+      color_temp: 161
+
+- name: Josh Desk Lights On
+  entities:
+    group.josh_desk_lamps:
+     state: on
+     brightness: 255
+     profile: reading
+
+- name: Sunset
+  entities:
+    light.josh_night_stand:
+      state: on
+      brightness: 117
+      color_temp: 369
+    light.sun_room_lamp:
+      state: on
+      brightness: 54
+      color_temp: 369
+    group.exterior_lights:
+      state: on
+      brightness: 127
+    scene.living_room_bright:
+      state: on
+- name: Alex Bedtime
+  entities:
+    switch.nursery_night_lights:
+      state: on
+
+- name: Sunrise
+  entities:
+    group.exterior_lights:
+      state: off
+    switch.nursery_night_lights:
+      state: off
+
+- name: Everything Off
+  entities:
+    group.media_room: off
+    group.all_lights: off
+    switch.christmas_lights: off
+
+- name: Goodbye
+  entities:
+    group.media_room: off # turn off tv and stuff
+    group.attic_lights: off # no lights upstairs
+    group.living_room_lights: on # so it seems like someone is inside
+    switch.christmas_lights: off # christmas tree safety
+    # what about sunroom & master bedroom? they turn on automatically at sunset
+
+- name: Good Night
+  entities:
+    group.media_room: off # turn tv and stuff off
+    group.attic_lights: off # no lights upstairs
+    group.living_room: off # lamps and christmas lights
+    group.master_bedroom_lights: off # darkness required for sleep
+    group.sun_room_lights: off
+
+    # only turn off courtyard light for exterior, since you can see it through the blinds of the master bath
+    light.cottage_courtyard: off

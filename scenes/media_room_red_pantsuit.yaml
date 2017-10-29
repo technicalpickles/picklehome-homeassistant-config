@@ -1,0 +1,14 @@
+name: Media Room Red Pantsuit
+entities:
+  light.media_room_standing_lamp:
+    state: on
+    brightness: 142
+    rgb_color: [255, 95, 73]
+  light.media_room_backlight:
+    state: on
+    brightness: 142
+    rgb_color: [175, 201, 242]
+  light.media_room_strip:
+    state: on
+    brightness: 142
+    rgb_color: [217, 190, 150]

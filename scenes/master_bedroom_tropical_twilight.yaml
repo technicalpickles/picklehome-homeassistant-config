@@ -1,0 +1,18 @@
+name: Master Bedroom Tropical Twilight
+entities:
+  light.sun_room_lamp:
+    state: on
+    brightness: 123
+    rgb_color: [238, 164, 108]
+  light.josh_night_stand:
+    state: on
+    brightness: 11
+    rgb_color: [58, 58, 58]
+  light.tracy_night_stand:
+    state: on
+    brightness: 123
+    rgb_color: [238, 164, 108]
+  light.makeup_table:
+    state: on
+    brightness: 123
+    rgb_color: [238, 164, 108]

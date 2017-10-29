@@ -1,0 +1,14 @@
+name: Living Room Artic aurora
+entities:
+  light.living_room_spotlight:
+    state: on
+    brightness: 143
+    rgb_color: [196, 196, 229]
+  light.living_room_lamp:
+    state: on
+    brightness: 143
+    rgb_color: [196, 196, 229]
+  light.living_room_corner:
+    state: on
+    brightness: 143
+    rgb_color: [114, 115, 255]
