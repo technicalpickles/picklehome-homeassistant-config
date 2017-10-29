@@ -8,5 +8,4 @@ before_install:
 
 script:
 - cp secrets.yaml.example secrets.yaml
-- docker run homeassistant/home-assistant -v .:/config python -m homeassistant --config /config --script config_check
-
+- docker run -v .:/config homeassistant/home-assistant python -m homeassistant --config /config --script config_check
