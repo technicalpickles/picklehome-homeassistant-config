@@ -1,3 +1,5 @@
+language: c # not actually c, but this has less dependencies than default ruby language
+
 sudo: required
 
 services:
