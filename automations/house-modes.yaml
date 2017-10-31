@@ -76,8 +76,4 @@
     entity_id: input_select.house_mode
     to: Sleeping
   action:
-  - service: notify.slack
-    data:
-      message: ":family::zzz:"
-  - service: scene.turn_on
-    entity_id: scene.good_night
+  - service: script.goodnight
