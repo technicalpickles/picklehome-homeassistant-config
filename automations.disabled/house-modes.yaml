@@ -56,9 +56,9 @@
     entity_id: input_select.house_mode
     to: Awake
   action:
-  - service: notify.slack
-    data:
-      message: ":family: Good Morning :family:"
+    - service: notify.slack
+      data:
+        message: ":family: Good Morning :family:"
 
 - alias: Bed Time Triggered
   trigger:
@@ -66,9 +66,9 @@
     entity_id: input_select.house_mode
     to: Bed Time
   action:
-  - service: notify.slack
-    data:
-      message: ":family::bed:"
+    - service: notify.slack
+      data:
+        message: ":family::bed:"
 
 - alias: Sleeping Triggered
   trigger:
@@ -76,8 +76,8 @@
     entity_id: input_select.house_mode
     to: Sleeping
   action:
-  - service: notify.slack
-    data:
-      message: ":family::zzz:"
-  - service: scene.turn_on
-    entity_id: scene.good_night
+    - service: notify.slack
+      data:
+        message: ":family::zzz:"
+    - service: scene.turn_on
+      entity_id: scene.good_night

@@ -6,4 +6,3 @@ sequence:
     entity_id: scene.living_room_bright
   - service: switch.turn_off
     entity_id: switch.christmas_lights
-

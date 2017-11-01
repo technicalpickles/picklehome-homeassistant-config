@@ -1,7 +1,7 @@
-  - alias: Alex Bedtime
-    trigger:
-      platform: time
-      after: '15:30:00'
-    action:
-      service: scene.turn_on
-      entity_id: scene.alex_bedtime
+- alias: Alex Bedtime
+  trigger:
+    platform: time
+    after: '15:30:00'
+  action:
+    service: scene.turn_on
+    entity_id: scene.alex_bedtime
