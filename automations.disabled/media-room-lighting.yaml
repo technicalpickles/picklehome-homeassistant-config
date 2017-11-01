@@ -1,48 +1,48 @@
-  - alias: Turn on media room light strip with TV in the evening
-    trigger:
-      platform: state
-      entity_id: switch.media_room_tv
-      from: 'off'
-      to: 'on'
-    condition:
-      condition: sun
-      after: sunset
-    action:
-      service: light.turn_on
-      entity_id: light.media_room_strip
+- alias: Turn on media room light strip with TV in the evening
+  trigger:
+    platform: state
+    entity_id: switch.media_room_tv
+    from: 'off'
+    to: 'on'
+  condition:
+    condition: sun
+    after: sunset
+  action:
+    service: light.turn_on
+    entity_id: light.media_room_strip
 
-  - alias: Turn on media room light strip at sunset if the TV is on
-    trigger:
-      platform: sun
-      event: sunset
-    condition:
-      condition: state
-      entity_id: switch.media_room_tv
-      state: 'on'
-    action:
-      service: light.turn_on
-      entity_id: light.media_room_strip
+- alias: Turn on media room light strip at sunset if the TV is on
+  trigger:
+    platform: sun
+    event: sunset
+  condition:
+    condition: state
+    entity_id: switch.media_room_tv
+    state: 'on'
+  action:
+    service: light.turn_on
+    entity_id: light.media_room_strip
 
-  - alias: Turn off media room light strip if no one is there and the TV is off
-    trigger:
-      platform: state
-      entity_id: binary_sensor.media_room_occupancy
-      from: 'on'
-      to: 'off'
-      for:
-        minutes: 15
-    condition:
-      condition: and
-      conditions:
-        - condition: state
-          entity_id: light.media_room_strip
-          state: 'on'
-        - condition: state
-          entity_id: switch.media_room_tv
-          state: 'off'
-    action:
-      - service: light.turn_off
+- alias: Turn off media room light strip if no one is there and the TV is off
+  trigger:
+    platform: state
+    entity_id: binary_sensor.media_room_occupancy
+    from: 'on'
+    to: 'off'
+    for:
+      minutes: 15
+  condition:
+    condition: and
+    conditions:
+      - condition: state
         entity_id: light.media_room_strip
-      - service: notify.slack
-        data:
-          message: ":bulb: Turning off media room light strip since no one is there :bulb:"
+        state: 'on'
+      - condition: state
+        entity_id: switch.media_room_tv
+        state: 'off'
+  action:
+    - service: light.turn_off
+      entity_id: light.media_room_strip
+    - service: notify.slack
+      data:
+        message: ":bulb: Turning off media room light strip since no one is there :bulb:"

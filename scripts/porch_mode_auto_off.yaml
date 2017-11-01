@@ -3,4 +3,3 @@ sequence:
       minutes: 120
   - service: switch.turn_off
     entity_id: switch.porch_mode
-
