@@ -77,3 +77,10 @@ sun:
 switch harmony hub: !include harmony-switches.yaml
 switch house modes: !include house-modes.yaml
 vera: !include vera.yaml
+switch rachio: !include rachio.yaml
+
+panel_iframe:
+  rachio:
+    title: Rachio
+    url: "https://app.rach.io"
+    icon: mdi:water-pump

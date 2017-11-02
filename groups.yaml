@@ -279,6 +279,21 @@ cottage:
     - group.cottage_network
     - group.cottage_outside_lights
 
+irrigation:
+  name: Irrigation
+  icon: mdi:water-pump
+  entities:
+    - switch.back_yard_left
+    - switch.back_yard_right
+
+back_yard:
+  name: Back Yard
+  view: yes
+  entities:
+    - group.irrigation
+    - light.cottage_back_yard # FIXME this doesn't seem to be reachable, but can control from hue group?!
+    - switch.porch_mode
+
 speedtest:
   name: Speedtest
   entities:
