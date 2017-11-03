@@ -59,6 +59,7 @@ tts:
 
 group: !include groups.yaml
 automation: !include_dir_merge_list automations
+panel_iframe: !include panel_iframe.yaml
 
 ecobee: !include ecobee.yaml
 input_select: !include input_selects.yaml
@@ -93,9 +94,3 @@ sensor apcups-sensord:
       - status
       - timeleft
       - tonbatt
-
-panel_iframe:
-  rachio:
-    title: Rachio
-    url: "https://app.rach.io"
-    icon: mdi:water-pump
