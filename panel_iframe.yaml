@@ -1,0 +1,7 @@
+rachio:
+  title: Rachio
+  url: "https://app.rach.io"
+  icon: mdi:water-pump
+vera:
+  title: Vera
+  url: !secret vera_portal_url
