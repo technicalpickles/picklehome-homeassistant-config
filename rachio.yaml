@@ -1,0 +1,2 @@
+- platform: rachio
+  access_token: !secret rachio_access_token

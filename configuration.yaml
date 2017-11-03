@@ -79,4 +79,3 @@ switch harmony hub: !include harmony-switches.yaml
 switch house modes: !include house-modes.yaml
 vera: !include vera.yaml
 switch rachio: !include rachio.yaml
-
