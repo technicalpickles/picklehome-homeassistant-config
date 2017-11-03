@@ -59,6 +59,7 @@ tts:
 
 group: !include groups.yaml
 automation: !include_dir_merge_list automations
+panel_iframe: !include panel_iframe.yaml
 
 ecobee: !include ecobee.yaml
 input_select: !include input_selects.yaml
@@ -77,3 +78,5 @@ sun:
 switch harmony hub: !include harmony-switches.yaml
 switch house modes: !include house-modes.yaml
 vera: !include vera.yaml
+switch rachio: !include rachio.yaml
+
