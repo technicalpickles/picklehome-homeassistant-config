@@ -1,0 +1,20 @@
+filter:
+  # only include lights by default
+  include_domains:
+    - light
+  # add in things we care to control
+  include_entities:
+    - switch.bath_mode
+    - switch.porch_mode
+  # and exclude lights we don't need individual control over
+  exclude_entities:
+    - light.front_door_1
+    - light.front_door_2
+    - light.kitchen_door_1
+    - light.kitchen_door_2
+    - light.kitchen_door_1
+    - light.tracy_desk_lamp_bulb_1
+    - light.tracy_desk_lamp_bulb_2
+    - light.tracy_desk_lamp_bulb_3
+    - light.deck_light
+    - light.all_hue_lights

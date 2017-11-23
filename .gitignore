@@ -3,10 +3,11 @@
 .*.swp
 
 # homeassistant files
+.HA_VERSION
+.cloud
+.uuid
 home-assistant.log
 home-assistant_v2.db
-.HA_VERSION
-.uuid
 
 # generated configs
 ecobee.conf
