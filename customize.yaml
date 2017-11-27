@@ -1,0 +1,18 @@
+light.nursery:
+  friendly_name: Nursery Lights
+light.cottage:
+  friendly_name: Cottage Lights
+light.media_room:
+  friendly_name: Media Room Lights
+light.living_room:
+  friendly_name: Living Room Lights
+light.deck:
+  friendly_name: Deck Lights
+light.bedroom:
+  friendly_name: Bedroom Lights
+light.front_door:
+  friendly_name: Front Door Lights
+light.kitchen:
+  friendly_name: Kitchen Lights
+light.kitchen_door:
+  friendly_name: Kitchen Door Lights
