@@ -65,6 +65,7 @@ ecobee: !include ecobee.yaml
 input_select: !include input_selects.yaml
 light hue: !include hue.yaml
 media_player sonos: !include sonos.yaml
+media_player kodi: !include kodi.yaml
 mqtt: !include mqtt.yaml
 nest: !include nest.yaml
 notify slack: !include notify-slack.yaml

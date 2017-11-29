@@ -1,0 +1,3 @@
+platform: kodi
+host: fireplace-kodi.local
+port: 80
