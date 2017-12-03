@@ -1,0 +1,3 @@
+#!/bin/bash
+docker run -it --rm -v $(pwd):/workdir boiyaa/yamllint -d '{extends: relaxed, rules: {line-length: disable}}' .
+docker run -v $(pwd):/config homeassistant/home-assistant python -m homeassistant --config /config --script check_config
