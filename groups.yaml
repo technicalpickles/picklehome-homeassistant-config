@@ -64,6 +64,7 @@ exterior_lights:
     - group.front_door_lights
     - group.kitchen_door_lights
     - group.cottage_outside_lights
+    - light.deck
 
 exterior_christmas_lights:
   name: Exterior Christmas Lights
