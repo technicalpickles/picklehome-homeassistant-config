@@ -5,6 +5,7 @@ filter:
   # add in things we care to control
   include_entities:
     - switch.bath_mode
+    - switch.fireplace
     - switch.porch_mode
   # and exclude lights we don't need individual control over
   exclude_entities:
