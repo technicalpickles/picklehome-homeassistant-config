@@ -78,6 +78,7 @@ sleepiq: !include sleepiq.yaml
 sun:
 switch harmony hub: !include harmony-switches.yaml
 switch house modes: !include house-modes.yaml
+switch fireplace: !include fireplace-switch.yaml
 vera: !include vera.yaml
 switch rachio: !include rachio.yaml
 
