@@ -98,7 +98,6 @@ kitchen_lights:
     - light.kitchen_back_7
     - light.kitchen_back_8
 
-
 kitchen:
   name: Kitchen
   view: yes
