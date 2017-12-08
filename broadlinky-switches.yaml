@@ -1,0 +1,207 @@
+- platform: mqtt
+  name: "Zap Outlet 1"
+  state_topic:   "broadlinky/devices/zap_319_1/power/state"
+  command_topic: "broadlinky/devices/zap_319_1/power/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Zap Outlet 2"
+  state_topic:   "broadlinky/devices/zap_319_2/power/state"
+  command_topic: "broadlinky/devices/zap_319_2/power/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Nursery Night Lights"
+  state_topic:   "broadlinky/devices/zap_319_3/power/state"
+  command_topic: "broadlinky/devices/zap_319_3/power/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: Christmas Lights
+  state_topic:   "broadlinky/devices/zap_319_4/power/state"
+  command_topic: "broadlinky/devices/zap_319_4/power/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Zap Outlet 5"
+  state_topic:   "broadlinky/devices/zap_319_5/power/state"
+  command_topic: "broadlinky/devices/zap_319_5/power/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Exterior Christmas Lights 1"
+  state_topic:   "broadlinky/devices/exterior_christmas_lights_1/power/state"
+  command_topic: "broadlinky/devices/exterior_christmas_lights_1/power/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Exterior Christmas Lights 1 Cool White"
+  state_topic:   "broadlinky/devices/exterior_christmas_lights_1/color/cool_white/state"
+  command_topic: "broadlinky/devices/exterior_christmas_lights_1/color/cool_white/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Exterior Christmas Lights 1 Red"
+  state_topic:   "broadlinky/devices/exterior_christmas_lights_1/color/red/state"
+  command_topic: "broadlinky/devices/exterior_christmas_lights_1/color/red/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Exterior Christmas Lights 1 Blue"
+  state_topic:   "broadlinky/devices/exterior_christmas_lights_1/color/blue/state"
+  command_topic: "broadlinky/devices/exterior_christmas_lights_1/color/blue/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Exterior Christmas Lights 1 Green"
+  state_topic:   "broadlinky/devices/exterior_christmas_lights_1/color/green/state"
+  command_topic: "broadlinky/devices/exterior_christmas_lights_1/color/green/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Exterior Christmas Lights 1 Orange"
+  state_topic:   "broadlinky/devices/exterior_christmas_lights_1/color/orange/state"
+  command_topic: "broadlinky/devices/exterior_christmas_lights_1/color/orange/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Exterior Christmas Lights 1 Purple"
+  state_topic:   "broadlinky/devices/exterior_christmas_lights_1/color/purple/state"
+  command_topic: "broadlinky/devices/exterior_christmas_lights_1/color/purple/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+
+- platform: mqtt
+  name: "Exterior Christmas Lights 1 Pink"
+  state_topic:   "broadlinky/devices/exterior_christmas_lights_1/color/pink/state"
+  command_topic: "broadlinky/devices/exterior_christmas_lights_1/color/pink/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Exterior Christmas Lights 1 Light Blue"
+  state_topic:   "broadlinky/devices/exterior_christmas_lights_1/color/light_blue/state"
+  command_topic: "broadlinky/devices/exterior_christmas_lights_1/color/light_blue/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Exterior Christmas Lights 1 Multi"
+  state_topic:   "broadlinky/devices/exterior_christmas_lights_1/color/multi/state"
+  command_topic: "broadlinky/devices/exterior_christmas_lights_1/color/multi/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Exterior Christmas Lights 1 Light Steady"
+  state_topic:   "broadlinky/devices/exterior_christmas_lights_1/mode/steady/state"
+  command_topic: "broadlinky/devices/exterior_christmas_lights_1/mode/steady/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Exterior Christmas Lights 1 Steady"
+  state_topic:   "broadlinky/devices/exterior_christmas_lights_1/mode/steady/state"
+  command_topic: "broadlinky/devices/exterior_christmas_lights_1/mode/steady/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Exterior Christmas Lights 1 Twinkle"
+  state_topic:   "broadlinky/devices/exterior_christmas_lights_1/mode/twinkle/state"
+  command_topic: "broadlinky/devices/exterior_christmas_lights_1/mode/twinkle/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Exterior Christmas Lights 1 Steady"
+  state_topic:   "broadlinky/devices/exterior_christmas_lights_1/mode/twinkle/state"
+  command_topic: "broadlinky/devices/exterior_christmas_lights_1/mode/twinkle/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Exterior Christmas Lights 1 Chasing"
+  state_topic:   "broadlinky/devices/exterior_christmas_lights_1/mode/chasing/state"
+  command_topic: "broadlinky/devices/exterior_christmas_lights_1/mode/chasing/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Exterior Christmas Lights 1 Bi Directional"
+  state_topic:   "broadlinky/devices/exterior_christmas_lights_1/mode/bi_directional/state"
+  command_topic: "broadlinky/devices/exterior_christmas_lights_1/mode/bi_directional/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Exterior Christmas Lights 1 Fading"
+  state_topic:   "broadlinky/devices/exterior_christmas_lights_1/mode/fading/state"
+  command_topic: "broadlinky/devices/exterior_christmas_lights_1/mode/fading/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Exterior Christmas Lights 2"
+  state_topic:   "broadlinky/devices/exterior_christmas_lights_2/power/state"
+  command_topic: "broadlinky/devices/exterior_christmas_lights_2/power/command"
+  qos: 0
+  optimistic: true
+  payload_on: "on"
+  payload_off: "off"
