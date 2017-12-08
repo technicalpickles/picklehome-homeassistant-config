@@ -82,12 +82,29 @@ exterior:
     - input_select.exterior_christmas_lights_1_mode
     - input_select.exterior_christmas_lights_1_color
 
+kitchen_lights:
+  name: Kitchen Lights
+  entities:
+    - light.kitchen_front_1
+    - light.kitchen_front_2
+    - light.kitchen_front_3
+    - light.kitchen_front_4
+    - light.kitchen_back_1
+    - light.kitchen_back_2
+    - light.kitchen_back_3
+    - light.kitchen_back_4
+    - light.kitchen_back_5
+    - light.kitchen_back_6
+    - light.kitchen_back_7
+    - light.kitchen_back_8
+
 kitchen:
   name: Kitchen
   view: yes
   entities:
     - lock.kitchen_door
     - group.kitchen_door_lights
+    - group.kitchen_lights
     - media_player.kitchen
 
 master_bedroom_scenes:
@@ -203,6 +220,9 @@ living_room_lights:
   entities:
     - light.fireplace_backlight
     - light.living_room_lamp
+    - light.living_room_sofa_strip
+    - light.living_room_rear_overhead_1
+    - light.living_room_rear_overhead_2
 
 living_room:
   name: Living Room

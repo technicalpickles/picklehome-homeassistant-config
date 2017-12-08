@@ -13,7 +13,20 @@ filter:
     - light.front_door_2
     - light.kitchen_door_1
     - light.kitchen_door_2
-    - light.kitchen_door_1
+    - light.kitchen_front_1
+    - light.kitchen_front_2
+    - light.kitchen_front_3
+    - light.kitchen_front_4
+    - light.kitchen_back_1
+    - light.kitchen_back_2
+    - light.kitchen_back_3
+    - light.kitchen_back_4
+    - light.kitchen_back_5
+    - light.kitchen_back_6
+    - light.kitchen_back_7
+    - light.kitchen_back_8
+    - light.living_room_rear_overhead_1
+    - light.living_room_rear_overhead_2
     - light.tracy_desk_lamp_bulb_1
     - light.tracy_desk_lamp_bulb_2
     - light.tracy_desk_lamp_bulb_3
