@@ -2,23 +2,13 @@ platform: template
 switches:
   fireplace:
     friendly_name: Fireplace
-    # IMPORTANT update media_title state attr check when updating the video
     value_template: >
-       {{ is_state("media_player.kodi", "playing") and is_state_attr("media_player.kodi", "media_title", "The Best Fireplace Video (3 hours)") }}
+       {{ is_state("media_player.kodi", "playing") }}
     turn_on:
-      - service: light.turn_on
-        entity_id: light.fireplace_backlight
-        data:
-          rgb_color: [255,161,0]
-          brightness: 144
-      - service: media_player.turn_on
-        entity_id: media_player.kodi
-      - service: media_player.play_media
-        entity_id: media_player.kodi
-        data:
-          # IMPORTANT changing this requires updating the title state attr in value_template
-          media_content_id: "plugin://plugin.video.youtube/?path=/root/video&action=play_video&videoid=eyU3bRy2x44"
-          media_content_type: "video"
+      # use a script, because it runs asynchronously.
+      # otherwise, when alexa-controlled, might timeout waiting for it to finish
+      - service: script.turn_on
+        entity_id: script.fireplace_on
     turn_off:
       - service: media_player.turn_off
         entity_id: media_player.kodi

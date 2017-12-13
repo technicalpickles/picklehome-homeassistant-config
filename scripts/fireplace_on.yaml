@@ -1,0 +1,14 @@
+sequence:
+  - service: light.turn_on
+    entity_id: light.fireplace_backlight
+    data:
+      rgb_color: [255,161,0]
+      brightness: 144
+  - service: media_player.turn_on
+    entity_id: media_player.kodi
+  - service: media_player.play_media
+    entity_id: media_player.kodi
+    data:
+      media_content_id: !secret fireplace_media
+      media_content_type: "video"
+
