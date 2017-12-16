@@ -97,5 +97,10 @@ sensor apcups-sensord:
       - timeleft
       - tonbatt
 
-#cloud:
-#  alexa: !include alexa.yaml
+cloud:
+  mode: !secret cloud_mode
+  cognito_client_id: !secret cloud_cognito_client_id
+  user_pool_id: !secret cloud_user_pool_id
+  region: !secret cloud_region
+  relayer: !secret cloud_relayer
+  alexa: !include alexa.yaml
