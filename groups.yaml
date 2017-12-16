@@ -106,6 +106,7 @@ kitchen:
     - group.kitchen_door_lights
     - group.kitchen_lights
     - media_player.kitchen
+    - switch.kitchen_smart_plug_18
 
 master_bedroom_scenes:
   name: Master Bedroom Scenes
@@ -204,7 +205,8 @@ media_room:
 
 nursery_lights:
   name: Nursery Lights
-  entities: []
+  entities:
+   - light.nursery_wall_lamp
 
 nursery:
   name: Nursery
@@ -213,7 +215,7 @@ nursery:
     - binary_sensor.nursery_occupancy
     - sensor.nursery_temperature
     - group.nursery_lights
-    - switch.nursery_night_lights
+    - switch.nursery_night_light_22
 
 living_room_lights:
   name: Living Room Lights
@@ -235,6 +237,7 @@ living_room:
     - switch.fireplace
     - media_player.living_room
     - media_player.kodi
+    - switch.christmas_tree_19
 
 josh_desk_lamps:
   name: Josh's Desk Lamps
@@ -300,6 +303,7 @@ cottage:
     - climate.cottage
     - group.cottage_network
     - group.cottage_outside_lights
+    - switch.cottage_smart_plug_20
 
 irrigation:
   name: Irrigation
@@ -307,6 +311,12 @@ irrigation:
   entities:
     - switch.back_yard_left
     - switch.back_yard_right
+
+laundry:
+  name: Laundry
+  view: yes
+  entities:
+    - switch.laundry_smart_plug_21
 
 back_yard:
   name: Back Yard
