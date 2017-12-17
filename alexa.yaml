@@ -7,6 +7,8 @@ filter:
     - switch.bath_mode
     - switch.fireplace
     - switch.porch_mode
+    - switch.christmas_tree_19
+    - switch.nursery_night_light_22
   # and exclude lights we don't need individual control over
   exclude_entities:
     - light.front_door_1
