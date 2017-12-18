@@ -17,7 +17,12 @@ switches:
     command_on: 'sg80AAwAAUwMIAwgIAwMIAwgIAwgDCAMDSAMIAwgDSAgDCAMDCAgDCAMDCAgDCANDCEMIAwgIAwAAAAA'
     command_off: 'sg80AAwAAUwMIAwgIAwMIAwgIAwgDCAMDSAMIAwgDSAgDCAMDCAgDCAMDCAgDCANDCEMIAwgIAwAAAAA'
 
+  exterior_christmas_lights_1:
+    friendly_name: 'Exterior Christmas Lights 1'
+    command_on: 'sh4mAGQyERIRIhERESIRIhEiERIRIhEiESIREhEiEREREhESERIRAAEKAAA='
+    command_off: 'sicmAGQzERIRIhESESIRIhEiERIRIhEiESIREREiERIREhESESIRAAEKAAA='
+
   exterior_christmas_lights_2:
-    friendly_name: "Exterior Christmas Lights 2"
+    friendly_name: 'Exterior Christmas Lights 2'
     command_on: 'siA0AAwgIAwLISALCyEgDAshIAwLICAMCyEgCyAMIAwgDCAMCyELIQshCyALIAshIAsgCwsAAUwAAAAA'
     command_off: 'siA0AAwgIAwLISALCyEgDAshIAwLICAMCyEgCyAMIAwgDCAMCyELIQshCyALIAshIAsgCwsAAUwAAAAA'
