@@ -3,29 +3,19 @@ host: !secret kodi_host
 port: !secret kodi_port
 
 # from https://home-assistant.io/components/media_player.kodi/#kodi-turn-onoff-samples
-turn_on_action:
-  # unclear if this works, or if just getting a singal is turning on the display
-  - service: media_player.kodi_call_method
-    data:
-      entity_id: media_player.kodi
-      method: Addons.ExecuteAddon
-      addonid: script.json-cec
-      params:
-        command: activate
-  # go to home, in case was previously in a random settings screen
-  - service: media_player.kodi_call_method
-    data:
-      entity_id: media_player.kodi
-      method: Input.Home
 turn_off_action:
+  # turn off the TV first, so you don't see blank "no signal detected" screen
+  - service: switch.turn_off
+    data:
+      entity_id: switch.fireplace_tv
   - service: media_player.media_stop
     data:
       entity_id: media_player.kodi
-  # FIXME this doesn't seem to work yet
-  - service: media_player.kodi_call_method
-    data:
-      entity_id: media_player.kodi
-      method: Addons.ExecuteAddon
-      addonid: script.json-cec
-      params:
-        command: standby
+  # NOTE standby doesn't seem to work, but activate does?!
+  #- service: media_player.kodi_call_method
+  #  data:
+  #    entity_id: media_player.kodi
+  #    method: Addons.ExecuteAddon
+  #    addonid: script.json-cec
+  #    params:
+  #      command: standby
