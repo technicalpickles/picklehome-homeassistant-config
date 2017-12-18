@@ -3,7 +3,8 @@ dashboard:
   entities:
     - group.family
     - input_select.house_mode
-    - lock.kitchen_door
+    - lock.kitchen_front_door_11
+    - lock.kitchen_side_door_13
     - climate.home
     - group.interior_temperature
     - group.weather
@@ -19,6 +20,13 @@ dashboard:
 family:
   entities:
     - device_tracker.josh_iphone
+
+house_locks:
+  entities:
+    - lock.front_door_12
+    - lock.kitchen_front_door_11
+    - lock.kitchen_side_door_13
+    - lock.sun_room_door_14
 
 interior_temperature:
   name: Interior Temperature
@@ -102,7 +110,8 @@ kitchen:
   name: Kitchen
   view: yes
   entities:
-    - lock.kitchen_door
+    - lock.kitchen_door_12
+    - lock.kitchen_side_door_13
     - group.kitchen_door_lights
     - group.kitchen_lights
     - media_player.kitchen
@@ -296,6 +305,11 @@ cottage_network:
     - sensor.fire_stick_tv_online
     - sensor.airport_express_online
 
+cottage_locks:
+  entities:
+    - lock.cottage_back_door_15
+    - lock.cottage_front_door_16
+
 cottage:
   name: Cottage
   view: yes
@@ -304,6 +318,7 @@ cottage:
     - group.cottage_network
     - group.cottage_outside_lights
     - switch.cottage_smart_plug_20
+    - group.cottage_locks
 
 irrigation:
   name: Irrigation
