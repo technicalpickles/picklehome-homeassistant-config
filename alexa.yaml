@@ -2,6 +2,7 @@ filter:
   # only include lights by default
   include_domains:
     - light
+    - lock
   # add in things we care to control
   include_entities:
     - switch.bath_mode
