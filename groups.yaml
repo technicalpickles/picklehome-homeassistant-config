@@ -194,6 +194,7 @@ media_room_tv:
     - switch.media_room_tv
     - switch.directv
     - switch.apple_tv
+    - switch.smart_tv
     - switch.media_room_music
 
 media_room_lights:

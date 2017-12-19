@@ -10,6 +10,12 @@ filter:
     - switch.porch_mode
     - switch.christmas_tree_19
     - switch.nursery_night_light_22
+    - switch.media_room_tv
+    - switch.directv
+    - switch.apple_tv
+    - switch.smart_tv
+    - switch.super_nintendo
+
   # and exclude lights we don't need individual control over
   exclude_entities:
     - light.front_door_1
