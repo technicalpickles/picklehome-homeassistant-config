@@ -73,12 +73,14 @@ exterior_lights:
     - group.kitchen_door_lights
     - group.cottage_outside_lights
     - light.deck
+    - group.exterior_christmas_lights
 
 exterior_christmas_lights:
   name: Exterior Christmas Lights
   entities:
     - switch.exterior_christmas_lights_1
     - switch.exterior_christmas_lights_2
+    - switch.christmas_lasers
 
 exterior:
   name: Exterior
