@@ -16,3 +16,19 @@ light.kitchen:
   friendly_name: Kitchen Lights
 light.kitchen_door:
   friendly_name: Kitchen Door Lights
+
+switch.media_room_tv:
+  alexa_name: "Media Room TV"
+  alexa_display_categories: ACTIVITY_TRIGGER
+switch.directv:
+  alexa_name: "Direct TV"
+  alexa_display_categories: ACTIVITY_TRIGGER
+switch.apple_tv:
+  alexa_name: "Apple TV"
+  alexa_display_categories: ACTIVITY_TRIGGER
+Switch.smart_tv:
+  alexa_name: "Smart TV"
+  alexa_display_categories: ACTIVITY_TRIGGER
+Switch.smart_tv:
+  alexa_name: "Super Nintendo"
+  alexa_display_categories: ACTIVITY_TRIGGER
