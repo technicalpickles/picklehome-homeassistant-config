@@ -32,7 +32,6 @@
       color_temp: 369
     group.exterior_lights:
       state: on
-      brightness: 127
     scene.living_room_bright:
       state: on
 - name: Alex Bedtime
