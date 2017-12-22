@@ -13,7 +13,7 @@ home-assistant_v2.db
 ecobee.conf
 harmony_harmony_hub.conf
 nest.conf
-phue.conf
+phue*.conf
 
 # manage this separately
 secrets.yaml
