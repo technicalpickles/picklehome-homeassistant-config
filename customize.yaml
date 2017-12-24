@@ -26,9 +26,9 @@ switch.directv:
 switch.apple_tv:
   alexa_name: "Apple TV"
   alexa_display_categories: ACTIVITY_TRIGGER
-Switch.smart_tv:
+switch.smart_tv:
   alexa_name: "Smart TV"
   alexa_display_categories: ACTIVITY_TRIGGER
-Switch.smart_tv:
+switch.super_nintendo:
   alexa_name: "Super Nintendo"
   alexa_display_categories: ACTIVITY_TRIGGER
