@@ -10,20 +10,15 @@ homeassistant:
 
 cloud:
   alexa: !include alexa.yaml
-
+config:
+discovery:
 frontend:
   javascript_version: latest
-config:
+history:
 http:
-  # Uncomment this to add a password (recommended!)
-  # api_password: PASSWORD
-  # Uncomment this if you are using SSL or running in Docker etc
-  # base_url: example.duckdns.org:8123
+logbook:
 updater:
   include_used_components: true
-discovery:
-history:
-logbook:
 
 group: !include groups.yaml
 panel_iframe: !include panel_iframe.yaml
