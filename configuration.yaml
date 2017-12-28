@@ -61,7 +61,6 @@ tts:
   platform: google
 
 group: !include groups.yaml
-automation: !include_dir_merge_list automations
 panel_iframe: !include panel_iframe.yaml
 
 ecobee: !include ecobee.yaml
@@ -79,10 +78,10 @@ script: !include scripts.yaml
 sensor speedtest: !include speedtest.yaml
 sleepiq: !include sleepiq.yaml
 sun:
-switch broadlink: !include broadlink.yaml
-switch harmony hub: !include harmony-switches.yaml
+switch:
+  - !include broadlink.yaml
+  - !include rachio.yaml
 vera: !include vera.yaml
-switch rachio: !include rachio.yaml
 
 apcupsd:
 binary_sensor apcupsd-binary-sensor:

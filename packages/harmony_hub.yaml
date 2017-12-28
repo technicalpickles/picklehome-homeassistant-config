@@ -1,0 +1,50 @@
+switch:
+  - platform: mqtt
+    name: "Media Room TV"
+    state_topic: "harmony-api/hubs/harmony-hub/state"
+    command_topic: "harmony-api/hubs/harmony-hub/activities/watch-tv/command"
+    qos: 0
+    optimistic: true
+    payload_on: "on"
+    payload_off: "off"
+  - platform: mqtt
+    name: "DirecTV"
+    state_topic: "harmony-api/hubs/harmony-hub/activities/watch-tv/state"
+    command_topic: "harmony-api/hubs/harmony-hub/activities/watch-tv/command"
+    qos: 0
+    optimistic: true
+    payload_on: "on"
+    payload_off: "off"
+  - platform: mqtt
+    name: "Apple TV"
+    state_topic: "harmony-api/hubs/harmony-hub/activities/watch-apple-tv/state"
+    command_topic: "harmony-api/hubs/harmony-hub/activities/watch-apple-tv/command"
+    qos: 0
+    optimistic: true
+    payload_on: "on"
+    payload_off: "off"
+  - platform: mqtt
+    name: "Smart TV"
+    state_topic: "harmony-api/hubs/harmony-hub/activities/watch-smart-tv/state"
+    command_topic: "harmony-api/hubs/harmony-hub/activities/watch-smart-tv/command"
+    qos: 0
+    optimistic: true
+    payload_on: "on"
+    payload_off: "off"
+  - platform: mqtt
+    name: "Super Nintendo"
+    state_topic: "harmony-api/hubs/harmony-hub/activities/play-super-nintendo/state"
+    command_topic: "harmony-api/hubs/harmony-hub/activities/play-super-nintendo/command"
+    qos: 0
+    optimistic: true
+    payload_on: "on"
+    payload_off: "off"
+  - platform: mqtt
+    name: "Media Room Music"
+    state_topic: "harmony-api/hubs/harmony-hub/activities/listen-to-music/state"
+    command_topic: "harmony-api/hubs/harmony-hub/activities/listen-to-music/command"
+    qos: 0
+    optimistic: true
+    payload_on: "on"
+    payload_off: "off"
+
