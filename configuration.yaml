@@ -66,11 +66,13 @@ panel_iframe: !include panel_iframe.yaml
 
 ecobee: !include ecobee.yaml
 light hue: !include hue.yaml
-media_player sonos: !include sonos.yaml
-media_player kodi: !include kodi.yaml
+media_player:
+- !include sonos.yaml
+- !include kodi.yaml
 mqtt: !include mqtt.yaml
 nest: !include nest.yaml
-notify slack: !include notify-slack.yaml
+notify:
+-  !include notify-slack.yaml
 scene directory: !include_dir_list scenes
 scene: !include scenes.yaml
 script: !include_dir_named scripts
