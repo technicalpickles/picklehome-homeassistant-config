@@ -103,9 +103,7 @@ automation:
       entity_id: input_select.house_mode
       to: Awake
     action:
-      - service: notify.slack
-        data:
-          message: ":family: Good Morning :family:"
+      service: script.good_morning
   
   - alias: Bed Time Triggered
     trigger:
@@ -113,9 +111,7 @@ automation:
       entity_id: input_select.house_mode
       to: Bed Time
     action:
-      - service: notify.slack
-        data:
-          message: ":family::bed:"
+      service: script.bed_time
   
   - alias: Sleeping Triggered
     trigger:
@@ -181,9 +177,34 @@ scene:
 script:
   goodnight:
     sequence:
+      # update to sleeping if it wasn't already
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.house_mode
+          option: Sleeping
       - service: notify.slack
         data:
           message: ":family::zzz:"
       - service: scene.turn_on
         entity_id: scene.good_night
       - service: media_player.sonos_unjoin
+  good_morning:
+    sequence:
+      # update to Awake if it wasn't already
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.house_mode
+          option: Awake
+      - service: notify.slack
+        data:
+          message: ":family: Good Morning :family:"
+  bed_time:
+    sequence:
+      # update to Bed Time if it wasn't already
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.house_mode
+          option: Bed Time
+      - service: notify.slack
+        data:
+          message: ":family::bed:"
