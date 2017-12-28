@@ -79,7 +79,6 @@ sleepiq: !include sleepiq.yaml
 sun:
 switch broadlink: !include broadlink.yaml
 switch harmony hub: !include harmony-switches.yaml
-switch fireplace: !include fireplace-switch.yaml
 vera: !include vera.yaml
 switch rachio: !include rachio.yaml
 
