@@ -75,7 +75,7 @@ notify:
 -  !include notify-slack.yaml
 scene directory: !include_dir_list scenes
 scene: !include scenes.yaml
-script: !include_dir_named scripts
+script: !include scripts.yaml
 sensor speedtest: !include speedtest.yaml
 sleepiq: !include sleepiq.yaml
 sun:
