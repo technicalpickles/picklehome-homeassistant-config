@@ -1,8 +1,0 @@
-sequence:
-  - service: input_boolean.turn_on
-    entity_id: input_boolean.christmas_cheer
-  - service: shell_command.sonos_christmas_cheer
-  - service: scene.turn_on
-    entity_id: scene.living_room_artic_aurora
-  - service: switch.turn_on
-    entity_id: switch.christmas_lights

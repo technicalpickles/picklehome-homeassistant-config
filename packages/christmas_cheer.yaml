@@ -1,0 +1,23 @@
+shell_command:
+  sonos_christmas_cheer: curl -s http://localhost:5005/preset/christmas-cheer
+  sonos_stop: curl -s http://localhost:5005/pauseall
+
+script:
+  christmas_cheer_off:
+    sequence:
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.christmas_cheer
+      - service: shell_command.sonos_stop
+      - service: scene.turn_on
+        entity_id: scene.living_room_bright
+      - service: switch.turn_off
+        entity_id: switch.christmas_lights
+  christmas_cheer_on:
+    sequence:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.christmas_cheer
+      - service: shell_command.sonos_christmas_cheer
+      - service: scene.turn_on
+        entity_id: scene.living_room_artic_aurora
+      - service: switch.turn_on
+        entity_id: switch.christmas_lights
