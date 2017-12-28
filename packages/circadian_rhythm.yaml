@@ -178,6 +178,7 @@ script:
   goodnight:
     sequence:
       # update to sleeping if it wasn't already
+      # TODO consider adding a template switch, so we don't have to set this
       - service: input_select.select_option
         data:
           entity_id: input_select.house_mode
@@ -190,6 +191,7 @@ script:
       - service: media_player.sonos_unjoin
   good_morning:
     sequence:
+      # TODO consider adding a template switch, so we don't have to set this
       # update to Awake if it wasn't already
       - service: input_select.select_option
         data:
@@ -200,6 +202,7 @@ script:
           message: ":family: Good Morning :family:"
   bed_time:
     sequence:
+      # TODO consider adding a template switch, so we don't have to set this
       # update to Bed Time if it wasn't already
       - service: input_select.select_option
         data:

@@ -1,0 +1,43 @@
+switch:
+  platform: template
+  switches:
+    porch_mode:
+      friendly_name: Porch Mode
+      value_template: "{{ is_state('climate.cottage', 'off') }}"
+      turn_on:
+        service: script.turn_on
+        entity_id: script.porch_mode_on
+      turn_off:
+        service: script.turn_on
+        entity_id: script.porch_mode_off
+
+script:
+  porch_mode_on:
+    sequence:
+      - service: climate.set_operation_mode
+        entity_id: climate.cottage
+        data:
+          operation_mode: 'off'
+      - service: notify.slack
+        data:
+          message: ":house_with_garden: PORCH TIME :house_with_garden:"
+    
+      - service: script.turn_on
+        data:
+          entity_id: script.porch_mode_auto_off
+
+  porch_mode_auto_off:
+    sequence:
+      - delay:
+          minutes: 120
+      - service: switch.turn_off
+        entity_id: switch.porch_mode
+
+  porch_mode_off:
+    sequence:
+      - service: climate.set_operation_mode
+        entity_id: climate.cottage
+        data:
+          operation_mode: 'auto'
+      - service: script.turn_off
+        entity_id: script.porch_mode_auto_off

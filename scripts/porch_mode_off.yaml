@@ -1,7 +1,0 @@
-sequence:
-  - service: climate.set_operation_mode
-    entity_id: climate.cottage
-    data:
-      operation_mode: 'auto'
-  - service: script.turn_off
-    entity_id: script.porch_mode_auto_off

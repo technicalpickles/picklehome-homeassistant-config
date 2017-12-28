@@ -1,0 +1,43 @@
+switch:
+- platform: template
+  switches:
+    bath_mode:
+      friendly_name: Bath Mode
+      value_template: "{{ is_state('climate.home', 'off') }}"
+      turn_on:
+        service: script.turn_on
+        entity_id: script.bath_mode_on
+      turn_off:
+        service: script.turn_on
+        entity_id: script.bath_mode_off
+
+script:
+  bath_mode_auto_off:
+    sequence:
+      - delay:
+          minutes: 45
+      - service: switch.turn_off
+        entity_id: switch.bath_mode
+  bath_mode_off:
+    sequence:
+      - service: climate.set_operation_mode
+        entity_id: climate.home
+        data:
+          operation_mode: 'auto'
+      - service: notify.slack
+        data:
+          message: ":baby: CLEAN BABY :baby: "
+      - service: script.turn_off
+        entity_id: script.bath_mode_auto_off
+  bath_mode_on:
+    sequence:
+      - service: climate.set_operation_mode
+        entity_id: climate.home
+        data:
+          operation_mode: 'off'
+      - service: notify.slack
+        data:
+          message: ":bathtub: :bathtub: :bathtub: BATH TIME :bathtub: :bathtub: :bathtub:"
+      - service: script.turn_on
+        data:
+          entity_id: script.bath_mode_auto_off
