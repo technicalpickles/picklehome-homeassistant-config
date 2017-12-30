@@ -21,28 +21,6 @@ sensor:
         {%- endif %}
 
 automation:
-  # time of day transitions
-  - alias: Sunrise
-    trigger:
-      platform: sun
-      event: sunrise
-      offset: '+00:30:00'
-    action:
-      service: script.scene_and_notify
-      data:
-        scene: sunrise
-        message: ":city_sunrise:"
-
-  - alias: Sunset
-    trigger:
-      platform: sun
-      event: sunset
-    action:
-      service: script.scene_and_notify
-      data:
-        scene: sunset
-        message: ":city_sunset:"
-
   # automations to detect mode changes
   - alias: Out of bed in the morning causes Awake
     trigger:
@@ -122,28 +100,6 @@ automation:
       - service: script.goodnight
   
 scene:
-  - name: Sunrise
-    entities:
-      group.exterior_lights:
-        state: off
-      switch.nursery_night_lights:
-        state: off
-  
-  - name: Sunset
-    entities:
-      light.josh_night_stand:
-        state: on
-        brightness: 117
-        color_temp: 369
-      light.sun_room_lamp:
-        state: on
-        brightness: 54
-        color_temp: 369
-      group.exterior_lights:
-        state: on
-      scene.living_room_bright:
-        state: on
-
   - name: Alex Bedtime
     entities:
       switch.nursery_night_lights:
