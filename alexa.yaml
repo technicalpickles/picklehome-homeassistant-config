@@ -15,6 +15,9 @@ filter:
     - switch.apple_tv
     - switch.smart_tv
     - switch.super_nintendo
+    - script.goodnight
+    - script.good_morning
+    - script.bed_time
 
   # and exclude lights we don't need individual control over
   exclude_entities:

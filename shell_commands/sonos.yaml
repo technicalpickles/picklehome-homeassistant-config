@@ -1,2 +1,0 @@
-sonos_christmas_cheer: curl -s http://localhost:5005/preset/christmas-cheer
-sonos_stop: curl -s http://localhost:5005/pauseall

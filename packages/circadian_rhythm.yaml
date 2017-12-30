@@ -1,0 +1,213 @@
+input_select:
+  house_mode:
+    name: House Mode
+    initial: Awake
+    options:
+      - Awake
+      - Bath Time
+      - Bed Time
+      - Sleeping
+
+sensor:
+- platform: template
+  sensors:
+    everyone_in_bed:
+      friendly_name: "Everyone in Bed"
+      value_template: >-
+        {%- if is_state('binary_sensor.sleepnumber_ile_josh_is_in_bed', 'on') and is_state('binary_sensor.sleepnumber_ile_tracy_is_in_bed', 'on') %}
+          on
+        {%- else %}
+          off
+        {%- endif %}
+
+automation:
+  # time of day transitions
+  - alias: Sunrise
+    trigger:
+      platform: sun
+      event: sunrise
+      offset: '+00:30:00'
+    action:
+      service: script.scene_and_notify
+      data:
+        scene: sunrise
+        message: ":city_sunrise:"
+
+  - alias: Sunset
+    trigger:
+      platform: sun
+      event: sunset
+    action:
+      service: script.scene_and_notify
+      data:
+        scene: sunset
+        message: ":city_sunset:"
+
+  # automations to detect mode changes
+  - alias: Out of bed in the morning causes Awake
+    trigger:
+      platform: state
+      entity_id: sensor.everyone_in_bed
+      from: 'on'
+      to: 'off'
+      for:
+        minutes: 20
+    condition:
+      condition: 'and'
+      conditions:
+        - condition: time
+          after: '5:00:00'
+          before: '14:00:00'
+        - condition: state
+          entity_id: input_select.house_mode
+          state: 'Sleeping'
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.house_mode
+          option: Awake
+
+  - alias: Everyone is in bed after Sunset changes to Bed Time
+    trigger:
+      platform: state
+      entity_id: sensor.everyone_in_bed
+      from: 'off'
+      to: 'on'
+    condition:
+      condition: sun
+      after: sunset
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.house_mode
+          option: Bed Time
+  
+  - alias: Lights out and in bed while in Bed Time changes to Sleeping
+    trigger:
+      platform: state
+      entity_id: group.master_bedroom_lights
+      to: 'off'
+    condition:
+      condition: template
+      value_template: "{{ is_state('input_select.house_mode', 'Bed Time') }}"
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.house_mode
+          option: Sleeping
+  
+  # what to do when the mode changes
+  - alias: Awake Triggered
+    trigger:
+      platform: state
+      entity_id: input_select.house_mode
+      to: Awake
+    action:
+      service: script.good_morning
+  
+  - alias: Bed Time Triggered
+    trigger:
+      platform: state
+      entity_id: input_select.house_mode
+      to: Bed Time
+    action:
+      service: script.bed_time
+  
+  - alias: Sleeping Triggered
+    trigger:
+      platform: state
+      entity_id: input_select.house_mode
+      to: Sleeping
+    action:
+      - service: script.goodnight
+  
+scene:
+  - name: Sunrise
+    entities:
+      group.exterior_lights:
+        state: off
+      switch.nursery_night_lights:
+        state: off
+  
+  - name: Sunset
+    entities:
+      light.josh_night_stand:
+        state: on
+        brightness: 117
+        color_temp: 369
+      light.sun_room_lamp:
+        state: on
+        brightness: 54
+        color_temp: 369
+      group.exterior_lights:
+        state: on
+      scene.living_room_bright:
+        state: on
+
+  - name: Alex Bedtime
+    entities:
+      switch.nursery_night_lights:
+        state: on
+
+  - name: Good Night
+    entities:
+      group.media_room: off # turn tv and stuff off
+      group.attic_lights: off # no lights upstairs
+      group.living_room: off # lamps and christmas lights
+      group.master_bedroom_lights: off # darkness required for sleep
+      group.sun_room_lights: off
+  
+      # only turn off courtyard light for exterior, since you can see it through the blinds of the master bath
+      light.cottage_courtyard: off
+  
+  - name: Everything Off
+    entities:
+      group.media_room: off
+      group.all_lights: off
+      switch.christmas_lights: off
+  
+  - name: Goodbye
+    entities:
+      group.media_room: off # turn off tv and stuff
+      group.attic_lights: off # no lights upstairs
+      group.living_room_lights: on # so it seems like someone is inside
+      switch.christmas_lights: off # christmas tree safety
+      # what about sunroom & master bedroom? they turn on automatically at sunset
+  
+script:
+  goodnight:
+    sequence:
+      # update to sleeping if it wasn't already
+      # TODO consider adding a template switch, so we don't have to set this
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.house_mode
+          option: Sleeping
+      - service: notify.slack
+        data:
+          message: ":family::zzz:"
+      - service: scene.turn_on
+        entity_id: scene.good_night
+      - service: media_player.sonos_unjoin
+  good_morning:
+    sequence:
+      # TODO consider adding a template switch, so we don't have to set this
+      # update to Awake if it wasn't already
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.house_mode
+          option: Awake
+      - service: notify.slack
+        data:
+          message: ":family: Good Morning :family:"
+  bed_time:
+    sequence:
+      # TODO consider adding a template switch, so we don't have to set this
+      # update to Bed Time if it wasn't already
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.house_mode
+          option: Bed Time
+      - service: notify.slack
+        data:
+          message: ":family::bed:"

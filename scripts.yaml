@@ -1,0 +1,8 @@
+scene_and_notify:
+  sequence:
+    - service: scene.turn_on
+      data_template:
+        entity_id: scene.{{scene}}
+    - service: notify.slack
+      data_template:
+        message: "{{message}}"

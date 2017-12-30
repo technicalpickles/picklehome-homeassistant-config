@@ -32,3 +32,13 @@ switch.smart_tv:
 switch.super_nintendo:
   alexa_name: "Super Nintendo"
   alexa_display_categories: ACTIVITY_TRIGGER
+
+script.goodnight:
+  alexa_name: "Good night"
+  alexa_display_categories: ACTIVITY_TRIGGER
+script.good_morning:
+  alexa_name: "Good morning"
+  alexa_display_categories: ACTIVITY_TRIGGER
+script.bed_time:
+  alexa_name: "Bed Time"
+  alexa_display_categories: ACTIVITY_TRIGGER

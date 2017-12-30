@@ -1,0 +1,13 @@
+binary_sensor:
+  - platform: apcupsd
+sensor:
+  - platform: apcupsd
+    resources:
+      - bcharge
+      - linev
+      - loadpct
+      - nominv
+      - numxfers
+      - status
+      - timeleft
+      - tonbatt
