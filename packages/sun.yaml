@@ -1,0 +1,77 @@
+automation:
+  - alias: Sunrise
+    trigger:
+      platform: sun
+      event: sunrise
+      offset: '+00:30:00'
+    action:
+      service: script.scene_and_notify
+      data:
+        scene: sunrise
+        message: ":city_sunrise:"
+
+  - alias: House Sunset
+    trigger:
+      platform: sun
+      event: sunset
+    action:
+      service: script.scene_and_notify
+      data:
+        scene: sunset
+        message: ":city_sunset:"
+
+  - alias: Master Bedroom Sunset
+    trigger:
+      platform: sun
+      event: sunset
+    condition:
+      condition: state
+      entity_id: group.master_bedroom_lights
+      state: 'off'
+    action:
+      service: scene.turn_on
+      data:
+        entity_id: scene.living_room_sunset
+
+  - alias: Living Room Sunset
+    trigger:
+      platform: sun
+      event: sunset
+    condition:
+      condition: state
+      entity_id: group.living_room_lights
+      state: 'off'
+    action:
+      service: scene.turn_on
+      data:
+        entity_id: scene.living_room_sunset
+
+scene:
+  - name: Sunrise
+    entities:
+      group.exterior_lights:
+        state: off
+      switch.nursery_night_lights:
+        state: off
+  
+  - name: Living Room Sunset
+    entities:
+      light.josh_night_stand:
+        state: on
+        brightness: 117
+        color_temp: 369
+
+  - name: Sun Room Sunset
+    entities:
+      light.sun_room_lamp:
+        state: on
+        brightness: 54
+        color_temp: 369
+    
+  - name: Sunset
+    entities:
+      group.exterior_lights:
+        state: on
+      scene.living_room_bright:
+        state: on
+
