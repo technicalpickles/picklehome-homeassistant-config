@@ -3,6 +3,7 @@ dashboard:
   entities:
     - group.family
     - input_select.house_mode
+    - input_boolean.guest_mode
     - lock.kitchen_front_door_11
     - lock.kitchen_side_door_13
     - climate.home
@@ -309,6 +310,7 @@ cottage_network:
     - sensor.airport_express_online
 
 cottage_locks:
+  name: "Locks"
   entities:
     - lock.cottage_back_door_15
     - lock.cottage_front_door_16
@@ -322,6 +324,7 @@ cottage:
     - group.cottage_outside_lights
     - switch.cottage_smart_plug_20
     - group.cottage_locks
+    - input_boolean.guest_mode
 
 irrigation:
   name: Irrigation

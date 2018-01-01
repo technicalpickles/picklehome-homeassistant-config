@@ -1,0 +1,36 @@
+input_boolean:
+  guest_mode:
+    name: "Guest Mode"
+
+
+automation:
+  - alias: Guest Mode Off
+    trigger:
+      platform: state
+      entity_id: input_boolean.guest_mode
+      to: 'off'
+    action:
+      service: script.guest_mode_off
+
+  - alias: Guest Mode On
+    trigger:
+      platform: state
+      entity_id: input_boolean.guest_mode
+      to: 'on'
+    action:
+      service: script.guest_mode_on
+
+script:
+  guest_mode_off:
+    sequence:
+      - service: climate.set_temperature
+        entity_id: climate.cottage
+        data:
+          operation_mode: auto
+          target_temp_low: 50
+          target_temp_high: 78
+
+  guest_mode_on:
+    sequence:
+      - service: climate.ecobee_resume_program
+        entity_id: climate.cottage
