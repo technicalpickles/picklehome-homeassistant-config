@@ -3,13 +3,13 @@ dashboard:
   entities:
     - group.family
     - input_select.house_mode
-    - input_boolean.guest_mode
     - lock.kitchen_front_door_11
     - lock.kitchen_side_door_13
     - climate.home
     - group.interior_temperature
     - group.weather
     - script.sunset
+    - switch.guest_mode
     - switch.bath_mode
     - switch.porch_mode
     - scene.sunrise
@@ -324,7 +324,7 @@ cottage:
     - group.cottage_outside_lights
     - switch.cottage_smart_plug_20
     - group.cottage_locks
-    - input_boolean.guest_mode
+    - switch.guest_mode
 
 irrigation:
   name: Irrigation

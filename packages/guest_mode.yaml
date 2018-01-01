@@ -1,24 +1,13 @@
-input_boolean:
-  guest_mode:
-    name: "Guest Mode"
-
-
-automation:
-  - alias: Guest Mode Off
-    trigger:
-      platform: state
-      entity_id: input_boolean.guest_mode
-      to: 'off'
-    action:
-      service: script.guest_mode_off
-
-  - alias: Guest Mode On
-    trigger:
-      platform: state
-      entity_id: input_boolean.guest_mode
-      to: 'on'
-    action:
-      service: script.guest_mode_on
+switch:
+- platform: template
+  switches:
+    guest_mode:
+      friendly_name: Guest Mode
+      value_template: "{{ not (is_state_attr('climate.cottage', 'target_temp_low', 50) and is_state_attr('climate.cottage', 'target_temp_high', 78) and is_state_attr('climate.cottage', 'operation_mode', 'auto')) }}"
+      turn_on:
+        service: script.guest_mode_on
+      turn_off:
+        service: script.guest_mode_off
 
 script:
   guest_mode_off:
