@@ -3,14 +3,14 @@ input_boolean:
    name: Guest Mode
 
 automation:
-  - name: Guest Mode Off
+  - alias: Guest Mode Off
     trigger:
       platform: state
       entity_id: input_boolean.guest_mode
       to: 'off'
     action:
       service: script.guest_mode_off
-  - name: Guest Mode On
+  - alias: Guest Mode On
     trigger:
       platform: state
       entity_id: input_boolean.guest_mode
@@ -22,13 +22,17 @@ script:
   restore_guest_mode_climate:
     sequence:
       - service_template: "
-	  {% if has_state('input_boolean.guest_mode', 'on') %}
+	  {% if is_state('input_boolean.guest_mode', 'on') %}
             script.guest_mode_on
           {% else %}
             script.guest_mode_off
           {% endif %}"
   guest_mode_off:
     sequence:
+      - service: climate.set_operation_mode
+        entity_id: climate.cottage
+        data:
+          operation_mode: 'auto'
       - service: climate.set_temperature
         entity_id: climate.cottage
         data:
@@ -38,5 +42,9 @@ script:
 
   guest_mode_on:
     sequence:
+      - service: climate.set_operation_mode
+        entity_id: climate.cottage
+        data:
+          operation_mode: 'auto'
       - service: climate.ecobee_resume_program
         entity_id: climate.cottage

@@ -324,7 +324,7 @@ cottage:
     - group.cottage_outside_lights
     - switch.cottage_smart_plug_20
     - group.cottage_locks
-    - switch.guest_mode
+    - input_boolean.guest_mode
 
 irrigation:
   name: Irrigation
