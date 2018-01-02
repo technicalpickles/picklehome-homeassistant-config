@@ -5,6 +5,7 @@ filter:
     - lock
   # add in things we care to control
   include_entities:
+    - input_boolean.guest_mode
     - switch.bath_mode
     - switch.fireplace
     - switch.porch_mode

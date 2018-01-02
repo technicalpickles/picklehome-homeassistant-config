@@ -5,11 +5,9 @@ switch:
       friendly_name: Porch Mode
       value_template: "{{ is_state('climate.cottage', 'off') }}"
       turn_on:
-        service: script.turn_on
-        entity_id: script.porch_mode_on
+        service: script.porch_mode_on
       turn_off:
-        service: script.turn_on
-        entity_id: script.porch_mode_off
+        service: script.porch_mode_off
 
 script:
   porch_mode_on:
@@ -35,9 +33,6 @@ script:
 
   porch_mode_off:
     sequence:
-      - service: climate.set_operation_mode
-        entity_id: climate.cottage
-        data:
-          operation_mode: 'auto'
+      - service: script.restore_guest_mode_climate
       - service: script.turn_off
         entity_id: script.porch_mode_auto_off

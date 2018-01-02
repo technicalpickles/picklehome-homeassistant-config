@@ -9,6 +9,7 @@ dashboard:
     - group.interior_temperature
     - group.weather
     - script.sunset
+    - switch.guest_mode
     - switch.bath_mode
     - switch.porch_mode
     - scene.sunrise
@@ -309,6 +310,7 @@ cottage_network:
     - sensor.airport_express_online
 
 cottage_locks:
+  name: "Locks"
   entities:
     - lock.cottage_back_door_15
     - lock.cottage_front_door_16
@@ -322,6 +324,7 @@ cottage:
     - group.cottage_outside_lights
     - switch.cottage_smart_plug_20
     - group.cottage_locks
+    - input_boolean.guest_mode
 
 irrigation:
   name: Irrigation
