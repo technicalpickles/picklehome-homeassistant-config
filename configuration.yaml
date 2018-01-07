@@ -34,6 +34,7 @@ mqtt: !include mqtt.yaml
 nest: !include nest.yaml
 notify:
 -  !include notify-slack.yaml
+prometheus:
 scene directory: !include_dir_list scenes
 scene: !include scenes.yaml
 script: !include scripts.yaml
