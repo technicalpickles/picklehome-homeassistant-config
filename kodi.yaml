@@ -1,6 +1,8 @@
 platform: kodi
 name: Fireplace Kodi
 host: !secret kodi_host
+username: !secret kodi_username
+password: !secret kodi_password
 port: !secret kodi_port
 
 # from https://home-assistant.io/components/media_player.kodi/#kodi-turn-onoff-samples
