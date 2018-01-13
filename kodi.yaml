@@ -1,4 +1,5 @@
 platform: kodi
+name: Fireplace Kodi
 host: !secret kodi_host
 port: !secret kodi_port
 
