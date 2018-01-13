@@ -6,19 +6,28 @@ password: !secret kodi_password
 port: !secret kodi_port
 
 # from https://home-assistant.io/components/media_player.kodi/#kodi-turn-onoff-samples
+turn_on_action:
+  - service: media_player.kodi_call_method
+    data:
+      entity_id: media_player.fireplace_kodi
+      method: Addons.ExecuteAddon
+      addonid: script.json-cec
+      params:
+        command: activate
 turn_off_action:
   # turn off the TV first, so you don't see blank "no signal detected" screen
-  - service: switch.turn_off
-    data:
-      entity_id: switch.fireplace_tv
+  #- service: switch.turn_off
+  #  data:
+  #    entity_id: switch.fireplace_tv
   - service: media_player.media_stop
     data:
-      entity_id: media_player.kodi
+      entity_id: media_player.fireplace_kodi
+
   # NOTE standby doesn't seem to work, but activate does?!
-  #- service: media_player.kodi_call_method
-  #  data:
-  #    entity_id: media_player.kodi
-  #    method: Addons.ExecuteAddon
-  #    addonid: script.json-cec
-  #    params:
-  #      command: standby
+  - service: media_player.kodi_call_method
+    data:
+      entity_id: media_player.fireplace_kodi
+      method: Addons.ExecuteAddon
+      addonid: script.json-cec
+      params:
+        command: standby
