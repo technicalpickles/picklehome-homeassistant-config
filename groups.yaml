@@ -12,6 +12,7 @@ dashboard:
     - switch.guest_mode
     - switch.bath_mode
     - switch.porch_mode
+    - switch.fireplace
     - scene.sunrise
     - scene.good_bye
     - scene.sunset
