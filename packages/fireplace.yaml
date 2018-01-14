@@ -4,18 +4,22 @@ switch:
       fireplace:
         friendly_name: Fireplace
         value_template: >
-           {{ is_state("media_player.kodi", "playing") }}
+           {{ is_state("media_player.fireplace_kodi", "playing") }}
         turn_on:
           # use a script, because it runs asynchronously.
           # otherwise, when alexa-controlled, might timeout waiting for it to finish
-          - service: script.turn_on
-            entity_id: script.fireplace_on
+          - service: script.fireplace_on
         turn_off:
-          - service: media_player.turn_off
-            entity_id: media_player.kodi
-          - service: light.turn_off
-            entity_id: light.fireplace_backlight
+          - service: script.fireplace_off
+
 script:
+  fireplace_off:
+    sequence:
+      - service: media_player.turn_off
+        entity_id: media_player.fireplace_kodi
+      - service: light.turn_off
+        entity_id: light.fireplace_backlight
+
   fireplace_on:
     sequence:
       - service: light.turn_on
@@ -23,10 +27,10 @@ script:
         data:
           rgb_color: [255,161,0]
           brightness: 144
+      - service: media_player.turn_on
+        entity_id: media_player.fireplace_kodi
       - service: media_player.play_media
-        entity_id: media_player.kodi
+        entity_id: media_player.fireplace_kodi
         data:
           media_content_id: !secret fireplace_media
           media_content_type: "video"
-      - service: switch.turn_on
-        entity_id: switch.fireplace_tv
