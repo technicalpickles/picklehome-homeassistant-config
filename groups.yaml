@@ -203,6 +203,7 @@ media_room:
     - binary_sensor.media_room_occupancy
     - sensor.media_room_temperature
     - media_player.directv_rid035583549726
+    - media_player.media_room
     - group.media_room_lights
     - group.media_room_network
     - group.media_room_tv
@@ -220,6 +221,7 @@ nursery:
     - sensor.nursery_temperature
     - group.nursery_lights
     - switch.nursery_night_light_22
+    - media_player.nursery
 
 living_room_lights:
   name: Living Room Lights
