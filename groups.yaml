@@ -71,10 +71,9 @@ cottage_outside_lights:
 exterior_lights:
   name: Exterior Lights
   entities:
-    - group.front_door_lights
-    - group.kitchen_door_lights
-    - group.cottage_outside_lights
-    - light.deck
+    - light.front_yard_lights
+    - light.back_yard_lights
+    - light.cottage_outside_lights
     - group.exterior_christmas_lights
 
 exterior_christmas_lights:
@@ -121,14 +120,14 @@ kitchen:
     - media_player.kitchen
     - switch.kitchen_smart_plug_18
 
-master_bedroom_scenes:
-  name: Master Bedroom Scenes
+bedroom_scenes:
+  name: Bedroom Scenes
   entities:
-    - scene.master_bedroom_artic_aurora
-    - scene.master_bedroom_tropical_twilight
+    - scene.bedroom_artic_aurora
+    - scene.bedroom_tropical_twilight
 
 bedroom_network:
-  name: Master Bedroom Network
+  name: Bedroom Network
   entities:
     - sensor.sleepiq_online
 
@@ -141,12 +140,6 @@ bed:
     - sensor.sleepnumber_ile_tracy_sleepnumber
     - sensor.everyone_in_bed
 
-master_bedroom_lights:
-  entities:
-    - light.josh_night_stand
-    - light.tracy_night_stand
-    - light.makeup_table
-
 bedroom_lights:
   entities:
     - light.josh_night_stand
@@ -157,7 +150,7 @@ bedroom:
   name: Bedroom
   view: yes
   entities:
-    - group.master_bedroom_lights
+    - group.bedroom_lights
     - binary_sensor.master_bedroom_occupancy
     - sensor.master_bedroom_temperature
     - group.bed
@@ -167,8 +160,7 @@ bedroom:
 
 sun_room_lights:
   name: Sun Room Lights
-  entities:
-    - light.sun_room_lamp
+  entities: []
 
 sun_room_network:
   name: Sun Room Network
@@ -180,7 +172,6 @@ sun_room:
   entities:
     - group.sun_room_lights
     - group.sun_room_network
-    - media_player.sun_room
 
 media_room_network:
   name: Media Room Network

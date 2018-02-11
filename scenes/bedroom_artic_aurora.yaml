@@ -1,4 +1,4 @@
-name: Master Bedroom Artic Aurora
+name: Bedroom Artic Aurora
 entities:
   light.sun_room_lamp:
     state: on

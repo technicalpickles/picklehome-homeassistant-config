@@ -63,7 +63,7 @@ automation:
   - alias: Lights out and in bed while in Bed Time changes to Sleeping
     trigger:
       platform: state
-      entity_id: group.master_bedroom_lights
+      entity_id: group.bedroom_lights
       to: 'off'
     condition:
       condition: template
@@ -110,7 +110,7 @@ scene:
       group.media_room: off # turn tv and stuff off
       group.attic_lights: off # no lights upstairs
       group.living_room: off # lamps and christmas lights
-      group.master_bedroom_lights: off # darkness required for sleep
+      group.bedroom_lights: off # darkness required for sleep
       group.sun_room_lights: off
   
       # only turn off courtyard light for exterior, since you can see it through the blinds of the master bath

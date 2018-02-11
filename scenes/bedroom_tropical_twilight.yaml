@@ -1,4 +1,4 @@
-name: Master Bedroom Tropical Twilight
+name: Bedroom Tropical Twilight
 entities:
   light.sun_room_lamp:
     state: on

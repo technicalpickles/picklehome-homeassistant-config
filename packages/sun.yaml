@@ -20,13 +20,13 @@ automation:
         scene: sunset
         message: ":city_sunset:"
 
-  - alias: Master Bedroom Sunset
+  - alias: Bedroom Sunset
     trigger:
       platform: sun
       event: sunset
     condition:
       condition: state
-      entity_id: group.master_bedroom_lights
+      entity_id: group.bedroom_lights
       state: 'off'
     action:
       service: scene.turn_on
