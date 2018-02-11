@@ -38,10 +38,18 @@ filter:
     - light.kitchen_back_6
     - light.kitchen_back_7
     - light.kitchen_back_8
+    - light.kitchen_side_door_light
+    - light.living_room_lamp
+    - light.fireplace_backlight
     - light.living_room_rear_overhead_1
     - light.living_room_rear_overhead_2
+    - light.living_room_sofa_strip
+    - light.living_room_sofa_strip_2
     - light.tracy_desk_lamp_bulb_1
     - light.tracy_desk_lamp_bulb_2
     - light.tracy_desk_lamp_bulb_3
+    - light.media_stand_lightstrip
+    - light.nursery_wall_lamp
     - light.deck_light
+    - light.cottage_courtyard
     - light.all_hue_lights

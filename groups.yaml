@@ -127,11 +127,10 @@ master_bedroom_scenes:
     - scene.master_bedroom_artic_aurora
     - scene.master_bedroom_tropical_twilight
 
-master_bedroom_network:
+bedroom_network:
   name: Master Bedroom Network
   entities:
     - sensor.sleepiq_online
-    - sensor.nest_cam_online
 
 bed:
   name: Bed
@@ -154,16 +153,16 @@ bedroom_lights:
     - light.tracy_night_stand
     - light.makeup_table
 
-master_bedroom:
-  name: Master Bedroom
+bedroom:
+  name: Bedroom
   view: yes
   entities:
     - group.master_bedroom_lights
     - binary_sensor.master_bedroom_occupancy
     - sensor.master_bedroom_temperature
     - group.bed
-    - group.master_bedroom_network
-    - group.master_bedroom_scenes
+    - group.bedroom_network
+    - group.bedroom_scenes
     - media_player.bedroom
 
 sun_room_lights:
@@ -362,6 +361,6 @@ network:
     - group.speedtest
     - group.media_room_network
     - light.josh_desk_backlight
-    - group.master_bedroom_network
+    - group.bedroom_network
     - group.sun_room_network
     - group.attic_network
