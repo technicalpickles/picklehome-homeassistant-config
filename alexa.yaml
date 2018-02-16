@@ -53,3 +53,29 @@ filter:
     - light.deck_light
     - light.cottage_courtyard
     - light.all_hue_lights
+
+entity_config:
+  switch.media_room_tv:
+    name: "Media Room TV"
+    display_categories: ACTIVITY_TRIGGER
+  switch.directv:
+    name: "Direct TV"
+    display_categories: ACTIVITY_TRIGGER
+  switch.apple_tv:
+    name: "Apple TV"
+    display_categories: ACTIVITY_TRIGGER
+  switch.smart_tv:
+    name: "Smart TV"
+    display_categories: ACTIVITY_TRIGGER
+  switch.super_nintendo:
+    name: "Super Nintendo"
+    display_categories: ACTIVITY_TRIGGER
+  script.goodnight:
+    name: "Good night"
+    display_categories: ACTIVITY_TRIGGER
+  script.good_morning:
+    name: "Good morning"
+    display_categories: ACTIVITY_TRIGGER
+  script.bed_time:
+    name: "Bed Time"
+    display_categories: ACTIVITY_TRIGGER

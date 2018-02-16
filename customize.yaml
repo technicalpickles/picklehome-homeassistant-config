@@ -15,28 +15,3 @@ light.backyard:
 light.courtyard:
   friendly_name: Courtyard Lights
 
-switch.media_room_tv:
-  alexa_name: "Media Room TV"
-  alexa_display_categories: ACTIVITY_TRIGGER
-switch.directv:
-  alexa_name: "Direct TV"
-  alexa_display_categories: ACTIVITY_TRIGGER
-switch.apple_tv:
-  alexa_name: "Apple TV"
-  alexa_display_categories: ACTIVITY_TRIGGER
-switch.smart_tv:
-  alexa_name: "Smart TV"
-  alexa_display_categories: ACTIVITY_TRIGGER
-switch.super_nintendo:
-  alexa_name: "Super Nintendo"
-  alexa_display_categories: ACTIVITY_TRIGGER
-
-script.goodnight:
-  alexa_name: "Good night"
-  alexa_display_categories: ACTIVITY_TRIGGER
-script.good_morning:
-  alexa_name: "Good morning"
-  alexa_display_categories: ACTIVITY_TRIGGER
-script.bed_time:
-  alexa_name: "Bed Time"
-  alexa_display_categories: ACTIVITY_TRIGGER
