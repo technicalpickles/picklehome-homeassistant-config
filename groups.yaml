@@ -39,6 +39,9 @@ interior_temperature:
     - sensor.nursery_temperature
     - sensor.office__josh_temperature
     - sensor.office__tracy_temperature
+    - script.climate_its_ok_out
+    - script.climate_its_hot_outside
+    - script.climate_its_cold_outside
 
 weather:
   name: Weather Forecast

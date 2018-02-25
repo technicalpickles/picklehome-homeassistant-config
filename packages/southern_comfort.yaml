@@ -4,17 +4,12 @@ input_select:
     initial: OK I GUESS
     options:
       - OK I GUESS
-      - PERFECT
       - HOT OUTSIDE
       - COLD OUTSIDE
 
-automation:
-  - alias: adjust thermostat when it's okay
-    trigger:
-      platform: state
-      entity_id: input_select.exterior_weather
-      to: OK I GUESS
-    action:
+script:
+  climate_its_ok_out:
+    sequence:
       - service: climate.set_operation_mode
         entity_id: climate.home
         data:
@@ -22,50 +17,20 @@ automation:
       - service: climate.ecobee_resume_program
         entity_id: climate.home
 
-  - alias: adjust thermostat when it's ok
-    trigger:
-      platform: state
-      entity_id: input_select.exterior_weather
-      to: OK I GUESS
-    action:
-      - service: climate.set_operation_mode
-        entity_id: climate.home
-        data:
-          operation_mode: 'auto'
-      - service: climate.ecobee_resume_program
-        entity_id: climate.home
-
-  
-  - alias: adjust thermostat when it's hot outside
-    trigger:
-      platform: state
-      entity_id: input_select.exterior_weather
-      to: HOT OUTSIDE
-    action:
-      - service: climate.set_operation_mode
-        entity_id: climate.home
-        data:
-          operation_mode: 'cool'
+  climate_its_hot_outside:
+    sequence:
       - service: climate.set_temperature
-        entity_id: climate.home
         data:
-          operation_mode: auto
+          entity_id: climate.home
+          operation_mode: 'cool'
           target_temp_low: 68
           target_temp_high: 70
 
-  - alias: adjust thermostat when it's cold outside
-    trigger:
-      platform: state
-      entity_id: input_select.exterior_weather
-      to: COLD OUTSIDE
-    action:
-      - service: climate.set_operation_mode
-        entity_id: climate.home
-        data:
-          operation_mode: 'auto'
+  climate_its_cold_outside:
+    sequence:
       - service: climate.set_temperature
         entity_id: climate.home
         data:
-          operation_mode: auto
+          operation_mode: 'heat'
           target_temp_low: 70
           target_temp_high: 72
