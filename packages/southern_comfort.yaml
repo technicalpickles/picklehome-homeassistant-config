@@ -16,6 +16,10 @@ script:
           operation_mode: 'auto'
       - service: climate.ecobee_resume_program
         entity_id: climate.home
+      - service: climate.set_fan_mode
+        entity_id: climate.home
+        data:
+          fan_mode: auto
 
   climate_its_hot_outside:
     sequence:
@@ -25,6 +29,10 @@ script:
           operation_mode: 'cool'
           target_temp_low: 68
           target_temp_high: 70
+      - service: climate.set_fan_mode
+        entity_id: climate.home
+        data:
+          fan_mode: 'on'
 
   climate_its_cold_outside:
     sequence:
@@ -34,3 +42,7 @@ script:
           operation_mode: 'heat'
           target_temp_low: 70
           target_temp_high: 72
+      - service: climate.set_fan_mode
+        entity_id: climate.home
+        data:
+          fan_mode: auto
