@@ -1,14 +1,52 @@
-input_select:
-  exterior_weather:
-    name: How's the day star treating us?
-    initial: OK I GUESS
-    options:
-      - OK I GUESS
-      - HOT OUTSIDE
-      - COLD OUTSIDE
+sensor:
+  - platform: template
+    sensors:
+      subjective_exterior_temperature:
+        friendly_name: "Subjective Exterior Temperature"
+        value_template: |
+          {% set temperature = states.weather.home.attributes.temperature %}
+          {% if temperature > 65 -%}
+          hot
+          {%- elif temperature < 50 -%}
+          cold
+          {%- else -%}
+          ok
+          {%- endif %}
+
+automation:
+  - alias: "Apply southern comfort"
+    # check for the subject temperature to change at all, and stay there for 10 minutes
+    trigger:
+      - platform: state
+        entity_id: sensor.subjective_exterior_temperature
+        to: hot
+        for:
+          minutes: 10
+      - platform: state
+        entity_id: sensor.subjective_exterior_temperature
+        to: cold
+        for:
+          minutes: 10
+      - platform: state
+        entity_id: sensor.subjective_exterior_temperature
+        to: ok
+        for:
+          minutes: 10
+    action:
+      service: script.turn_on
+      entity_id: script.apply_southern_comfort
 
 script:
-  climate_its_ok_out:
+  apply_southern_comfort:
+    sequence:
+      - service: script.turn_on
+        data_template:
+          entity_id: script.climate_its_{{ states.sensor.subjective_exterior_temperature.state }}_outside
+      - service: notify.slack
+        data_template:
+          message: "I do declare, it's {{states.sensor.subjective_exterior_temperature.state}} outside"
+
+  climate_its_ok_outside:
     sequence:
       - service: climate.set_operation_mode
         entity_id: climate.home
@@ -16,33 +54,29 @@ script:
           operation_mode: 'auto'
       - service: climate.ecobee_resume_program
         entity_id: climate.home
-      - service: climate.set_fan_mode
-        entity_id: climate.home
-        data:
-          fan_mode: auto
 
   climate_its_hot_outside:
     sequence:
-      - service: climate.set_temperature
-        data:
-          entity_id: climate.home
-          operation_mode: 'cool'
-          target_temp_low: 68
-          target_temp_high: 70
       - service: climate.set_fan_mode
         entity_id: climate.home
         data:
           fan_mode: 'on'
+      - service: climate.set_temperature
+        entity_id: climate.home
+        data:
+          operation_mode: 'cool'
+          target_temp_low: 68
+          target_temp_high: 70
 
   climate_its_cold_outside:
     sequence:
+      - service: climate.set_fan_mode
+        entity_id: climate.home
+        data:
+          fan_mode: auto
       - service: climate.set_temperature
         entity_id: climate.home
         data:
           operation_mode: 'heat'
           target_temp_low: 70
           target_temp_high: 72
-      - service: climate.set_fan_mode
-        entity_id: climate.home
-        data:
-          fan_mode: auto
