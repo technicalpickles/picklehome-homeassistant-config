@@ -46,5 +46,5 @@ sensor:
 sun:
 switch:
   - !include broadlink.yaml
-  - !include rachio.yaml
+#  - !include rachio.yaml
 vera: !include vera.yaml
