@@ -1,0 +1,93 @@
+################################################################################
+# Southern Comfort
+# keeping things comfortable despite the day star's best efforts, and the
+# apparent lack of smart thermostat developers living in the southeastern US
+#
+# Uses ecobee specific services (climate.ecobee_resume_program)
+################################################################################
+
+sensor:
+  - platform: template
+    sensors:
+      subjective_exterior_temperature:
+        friendly_name: "Subjective Exterior Temperature"
+        value_template: |
+          {% set temperature = states.weather.home.attributes.temperature %}
+          {% if temperature > 67 -%}
+          hot
+          {%- elif temperature < 50 -%}
+          cold
+          {%- else -%}
+          ok
+          {%- endif %}
+
+automation:
+  - alias: "Apply southern comfort"
+    # check for the subject temperature to change at all, and stay there for 10 minutes
+    # `for` requires `to` to be set. `trigger` supports multiple triggers, so add
+    # one per possible value of sensor.subjective_exterior_temperature
+    trigger:
+      - platform: state
+        entity_id: sensor.subjective_exterior_temperature
+        to: hot
+        for:
+          minutes: 10
+      - platform: state
+        entity_id: sensor.subjective_exterior_temperature
+        to: cold
+        for:
+          minutes: 10
+      - platform: state
+        entity_id: sensor.subjective_exterior_temperature
+        to: ok
+        for:
+          minutes: 10
+    action:
+      service: script.turn_on
+      entity_id: script.apply_southern_comfort
+
+script:
+  # use the regular schedule when it's okay out. this is 68-72 on auto, with fan on auto
+  climate_its_ok_outside:
+    sequence:
+      - service: climate.ecobee_resume_program
+        entity_id: climate.home
+
+  # when it's hot outside, set upper temperature to 70 and set fan to 'on'
+  climate_its_hot_outside:
+    sequence:
+      - service: climate.set_fan_mode
+        entity_id: climate.home
+        data:
+          fan_mode: 'on'
+      - service: climate.set_temperature
+        entity_id: climate.home
+        data:
+          operation_mode: 'cool'
+          target_temp_low: 68
+          target_temp_high: 70
+
+  # when it's cold outside, set lower temperature to 70 and set fan to 'auto'
+  climate_its_cold_outside:
+    sequence:
+      - service: climate.set_fan_mode
+        entity_id: climate.home
+        data:
+          fan_mode: auto
+      - service: climate.set_temperature
+        entity_id: climate.home
+        data:
+          operation_mode: 'heat'
+          target_temp_low: 70
+          target_temp_high: 72
+
+  # uses subject_exterior_temperature to call one of the climate
+  apply_southern_comfort:
+    sequence:
+      - service: script.turn_on
+        data_template:
+          entity_id: script.climate_its_{{ states.sensor.subjective_exterior_temperature.state }}_outside
+      - service: notify.slack
+        data_template:
+          message: "I do declare, it's {{states.sensor.subjective_exterior_temperature.state}} outside"
+
