@@ -26,3 +26,8 @@ switches:
     friendly_name: 'Exterior Christmas Lights 2'
     command_on: 'siA0AAwgIAwLISALCyEgDAshIAwLICAMCyEgCyAMIAwgDCAMCyELIQshCyALIAshIAsgCwsAAUwAAAAA'
     command_off: 'siA0AAwgIAwLISALCyEgDAshIAwLICAMCyEgCyAMIAwgDCAMCyELIQshCyALIAshIAsgCwsAAUwAAAAA'
+
+  attic_fan:
+    friendly_name: "Attic fan"
+    command_on: 'sgoyAAYTEgcGEwYTBhMSBwYTEgcGEwYTBhMSBwYTEgcGExIHEgcSBwYTBhMGEwYTEgcSBwa4AAAAAAAA'
+    command_off: 'sggyAAYTEgcGEwYTBhMSBwYTEgcGEwYTBhMSBwYTEgcGExIHEgcSBwYTBhMRBxIHBhMGEwa4AAAAAAAA'

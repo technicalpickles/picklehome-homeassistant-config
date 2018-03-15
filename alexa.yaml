@@ -16,6 +16,7 @@ filter:
     - switch.apple_tv
     - switch.smart_tv
     - switch.super_nintendo
+    - switch.attic_fan
     - script.goodnight
     - script.good_morning
     - script.bed_time
