@@ -1,22 +1,3 @@
 - name: Tracy Desk Lamp Off
   entities:
     group.tracy_desk_lamp: off
-
-- name: Josh Desk Lamps Off
-  entities:
-    group.josh_desk_lamps: off
-
-- name: Josh Desk Conference Call
-  entities:
-    group.josh_desk_lamps:
-      state: on
-      brightness: 254
-      color_temp: 161
-
-- name: Josh Desk Lights On
-  entities:
-    group.josh_desk_lamps:
-      state: on
-      brightness: 255
-      profile: reading
-
