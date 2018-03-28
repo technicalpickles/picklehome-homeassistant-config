@@ -1,24 +1,28 @@
 automation:
-  - alias: Sunrise
+  - alias: Exterior Sunrise
     trigger:
       platform: sun
       event: sunrise
       offset: '+00:30:00'
     action:
-      service: script.scene_and_notify
-      data:
-        scene: sunrise
-        message: ":city_sunrise:"
+      - service: notify.slack
+        data_template:
+          message: ":city_sunrise:"
+      - service: light.turn_off
+        entity_id: light.exterior
 
   - alias: House Sunset
     trigger:
       platform: sun
       event: sunset
     action:
-      service: script.scene_and_notify
-      data:
-        scene: sunset
-        message: ":city_sunset:"
+      - service: notify.slack
+        data_template:
+          message: ":city_sunset:"
+      - service: hue.hue_activate_scene
+        data:
+          group_name: Exterior
+          scene_name: Dimmed
 
   - alias: Bedroom Sunset
     trigger:
@@ -39,7 +43,7 @@ automation:
       event: sunset
     condition:
       condition: state
-      entity_id: group.living_room_lights
+      entity_id: light.living_room
       state: 'off'
     action:
       service: scene.turn_on
@@ -47,13 +51,6 @@ automation:
         entity_id: scene.living_room_sunset
 
 scene:
-  - name: Sunrise
-    entities:
-      group.exterior_lights:
-        state: off
-      switch.nursery_night_lights:
-        state: off
-  
   - name: Living Room Sunset
     entities:
       light.josh_night_stand:
@@ -67,11 +64,3 @@ scene:
         state: on
         brightness: 54
         color_temp: 369
-    
-  - name: Sunset
-    entities:
-      group.exterior_lights:
-        state: on
-      scene.living_room_bright:
-        state: on
-
