@@ -156,6 +156,20 @@ script:
       - service: notify.slack
         data:
           message: ":family: Good Morning :family:"
+      - service: hue.hue_activate_scene
+        data:
+          group_name: Kitchen
+          scene_name: Reading
+      - service: hue.hue_activate_scene
+        data:
+          group_name: Living Room
+          scene_name: Reading
+      - service: media_player.sonos_unjoin
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.kitchen
+          source: "91.1 | WSVH (National News)"
+
   bed_time:
     sequence:
       # TODO consider adding a template switch, so we don't have to set this
