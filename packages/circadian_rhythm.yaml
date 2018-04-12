@@ -97,7 +97,7 @@ automation:
       entity_id: input_select.house_mode
       to: Sleeping
     action:
-      - service: script.goodnight
+      - service: script.good_night
   
 scene:
   - name: Alex Bedtime
@@ -131,7 +131,7 @@ scene:
       # what about sunroom & master bedroom? they turn on automatically at sunset
   
 script:
-  goodnight:
+  good_night:
     sequence:
       # update to sleeping if it wasn't already
       # TODO consider adding a template switch, so we don't have to set this
