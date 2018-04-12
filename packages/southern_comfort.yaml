@@ -50,8 +50,16 @@ script:
   # use the regular schedule when it's okay out. this is 68-72 on auto, with fan on auto
   climate_its_ok_outside:
     sequence:
-      - service: climate.ecobee_resume_program
+      - service: climate.set_fan_mode
         entity_id: climate.home
+        data:
+          fan_mode: 'auto'
+      - service: climate.set_temperature
+        entity_id: climate.home
+        data:
+          operation_mode: 'auto'
+          target_temp_low: 68
+          target_temp_high: 72
 
   # when it's hot outside, set upper temperature to 70 and set fan to 'on'
   climate_its_hot_outside:
