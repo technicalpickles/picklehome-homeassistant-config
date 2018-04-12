@@ -12,7 +12,7 @@ sensor:
       subjective_exterior_temperature:
         friendly_name: "Subjective Exterior Temperature"
         value_template: |
-          {% set temperature = states("sensor.dark_sky_apparent_temperature") %}
+          {% set temperature = states("sensor.dark_sky_apparent_temperature") | float %}
           {% if temperature > 65 -%}
           hot
           {%- elif temperature < 50 -%}
