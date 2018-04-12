@@ -13,11 +13,9 @@ dashboard:
     - switch.bath_mode
     - switch.porch_mode
     - switch.fireplace
-    - scene.sunrise
-    - scene.good_bye
-    - scene.sunset
-    - scene.good_night
-    - scene.everything_off
+    - script.good_night
+    - script.good_morning
+    - script.bed_time
 
 family:
   entities:
