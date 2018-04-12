@@ -42,7 +42,7 @@ scene: !include scenes.yaml
 script: !include scripts.yaml
 sleepiq: !include sleepiq.yaml
 sensor:
-  - platform: yr
+  - !include darksky.yaml
 sun:
 switch:
   - !include broadlink.yaml
