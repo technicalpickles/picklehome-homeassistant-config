@@ -12,8 +12,8 @@ sensor:
       subjective_exterior_temperature:
         friendly_name: "Subjective Exterior Temperature"
         value_template: |
-          {% set temperature = states.weather.home.attributes.temperature %}
-          {% if temperature > 67 -%}
+          {% set temperature = states("sensor.dark_sky_apparent_temperature") %}
+          {% if temperature > 65 -%}
           hot
           {%- elif temperature < 50 -%}
           cold
@@ -90,4 +90,3 @@ script:
       - service: notify.slack
         data_template:
           message: "I do declare, it's {{states.sensor.subjective_exterior_temperature.state}} outside"
-
