@@ -12,8 +12,8 @@ sensor:
       subjective_exterior_temperature:
         friendly_name: "Subjective Exterior Temperature"
         value_template: |
-          {% set temperature = states.weather.home.attributes.temperature %}
-          {% if temperature > 67 -%}
+          {% set temperature = states("sensor.dark_sky_apparent_temperature") %}
+          {% if temperature > 65 -%}
           hot
           {%- elif temperature < 50 -%}
           cold
@@ -50,8 +50,16 @@ script:
   # use the regular schedule when it's okay out. this is 68-72 on auto, with fan on auto
   climate_its_ok_outside:
     sequence:
-      - service: climate.ecobee_resume_program
+      - service: climate.set_fan_mode
         entity_id: climate.home
+        data:
+          fan_mode: 'auto'
+      - service: climate.set_temperature
+        entity_id: climate.home
+        data:
+          operation_mode: 'auto'
+          target_temp_low: !secret southern_comfort_low
+          target_temp_high: !secret southern_comfort_high
 
   # when it's hot outside, set upper temperature to 70 and set fan to 'on'
   climate_its_hot_outside:
@@ -64,8 +72,8 @@ script:
         entity_id: climate.home
         data:
           operation_mode: 'cool'
-          target_temp_low: 68
-          target_temp_high: 70
+          target_temp_low: !secret southern_comfort_low
+          target_temp_high: !secret southern_comfort_ideal
 
   # when it's cold outside, set lower temperature to 70 and set fan to 'auto'
   climate_its_cold_outside:
@@ -78,8 +86,8 @@ script:
         entity_id: climate.home
         data:
           operation_mode: 'heat'
-          target_temp_low: 70
-          target_temp_high: 72
+          target_temp_low: !secret southern_comfort_ideal
+          target_temp_high: !secret southern_comfort_high
 
   # uses subject_exterior_temperature to call one of the climate
   apply_southern_comfort:
@@ -90,4 +98,3 @@ script:
       - service: notify.slack
         data_template:
           message: "I do declare, it's {{states.sensor.subjective_exterior_temperature.state}} outside"
-
