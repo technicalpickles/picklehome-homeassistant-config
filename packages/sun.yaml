@@ -16,14 +16,6 @@ automation:
       service: script.turn_on
       entity_id: script.sunset
 
-scene:
-  - name: Living Room Sunset
-    entities:
-      light.josh_night_stand:
-        state: on
-        brightness: 117
-        color_temp: 369
-
 script:
   sunrise:
     sequence:
