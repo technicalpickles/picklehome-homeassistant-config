@@ -19,6 +19,14 @@ sensor:
         {%- else %}
           off
         {%- endif %}
+    anyone_in_bed:
+      friendly_name: "Anyone in Bed"
+      value_template: >-
+        {%- if is_state('binary_sensor.sleepnumber_ile_josh_is_in_bed', 'on') or is_state('binary_sensor.sleepnumber_ile_tracy_is_in_bed', 'on') %}
+          on
+        {%- else %}
+          off
+        {%- endif %}
 
 automation:
   # automations to detect mode changes
