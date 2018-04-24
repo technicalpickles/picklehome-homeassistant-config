@@ -10,16 +10,16 @@ This repository is expected to be cloned to `./homeassistant/config` in a clone 
 
 - [house mode, with detection of transitioning from one to another (aka circadian rhythm)](packages/circadian_rhythm.yaml)
 - [conference call detected and lights turned on when camera is in use at desk](packages/conference_call.yaml)
-- voice-control for outdoor modes, like [porch mode](packages/porch_mode.yaml) and courtyard mode which turns down the nearby HVAC so it's less noisy
+- outdoor modes, like [porch mode](packages/porch_mode.yaml) and courtyard mode which turns down the nearby HVAC so it's less noisy
 - [fireplace-placed TV with virtual fireplace, and other scenes](packages/fireplace.yaml)
-- voice-controlled [christmas cheer](packages/christmas_cheer.yaml)
-- voice-control [guest mode](packages/guest_mode.yaml) for adjusting thermostat of guest house for when guests are around
+- [christmas cheer](packages/christmas_cheer.yaml)
+- [guest mode](packages/guest_mode.yaml) for adjusting thermostat of guest house for when guests are around
 - automated forecast-dependent thermostat control, aka [southern comfort](packages/southern_comfort.yaml)
 - lighting automation based on [sunrise and sunset](packages/sun.yaml)
 
 ## Implementation
 
-The main entry point of this repository is configuration.yaml.
+The main entry point of this repository is [configuration.yaml](configuration.yaml).
 
 ### Patterns
 
@@ -27,8 +27,9 @@ The main entry point of this repository is configuration.yaml.
 
 I group config together like:
 
+- packages for functional grouping of automation, templating, etc
 - 'core' components homeassistant needs to be used in general (ie frontend, http, history, etc)
-- 'automation' components, that
+- 'automation' components, that don't fit anywhere else
 - components for devices and cloud services
 
 #### Use Packages
@@ -52,5 +53,5 @@ I use [secrets][] so this repository can be open sourced. I keep a template of t
 
 
 [picklehome]: https://github.com/technicalpickles/picklehome
-[homeassistant-packages]: 
-[secrets]: 
+[homeassistant-packages]: https://www.home-assistant.io/docs/configuration/packages/
+[secrets]: https://www.home-assistant.io/docs/configuration/secrets/
