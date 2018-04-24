@@ -10,7 +10,7 @@ homeassistant:
   customize: !include customize.yaml
   packages: !include_dir_named packages
 
-# TODO document
+# core components
 frontend:
   javascript_version: latest
 config:
@@ -24,14 +24,14 @@ updater:
   include_used_components: true
 sun:
 
-# TODO document
+# miscellany automations, see packages above for grouped functionality
 group: !include groups.yaml
 panel_iframe: !include panel_iframe.yaml
 scene: !include scenes.yaml
 scene directory: !include_dir_list scenes
 script: !include scripts.yaml
 
-# TODO document
+# services & hardware components
 apcupsd:
 cloud:
   alexa: !include alexa.yaml
