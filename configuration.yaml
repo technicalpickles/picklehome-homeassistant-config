@@ -5,15 +5,16 @@ homeassistant:
   elevation: !secret homeassistant_elevation
   unit_system: !secret homeassistant_unit_system
   time_zone: !secret homeassistant_time_zone
+
+  # packages is where the real magic lives
   customize: !include customize.yaml
   packages: !include_dir_named packages
 
-cloud:
-  alexa: !include alexa.yaml
-config:
-discovery:
+# core components
 frontend:
   javascript_version: latest
+config:
+discovery:
 history:
 http:
 logbook:
@@ -21,29 +22,33 @@ recorder:
   purge_keep_days: 10
 updater:
   include_used_components: true
+sun:
 
+# miscellany automations, see packages above for grouped functionality
 group: !include groups.yaml
 panel_iframe: !include panel_iframe.yaml
+scene: !include scenes.yaml
+scene directory: !include_dir_list scenes
+script: !include scripts.yaml
 
+# services & hardware components
 apcupsd:
+cloud:
+  alexa: !include alexa.yaml
 ecobee: !include ecobee.yaml
 light:
   - !include hue.yaml
 media_player:
-- !include sonos.yaml
 - !include kodi.yaml
+- !include sonos.yaml
 mqtt: !include mqtt.yaml
 nest: !include nest.yaml
 notify:
 -  !include notify-slack.yaml
 prometheus:
-scene directory: !include_dir_list scenes
-scene: !include scenes.yaml
-script: !include scripts.yaml
 sleepiq: !include sleepiq.yaml
 sensor:
   - !include darksky.yaml
-sun:
 switch:
   - !include broadlink.yaml
 #  - !include rachio.yaml
