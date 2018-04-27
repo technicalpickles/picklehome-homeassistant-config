@@ -1,16 +1,11 @@
-switch:
-  - platform: template
-    switches:
-      fireplace:
-        friendly_name: Fireplace
-        value_template: >
-           {{ is_state("media_player.fireplace_kodi", "playing") }}
-        turn_on:
-          # use a script, because it runs asynchronously.
-          # otherwise, when alexa-controlled, might timeout waiting for it to finish
-          - service: script.fireplace_on
-        turn_off:
-          - service: script.fireplace_off
+input_select:
+  fireplace_tv_source_selector:
+    name: Fireplace TV Sources Selector
+    options:
+      - Fire
+      - Beach
+      - Aquarium
+    icon: mdi:video-input-hdmi
 
 sensor:
   platform: template
@@ -52,3 +47,59 @@ script:
     - service: media_player.media_stop
       data:
         entity_id: media_player.fireplace_kodi
+
+automation:
+  - alias: Select Fireplace Input
+    trigger:
+      - platform: state
+        entity_id: input_select.fireplace_tv_source_selector
+    action:
+      - service: script.fireplace_play
+        data_template:
+          file: >
+              {% if is_state("input_select.fireplace_tv_source_selector", "Fire") %}
+                The Best Fireplace Video (3 hours)-eyU3bRy2x44.mkv
+              {%-elif is_state("input_select.fireplace_tv_source_selector", "Beach") %}
+                Nature Sounds Ocean Waves for relaxation, yoga, meditation, reading, sleep, study [ Sleep Music ]-MD0tXdSsnBA.mp4
+              {%-elif is_state("input_select.fireplace_tv_source_selector", "Aquarium") %}
+                HD Open-Aquarium - Inside a Tropical Lagoon-iu6xIdAdJwo.mp4
+              {% endif %}
+
+  - alias: Fireplace TV is idle for more than 30 minutes, turn it off.
+    trigger:
+     platform: state
+     entity_id: media_player.fireplace_tv
+     to: 'idle'
+     for:
+       minutes: 30
+    action:
+      - service: media_player.turn_off
+        entity_id: media_player.fireplace_tv
+
+media_player:
+  - platform: universal
+    name: fireplace
+    friendly_name: Fireplace
+    children:
+      - media_player.fireplace_kodi
+    state_template: >
+      {% if is_state('switch.fireplace_tv_power', 'off') %}
+      off
+      {% else %}
+      {{ states('media_player.fireplace_kodi') }}
+      {% endif %}
+    commands:
+      turn_on:
+        service: script.fireplace_on
+      turn_off:
+        service: script.fireplace_off
+      select_source:
+        service: input_select.select_option
+        data_template:
+          entity_id: input_select.fireplace_tv_source_selector
+          option: '{{ source }}'
+
+    attributes:
+      state: media_player.fireplace_kodi
+      source_list: input_select.fireplace_tv_source_selector|options
+

@@ -8,7 +8,7 @@ port: !secret kodi_port
 # from https://home-assistant.io/components/media_player.kodi/#kodi-turn-onoff-samples
 turn_on_action:
   - service: switch.turn_on
-    entity_id: switch.fireplace_tv
+    entity_id: switch.fireplace_tv_power
   - service: media_player.kodi_call_method
     data:
       entity_id: media_player.fireplace_kodi
@@ -34,4 +34,4 @@ turn_off_action:
       params:
         command: standby
   - service: switch.turn_off
-    entity_id: switch.fireplace_tv
+    entity_id: switch.fireplace_tv_power
