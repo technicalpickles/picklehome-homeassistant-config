@@ -76,6 +76,20 @@ automation:
       - service: media_player.turn_off
         entity_id: media_player.fireplace_tv
 
+switch:
+  - platform: template
+    switches:
+      fireplace:
+        friendly_name: Fireplace
+        value_template: >
+           {{ if is_state_attr('media_player.fireplace', 'input', 'Fire') }}
+        turn_on:
+          # use a script, because it runs asynchronously.
+          # otherwise, when alexa-controlled, might timeout waiting for it to finish
+          - service: script.fireplace_on
+        turn_off:
+          - service: script.fireplace_off
+
 media_player:
   - platform: universal
     name: fireplace
