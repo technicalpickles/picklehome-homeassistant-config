@@ -19,6 +19,14 @@ sensor:
         {%- else %}
           off
         {%- endif %}
+    anyone_in_bed:
+      friendly_name: "Anyone in Bed"
+      value_template: >-
+        {%- if is_state('binary_sensor.sleepnumber_ile_josh_is_in_bed', 'on') or is_state('binary_sensor.sleepnumber_ile_tracy_is_in_bed', 'on') %}
+          on
+        {%- else %}
+          off
+        {%- endif %}
 
 automation:
   # automations to detect mode changes
@@ -97,7 +105,7 @@ automation:
       entity_id: input_select.house_mode
       to: Sleeping
     action:
-      - service: script.goodnight
+      - service: script.good_night
   
 scene:
   - name: Alex Bedtime
@@ -131,7 +139,7 @@ scene:
       # what about sunroom & master bedroom? they turn on automatically at sunset
   
 script:
-  goodnight:
+  good_night:
     sequence:
       # update to sleeping if it wasn't already
       # TODO consider adding a template switch, so we don't have to set this
@@ -156,6 +164,16 @@ script:
       - service: notify.slack
         data:
           message: ":family: Good Morning :family:"
+      - service: hue.hue_activate_scene
+        data:
+          group_name: Kitchen
+          scene_name: Read
+      - service: hue.hue_activate_scene
+        data:
+          group_name: Living room
+          scene_name: Read
+      - service: media_player.sonos_unjoin
+
   bed_time:
     sequence:
       # TODO consider adding a template switch, so we don't have to set this

@@ -1,13 +1,33 @@
 filter:
-  # only include lights by default
+  # only include locks by default
   include_domains:
-    - light
     - lock
   # add in things we care to control
   include_entities:
+    - light.bedroom
+    - light.josh_desk
+    - light.josh_desk_left
+    - light.josh_desk_right
+    - light.josh_night_stand
+    - light.kitchen
+    - light.living_room
+    - light.makeup_table
+    - light.media_room
+    - light.media_room_front_left
+    - light.media_room_front_right
+    - light.media_stand_lightstrip
+    - light.nursery
+    - light.tracy_desk
+    - light.tracy_night_stand
+
     - input_boolean.guest_mode
-    - switch.bath_mode
+
+    #- media_player.fireplace
     - switch.fireplace
+    - switch.beach
+    - switch.aquarium
+
+    - switch.bath_mode
     - switch.porch_mode
     - switch.christmas_tree_19
     - switch.nursery_night_light_22
@@ -17,6 +37,7 @@ filter:
     - switch.smart_tv
     - switch.super_nintendo
     - switch.attic_fan
+
     - script.goodnight
     - script.good_morning
     - script.bed_time
@@ -56,6 +77,8 @@ filter:
     - light.all_hue_lights
 
 entity_config:
+  media_player.fireplace:
+    display_categories: TV
   switch.media_room_tv:
     name: "Media Room TV"
     display_categories: ACTIVITY_TRIGGER

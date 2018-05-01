@@ -13,11 +13,9 @@ dashboard:
     - switch.bath_mode
     - switch.porch_mode
     - switch.fireplace
-    - scene.sunrise
-    - scene.good_bye
-    - scene.sunset
-    - scene.good_night
-    - scene.everything_off
+    - script.good_night
+    - script.good_morning
+    - script.bed_time
 
 family:
   entities:
@@ -244,10 +242,13 @@ living_room:
     - scene.living_room_artic_aurora
     - scene.living_room_bright
     - switch.christmas_lights
-    - switch.fireplace
     - media_player.living_room
-    - media_player.fireplace_kodi
+    - switch.fireplace_tv_power
+    - media_player.fireplace
     - switch.christmas_tree_19
+    - switch.fireplace
+    - switch.aquarium
+    - switch.beach
 
 josh_desk_lamps:
   name: Josh's Desk Lamps
