@@ -246,6 +246,9 @@ living_room:
     - switch.fireplace_tv_power
     - media_player.fireplace
     - switch.christmas_tree_19
+    - switch.fireplace
+    - switch.aquarium
+    - switch.beach
 
 josh_desk_lamps:
   name: Josh's Desk Lamps

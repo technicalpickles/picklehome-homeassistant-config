@@ -24,6 +24,8 @@ filter:
 
     #- media_player.fireplace
     - switch.fireplace
+    - switch.beach
+    - switch.aquarium
 
     - switch.bath_mode
     - switch.porch_mode
