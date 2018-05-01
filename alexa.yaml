@@ -5,6 +5,7 @@ filter:
   # add in things we care to control
   include_entities:
     - light.bedroom
+    - light.exterior
     - light.josh_desk
     - light.josh_desk_left
     - light.josh_desk_right
