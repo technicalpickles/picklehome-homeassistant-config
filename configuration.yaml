@@ -38,6 +38,7 @@ cloud:
 ecobee: !include ecobee.yaml
 light:
   - !include hue.yaml
+influxdb: !include influxdb.yaml
 media_player:
 - !include kodi.yaml
 - !include sonos.yaml
