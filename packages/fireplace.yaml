@@ -1,4 +1,37 @@
+# Fireplace Scenery
+# -----------------
+#
+# Originally, my fireplace had a gas firpelace that wasn't in service, and with a :baby:
+# needed to childproof it. It seemed silly to have childproofing around it, but not have anything
+# in it, so I got to thinking about those high quality fireplace videos people have to play on their TV.
+# I moved a spare TV into it, and hooked up Kodi running on a raspberry, and the rest of this package was born.
+#
+# This package provides a way of choose a video and some lighting effects to play on the fireplace TV. I'm calling these scenes,
+# even if they aren't technically scene components.
+#
+# I use broadlink with irf etekcity outlets to control the power of the TV. I was using IR codes for the TV initially, but that didn't seem
+# very reliable. See `kodi.yaml` for the configuration, which handles powering on/off the TV with the media player.
+#
+# We create package provides a Alexa-compatible interface by exposing switches for each of the 'scenes'.
+# Those are included in alexa.yaml as part of the cloud component.
+#
+# I think it might be kinda uncessary at this point, but I also expose the fireplace as a universal media_player, where selecting
+#
+# Adding more scenes
+# ==================
+#
+# There's a few steps to adding a new scene:
+#
+# - add an option to input_select.fireplace_tv_source_selector
+# - make sure the video is on the plex media server, and is accessible from kodi.
+# - create a script named `script.fireplace_<new scene>`
+#   - use light.turn_on on the light.fireplace_backlight to set the background color
+#   - use script.fireplace_play with the name of the file
+# - create a template switch, copying any of the existing as an example
+# - add that script to alexa.yaml's whitelist
+
 input_select:
+  # this is the source of truth for what _should_ be playing on the fireplace tv
   fireplace_tv_source_selector:
     name: Fireplace TV Sources Selector
     options:
