@@ -249,6 +249,7 @@ living_room:
     - switch.fireplace
     - switch.aquarium
     - switch.beach
+    - input_select.fireplace_tv_source_selector
 
 josh_desk_lamps:
   name: Josh's Desk Lamps

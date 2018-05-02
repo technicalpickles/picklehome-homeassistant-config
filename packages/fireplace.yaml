@@ -21,17 +21,6 @@ script:
       - service: light.turn_off
         entity_id: light.fireplace_backlight
 
-  fireplace_on:
-    sequence:
-      - service: light.turn_on
-        entity_id: light.fireplace_backlight
-        data:
-          rgb_color: [255,161,0]
-          brightness: 144
-      - service: script.fireplace_play
-        data:
-          file: The Best Fireplace Video (3 hours)-eyU3bRy2x44.mkv
-
   fireplace_play:
     sequence:
       - service: media_player.turn_on
@@ -42,11 +31,27 @@ script:
           media_content_id: "{{states('sensor.fireplace_videos_directory')}}/{{file}}"
           media_content_type: "video"
 
-  fireplace_stop:
-    sequence:
-    - service: media_player.media_stop
-      data:
-        entity_id: media_player.fireplace_kodi
+scene:
+  - name: Fireplace Fire Backlighting
+    entities:
+       light.fireplace_backlight:
+         state: on
+         rgb_color: [255,161,0]
+         brightness: 144
+  - name: Fireplace Aquarium Backlighting
+    entities:
+       # this was found by using Artic Auora in builtin scene
+       light.fireplace_backlight:
+         state: on
+         rgb_color: [17,82,255]
+         brightness: 254
+  - name: Fireplace Ocean Backlighting
+    entities:
+       # this was found by using Artic Auora in builtin scene
+       light.fireplace_backlight:
+         state: on
+         rgb_color: [17,82,255]
+         brightness: 254
 
 automation:
   - alias: Select Fireplace Input
@@ -54,6 +59,9 @@ automation:
       - platform: state
         entity_id: input_select.fireplace_tv_source_selector
     action:
+      - service: scene.turn_on
+        data_template:
+          entity_id: "scene.fireplace_{{ states('input_select.fireplace_tv_source_selector') | lower | replace(' ', '_') }}_backlighting"
       - service: script.fireplace_play
         data_template:
           file: >
@@ -157,4 +165,3 @@ media_player:
       state: media_player.fireplace_kodi
       source_list: input_select.fireplace_tv_source_selector|options
       source: input_select.fireplace_tv_source_selector
-

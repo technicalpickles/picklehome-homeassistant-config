@@ -15,3 +15,5 @@ light.backyard:
 light.courtyard:
   friendly_name: Courtyard Lights
 
+sensor.fireplace_videos_directory:
+  hidden: true
