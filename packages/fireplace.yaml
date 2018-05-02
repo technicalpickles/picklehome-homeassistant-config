@@ -10,48 +10,11 @@ input_select:
 sensor:
   platform: template
   sensors:
+    # this is a workaround for not being able to use secrets in templates
+    # https://community.home-assistant.io/t/make-secrets-available-in-templating-engine/10507
+    # it's used by script.fireplace_play
     fireplace_videos_directory:
       value_template: !secret fireplace_videos_directory
-
-script:
-  fireplace_off:
-    sequence:
-      - service: media_player.turn_off
-        entity_id: media_player.fireplace_kodi
-      - service: light.turn_off
-        entity_id: light.fireplace_backlight
-
-  fireplace_play:
-    sequence:
-      - service: media_player.turn_on
-        entity_id: media_player.fireplace_kodi
-      - service: media_player.play_media
-        entity_id: media_player.fireplace_kodi
-        data_template:
-          media_content_id: "{{states('sensor.fireplace_videos_directory')}}/{{file}}"
-          media_content_type: "video"
-
-scene:
-  - name: Fireplace Fire Backlighting
-    entities:
-       light.fireplace_backlight:
-         state: on
-         rgb_color: [255,161,0]
-         brightness: 144
-  - name: Fireplace Aquarium Backlighting
-    entities:
-       # this was found by using Artic Auora in builtin scene
-       light.fireplace_backlight:
-         state: on
-         rgb_color: [17,82,255]
-         brightness: 254
-  - name: Fireplace Ocean Backlighting
-    entities:
-       # this was found by using Artic Auora in builtin scene
-       light.fireplace_backlight:
-         state: on
-         rgb_color: [17,82,255]
-         brightness: 254
 
 automation:
   - alias: Select Fireplace Input
@@ -59,19 +22,10 @@ automation:
       - platform: state
         entity_id: input_select.fireplace_tv_source_selector
     action:
-      - service: scene.turn_on
+      # call a script, defined below, using the current value of the input selector
+      - service: script.turn_on
         data_template:
-          entity_id: "scene.fireplace_{{ states('input_select.fireplace_tv_source_selector') | lower | replace(' ', '_') }}_backlighting"
-      - service: script.fireplace_play
-        data_template:
-          file: >
-              {% if is_state("input_select.fireplace_tv_source_selector", "Fire") %}
-                The Best Fireplace Video (3 hours)-eyU3bRy2x44.mkv
-              {%-elif is_state("input_select.fireplace_tv_source_selector", "Beach") %}
-                Nature Sounds Ocean Waves for relaxation, yoga, meditation, reading, sleep, study [ Sleep Music ]-MD0tXdSsnBA.mp4
-              {%-elif is_state("input_select.fireplace_tv_source_selector", "Aquarium") %}
-                HD Open-Aquarium - Inside a Tropical Lagoon-iu6xIdAdJwo.mp4
-              {% endif %}
+          entity_id: "script.fireplace_{{ states('input_select.fireplace_tv_source_selector') | lower | replace(' ', '_') }}"
 
   - alias: Fireplace TV is idle for more than 30 minutes, turn it off.
     trigger:
@@ -83,6 +37,67 @@ automation:
     action:
       - service: media_player.turn_off
         entity_id: media_player.fireplace_tv
+
+script:
+  fireplace_off:
+    sequence:
+      - service: media_player.turn_off
+        entity_id: media_player.fireplace_kodi
+      - service: light.turn_off
+        entity_id: light.fireplace_backlight
+
+  fireplace_on:
+    sequence:
+      - service: media_player.turn_off
+        entity_id: media_player.fireplace_kodi
+      # play the last played thing again when turning on
+      - service: script.turn_on
+        data_template:
+          entity_id: "script.fireplace_{{ states('input_select.fireplace_tv_source_selector') | lower | replace(' ', '_') }}"
+
+  fireplace_play:
+    sequence:
+      - service: media_player.turn_on
+        entity_id: media_player.fireplace_kodi
+      - service: media_player.play_media
+        entity_id: media_player.fireplace_kodi
+        data_template:
+          media_content_id: "{{states('sensor.fireplace_videos_directory')}}/{{file}}"
+          media_content_type: "video"
+
+  fireplace_fire:
+    sequence:
+      - service: light.turn_on
+        entity_id: light.fireplace_backlight
+        data:
+          rgb_color: [255,161,0]
+          brightness: 144
+      - service: script.fireplace_play
+        data:
+          file: "The Best Fireplace Video (3 hours)-eyU3bRy2x44.mkv"
+
+  fireplace_aquarium:
+    sequence:
+      - service: light.turn_on
+        entity_id: light.fireplace_backlight
+        data:
+          rgb_color: [17,82,255]
+          brightness: 254
+      - service: script.fireplace_play
+        data:
+          file: "HD Open-Aquarium - Inside a Tropical Lagoon-iu6xIdAdJwo.mp4"
+
+  fireplace_beach:
+    sequence:
+      - service: light.turn_on
+        entity_id: light.fireplace_backlight
+        data:
+          rgb_color: [17,82,255]
+          brightness: 254
+      - service: script.fireplace_play
+        data:
+          file: Nature Sounds Ocean Waves for relaxation, yoga, meditation, reading, sleep, study [ Sleep Music ]-MD0tXdSsnBA.mp4
+
 
 switch:
   - platform: template
@@ -149,11 +164,8 @@ media_player:
       {% endif %}
     commands:
       turn_on:
-        # just turn on the media player, let sources handle lighting
-        service: media_player.turn_on
-        entity_id: media_player.fireplace_kodi
+        service: script.fireplace_on
       turn_off:
-        # handle turning off media player & light
         service: script.fireplace_off
       select_source:
         service: input_select.select_option
