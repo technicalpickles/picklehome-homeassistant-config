@@ -144,12 +144,13 @@ switch:
              off
            {%- endif %}
         turn_on:
-          - service: input_select.select_option
+          - service: media_player.select_source
+            entity_id: media_player.fireplace
             data:
-              entity_id: input_select.fireplace_tv_source_selector
-              option: Fire
+              source: Fire
         turn_off:
-          - service: script.fireplace_off
+          - service: media_player.turn_off
+            entity_id: media_player.fireplace
 
       aquarium:
         friendly_name: Aquarium
@@ -160,12 +161,13 @@ switch:
              off
            {%- endif %}
         turn_on:
-          - service: input_select.select_option
+          - service: media_player.select_source
+            entity_id: media_player.fireplace
             data:
-              entity_id: input_select.fireplace_tv_source_selector
-              option: Aquarium
+              source: Aquarium
         turn_off:
-          - service: script.fireplace_off
+          - service: media_player.turn_off
+            entity_id: media_player.fireplace
 
       beach:
         friendly_name: Beach
