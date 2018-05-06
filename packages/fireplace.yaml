@@ -176,17 +176,17 @@ switch:
              off
            {%- endif %}
         turn_on:
-          - service: input_select.select_option
+          - service: media_player.select_source
+            entity_id: media_player.fireplace
             data:
-              entity_id: input_select.fireplace_tv_source_selector
-              option: Beach
+              source: Beach
         turn_off:
-          - service: script.fireplace_off
+          - service: media_player.turn_off
+            entity_id: media_player.fireplace
 
 media_player:
   - platform: universal
     name: fireplace
-    friendly_name: Fireplace
     children:
       - media_player.fireplace_kodi
     state_template: >
