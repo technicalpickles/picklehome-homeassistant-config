@@ -1,7 +1,7 @@
 # Fireplace Scenery
 # -----------------
 #
-# Originally, my fireplace had a gas firpelace that wasn't in service, and with a :baby:
+# Originally, my fireplace had a gas firpelace that wasn't in service, and having with a :baby: I
 # needed to childproof it. It seemed silly to have childproofing around it, but not have anything
 # in it, so I got to thinking about those high quality fireplace videos people have to play on their TV.
 # I moved a spare TV into it, and hooked up Kodi running on a raspberry, and the rest of this package was born.
@@ -12,10 +12,10 @@
 # I use broadlink with irf etekcity outlets to control the power of the TV. I was using IR codes for the TV initially, but that didn't seem
 # very reliable. See `kodi.yaml` for the configuration, which handles powering on/off the TV with the media player.
 #
-# We create package provides a Alexa-compatible interface by exposing switches for each of the 'scenes'.
-# Those are included in alexa.yaml as part of the cloud component.
+# I model the behavior of the fireplace by using a univeral media player. Selecting an input will handle setting the scene.
 #
-# I think it might be kinda uncessary at this point, but I also expose the fireplace as a universal media_player, where selecting
+# I create an Alexa-compatible interface by exposing switches for each of these inputs.
+# Those are included in alexa.yaml as part of the cloud component.
 #
 # Adding more scenes
 # ==================
