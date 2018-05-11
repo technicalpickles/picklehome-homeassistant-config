@@ -212,3 +212,17 @@ media_player:
       state: media_player.fireplace_kodi
       source_list: input_select.fireplace_tv_source_selector|options
       source: input_select.fireplace_tv_source_selector
+
+group:
+  fireplace_scripts:
+    entities:
+      - script.fireplace_off
+      - script.fireplace_on
+      - script.fireplace_fire
+      - script.fireplace_aquarium
+      - script.fireplace_beach
+  fireplace_switches:
+    entities:
+      - switch.fireplace
+      - switch.aquarium
+      - switch.beach

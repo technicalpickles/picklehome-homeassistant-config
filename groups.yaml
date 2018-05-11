@@ -231,6 +231,7 @@ living_room_lights:
     - light.fireplace_backlight
     - light.living_room_lamp
     - light.living_room_sofa_strip
+    - light.living_room_sofa_strip_2
     - light.living_room_rear_overhead_1
     - light.living_room_rear_overhead_2
 
@@ -238,18 +239,17 @@ living_room:
   name: Living Room
   view: yes
   entities:
-    - group.living_room_lights
-    - scene.living_room_artic_aurora
-    - scene.living_room_bright
-    - switch.christmas_lights
-    - media_player.living_room
-    - switch.fireplace_tv_power
+    - group.fireplace_switches
     - media_player.fireplace
+    - media_player.fireplace_kodi
+    - media_player.living_room
+    - light.living_room
+    - group.living_room_lights
+    - switch.fireplace_tv_power
+    - switch.christmas_lights
     - switch.christmas_tree_19
-    - switch.fireplace
-    - switch.aquarium
-    - switch.beach
     - input_select.fireplace_tv_source_selector
+    - group.fireplace_scripts
 
 josh_desk_lamps:
   name: Josh's Desk Lamps
