@@ -15,3 +15,8 @@ light.backyard:
 light.courtyard:
   friendly_name: Courtyard Lights
 
+media_player.fireplace:
+  friendly_name: Fireplace Scene
+
+sensor.fireplace_videos_directory:
+  hidden: true
