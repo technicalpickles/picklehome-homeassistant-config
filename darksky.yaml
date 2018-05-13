@@ -3,6 +3,9 @@ api_key: !secret darksky_api_key
 monitored_conditions:
 - summary
 - icon
+- temperature
 - apparent_temperature
+- humidity
 - cloud_cover
 - precip_type
+- precip_probability

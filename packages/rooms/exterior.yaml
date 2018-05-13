@@ -1,0 +1,74 @@
+group:
+  kitchen_door_lights:
+    name: Kitchen Door Lights
+    entities:
+      - light.kitchen_door_1
+      - light.kitchen_door_2
+
+  front_door_lights:
+    name: Front Door Lights
+    entities:
+      - light.front_door_1
+      - light.front_door_2
+
+  kitchen_side_door_lights:
+    name: Front Side Door Lights
+    entities:
+      - light.kitchen_side_door_light
+
+  cottage_outside_lights:
+    name: Cottage Outside Lights
+    entities:
+      - light.cottage_back_yard # FIXME this doesn't seem to be reachable, but can control from hue group?!
+      - light.cottage_courtyard
+  
+  exterior_lights:
+    name: Exterior Lights
+    entities:
+      - group.front_door_lights
+      - group.kitchen_door_lights
+      - group.kitchen_side_door_lights
+      - group.exterior_christmas_lights
+  
+  exterior_christmas_lights:
+    name: Exterior Christmas Lights
+    entities:
+      - switch.exterior_christmas_lights_1
+      - switch.exterior_christmas_lights_2
+      - switch.christmas_lasers
+
+  irrigation:
+    name: Irrigation
+    icon: mdi:water-pump
+    entities:
+      - switch.back_yard_left
+      - switch.back_yard_right
+  
+  back_yard:
+    name: Back Yard
+    entities:
+
+  weather:
+    name: Weather Forecast
+    entities:
+      - weather.home
+      - sensor.dark_sky_summary
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_cloud_coverage
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_precip_probability
+      - sensor.dark_sky_apparent_temperature
+  
+  exterior:
+    name: Exterior
+    view: yes
+    entities:
+      - group.irrigation
+      - light.cottage_back_yard
+      - switch.porch_mode
+      - group.weather
+      - group.exterior_lights
+      - group.exterior_christmas_lights
+      - input_select.exterior_christmas_lights_1_mode
+      - input_select.exterior_christmas_lights_1_color
+      - group.irrigation

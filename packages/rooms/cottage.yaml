@@ -1,0 +1,16 @@
+group:
+  cottage_locks:
+    name: "Locks"
+    entities:
+      - lock.cottage_back_door_15
+      - lock.cottage_front_door_16
+  
+  cottage:
+    name: Cottage
+    view: yes
+    entities:
+      - climate.cottage
+      - group.cottage_outside_lights
+      - switch.cottage_smart_plug_20
+      - group.cottage_locks
+      - input_boolean.guest_mode
