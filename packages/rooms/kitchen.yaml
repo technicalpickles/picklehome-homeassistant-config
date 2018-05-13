@@ -14,13 +14,17 @@ group:
       - light.kitchen_back_6
       - light.kitchen_back_7
       - light.kitchen_back_8
+
+  kitchen_locks:
+    name: Kitchen Locks
+    entities:
+      - lock.kitchen_door_12
+      - lock.kitchen_side_door_13
   
   kitchen:
     name: Kitchen
     view: yes
     entities:
-      - lock.kitchen_door_12
-      - lock.kitchen_side_door_13
       - group.kitchen_door_lights
       - group.kitchen_side_door_lights
       - group.kitchen_lights
