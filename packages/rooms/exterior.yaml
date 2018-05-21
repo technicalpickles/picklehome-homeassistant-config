@@ -19,7 +19,7 @@ group:
   cottage_outside_lights:
     name: Cottage Outside Lights
     entities:
-      - light.cottage_back_yard # FIXME this doesn't seem to be reachable, but can control from hue group?!
+      - light.cottage_backyard # FIXME this doesn't seem to be reachable, but can control from hue group?!
       - light.cottage_courtyard
   
   exterior_lights:
@@ -40,13 +40,16 @@ group:
   irrigation:
     name: Irrigation
     icon: mdi:water-pump
-    entities:
-      - switch.back_yard_left
-      - switch.back_yard_right
+    entities: []
+# see https://github.com/technicalpickles/picklehome-homeassistant-config/issues/47
+#      - switch.back_yard_left
+#      - switch.back_yard_right
   
   back_yard:
     name: Back Yard
     entities:
+      - light.deck_light
+      - light.cottage_backyard
 
   weather:
     name: Weather Forecast
@@ -64,11 +67,9 @@ group:
     view: yes
     entities:
       - group.irrigation
-      - light.cottage_back_yard
+      - light.cottage_backyard
       - switch.porch_mode
       - group.weather
       - group.exterior_lights
       - group.exterior_christmas_lights
-      - input_select.exterior_christmas_lights_1_mode
-      - input_select.exterior_christmas_lights_1_color
       - group.irrigation

@@ -18,7 +18,7 @@ group:
   kitchen_locks:
     name: Kitchen Locks
     entities:
-      - lock.kitchen_door_12
+      - lock.kitchen_front_door_11
       - lock.kitchen_side_door_13
   
   kitchen:

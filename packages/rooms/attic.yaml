@@ -27,8 +27,8 @@ group:
     name: Attic
     view: yes
     entities:
-      - binary_sensor.office__josh_occupancy
-      - sensor.office__josh_temperature
+      - binary_sensor.josh_office_occupancy
+      - sensor.josh_office_temperature
       - binary_sensor.tracy_office_occupancy
       - sensor.tracy_office_temperature
       - group.josh_office

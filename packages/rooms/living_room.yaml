@@ -25,7 +25,7 @@ group:
       - light.living_room
       - group.living_room_lights
       - switch.fireplace_tv_power
-      - switch.christmas_lights
-      - switch.christmas_tree_19
+      - switch.christmas_tree
+      #- switch.christmas_tree_19
       - input_select.fireplace_tv_source_selector
       - group.fireplace_scripts

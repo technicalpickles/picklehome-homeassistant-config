@@ -21,10 +21,7 @@ group:
     entities:
       - binary_sensor.media_room_occupancy
       - sensor.media_room_temperature
-      - media_player.directv_rid035583549726
       - media_player.media_room
-      - media_player.apple_tv_2
-      - remote.apple_tv_2
       - group.media_room_lights
       - group.media_room_tv
 

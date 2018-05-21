@@ -2,7 +2,7 @@ automation:
 #  - alias: Turn off attic fan when unoccupied
 #    trigger:
 #      - platform: state
-#        entity_id: binary_sensor.office__josh_occupancy
+#        entity_id: binary_sensor.josh_office_occupancy
 #        to: 'off'
 #        for:
 #          minutes: 10
@@ -12,13 +12,13 @@ automation:
 #  - alias: Turn on attic fan when occupied and hot out
 #    trigger:
 #      - platform: numeric_state
-#        entity_id: sensor.office__josh_temperature
+#        entity_id: sensor.josh_office_temperature
 #        above: 72
 #        for:
 #          minutes: 10
 #    condition:
 #      - platform: state
-#        entity_id: binary_sensor.office__josh_occupancy
+#        entity_id: binary_sensor.josh_office_occupancy
 #        state: 'off'
 #    action:
 #      service: switch.turn_on

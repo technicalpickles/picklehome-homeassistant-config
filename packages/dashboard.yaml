@@ -3,14 +3,14 @@ group:
   #default_view: # comment out `dashboard` and uncomment this line to make it the default
     view: yes
     entities:
-      - group.family
+      #- group.family
       - input_select.house_mode
       - group.house_locks
       - climate.home
       - group.interior_temperature
       - group.weather
       - script.sunset
-      - switch.guest_mode
+      - input_boolean.guest_mode
       - switch.bath_mode
       - switch.porch_mode
       - switch.fireplace
@@ -29,13 +29,10 @@ group:
   interior_temperature:
     name: Interior Temperature
     entities:
-      - sensor.master_bedroom_temperature
+      - sensor.bedroom_temperature
       - sensor.media_room_temperature
-      - sensor.my_ecobee3_temperature
+      - sensor.home_temperature
       - sensor.nursery_temperature
-      - sensor.office__josh_temperature
-      - sensor.office__tracy_temperature
-      - script.apply_southern_comfort
-      - script.climate_its_ok_outside
-      - script.climate_its_hot_outside
-      - script.climate_its_cold_outside
+      - sensor.josh_office_temperature
+      - sensor.tracy_office_temperature
+      - group.southern_comfort_scripts

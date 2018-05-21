@@ -5,9 +5,9 @@ include:
     - climate.home
     - sensor.bedroom_temperature
     - sensor.dark_sky_apparent_temperature
-    - sensor.dark_sky_apparent_temperature
+    - sensor.dark_sky_temperature
     - sensor.home_temperature
     - sensor.media_room_temperature
     - sensor.nursery_bedroom_temperature
-    - sensor.office__josh_temperature
+    - sensor.josh_office_temperature
     - sensor.tracy_office_temperature
