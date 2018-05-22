@@ -1,0 +1,32 @@
+group:
+  kitchen_lights:
+    name: Kitchen Lights
+    entities:
+      - light.kitchen_front_1
+      - light.kitchen_front_2
+      - light.kitchen_front_3
+      - light.kitchen_front_4
+      - light.kitchen_back_1
+      - light.kitchen_back_2
+      - light.kitchen_back_3
+      - light.kitchen_back_4
+      - light.kitchen_back_5
+      - light.kitchen_back_6
+      - light.kitchen_back_7
+      - light.kitchen_back_8
+
+  kitchen_locks:
+    name: Kitchen Locks
+    entities:
+      - lock.kitchen_front_door_11
+      - lock.kitchen_side_door_13
+  
+  kitchen:
+    name: Kitchen
+    view: yes
+    entities:
+      - group.kitchen_door_lights
+      - group.kitchen_side_door_lights
+      - group.kitchen_lights
+      - media_player.kitchen
+      - switch.kitchen_smart_plug_18

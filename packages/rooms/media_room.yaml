@@ -1,0 +1,27 @@
+group:
+  media_room_tv:
+    name: TV
+    entities:
+      - switch.media_room_tv
+      - switch.directv
+      - switch.apple_tv
+      - switch.smart_tv
+      - switch.media_room_music
+  
+  media_room_lights:
+    name: Media Room Lights
+    entities:
+      - light.media_room_front_left
+      - light.media_room_front_right
+      - light.media_stand_lightstrip
+  
+  media_room:
+    name: Media Room
+    view: yes
+    entities:
+      - binary_sensor.media_room_occupancy
+      - sensor.media_room_temperature
+      - media_player.media_room
+      - group.media_room_lights
+      - group.media_room_tv
+

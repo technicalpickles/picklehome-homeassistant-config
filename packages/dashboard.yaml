@@ -1,0 +1,38 @@
+group:
+  dashboard:
+  #default_view: # comment out `dashboard` and uncomment this line to make it the default
+    view: yes
+    entities:
+      #- group.family
+      - input_select.house_mode
+      - group.house_locks
+      - climate.home
+      - group.interior_temperature
+      - group.weather
+      - script.sunset
+      - input_boolean.guest_mode
+      - switch.bath_mode
+      - switch.porch_mode
+      - switch.fireplace
+      - script.good_night
+      - script.good_morning
+      - script.bed_time
+  
+  house_locks:
+    name: House Locks
+    entities:
+      - lock.front_door_12
+      - lock.kitchen_front_door_11
+      - lock.kitchen_side_door_13
+      - lock.sun_room_door_14
+
+  interior_temperature:
+    name: Interior Temperature
+    entities:
+      - sensor.bedroom_temperature
+      - sensor.media_room_temperature
+      - sensor.home_temperature
+      - sensor.nursery_temperature
+      - sensor.josh_office_temperature
+      - sensor.tracy_office_temperature
+      - group.southern_comfort_scripts

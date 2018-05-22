@@ -1,0 +1,31 @@
+group:
+  living_room_lights:
+    name: Living Room Lights
+    entities:
+      - light.fireplace_backlight
+      - light.living_room_lamp
+      - light.living_room_sofa_strip
+      - light.living_room_sofa_strip_2
+      - light.living_room_rear_overhead_1
+      - light.living_room_rear_overhead_2
+
+  living_room_locks:
+    entities:
+      - lock.front_door_12
+  
+  living_room:
+    name: Living Room
+    view: yes
+    entities:
+      - group.living_room_locks
+      - group.fireplace_switches
+      - media_player.fireplace
+      - media_player.fireplace_kodi
+      - media_player.living_room
+      - light.living_room
+      - group.living_room_lights
+      - switch.fireplace_tv_power
+      - switch.christmas_tree
+      #- switch.christmas_tree_19
+      - input_select.fireplace_tv_source_selector
+      - group.fireplace_scripts

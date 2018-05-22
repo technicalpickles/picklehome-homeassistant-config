@@ -1,0 +1,16 @@
+group:
+  sun_room_lights:
+    name: Sun Room Lights
+    entities: []
+
+  sun_room_locks:
+    name: Sun Room Locks
+    entities:
+    - lock.sun_room_door_14
+  
+  sun_room:
+    name: Sun Room
+    view: yes
+    entities:
+      - group.sun_room_lights
+      - group.sun_room_locks

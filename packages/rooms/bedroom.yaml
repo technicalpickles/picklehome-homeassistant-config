@@ -1,0 +1,26 @@
+group:
+  bed:
+    name: Bed
+    entities:
+      - binary_sensor.sleepnumber_ile_josh_is_in_bed
+      - sensor.sleepnumber_ile_josh_sleepnumber
+      - binary_sensor.sleepnumber_ile_tracy_is_in_bed
+      - sensor.sleepnumber_ile_tracy_sleepnumber
+      - sensor.everyone_in_bed
+  
+  bedroom_lights:
+    name: Bedroom Lights
+    entities:
+      - light.josh_night_stand
+      - light.tracy_night_stand
+      - light.makeup_table
+  
+  bedroom:
+    name: Bedroom
+    view: yes
+    entities:
+      - group.bedroom_lights
+      - binary_sensor.bedroom_occupancy
+      - sensor.bedroom_temperature
+      - group.bed
+      - media_player.bedroom

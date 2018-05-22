@@ -25,7 +25,6 @@ updater:
 sun:
 
 # miscellany automations, see packages above for grouped functionality
-group: !include groups.yaml
 panel_iframe: !include panel_iframe.yaml
 scene: !include scenes.yaml
 scene directory: !include_dir_list scenes
@@ -33,8 +32,6 @@ script: !include scripts.yaml
 
 # services & hardware components
 apcupsd:
-cloud:
-  alexa: !include alexa.yaml
 ecobee: !include ecobee.yaml
 light:
   - !include hue.yaml

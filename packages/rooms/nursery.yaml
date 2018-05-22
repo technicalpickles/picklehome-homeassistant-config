@@ -1,0 +1,15 @@
+group:
+  nursery_lights:
+    name: Nursery Lights
+    entities:
+     - light.nursery_wall_lamp
+  
+  nursery:
+    name: Nursery
+    view: yes
+    entities:
+      - binary_sensor.nursery_occupancy
+      - sensor.nursery_temperature
+      - group.nursery_lights
+      - switch.nursery_night_light_22
+      - media_player.nursery
