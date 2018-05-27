@@ -29,6 +29,7 @@ cloud:
         - switch.fireplace
         - switch.beach
         - switch.aquarium
+        - switch.turtles
     
         - switch.bath_mode
         - switch.porch_mode
