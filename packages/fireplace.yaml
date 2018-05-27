@@ -41,6 +41,14 @@ input_select:
       - Turtles
     icon: mdi:video-input-hdmi
 
+light:
+  - platform: group
+    name: Fireplace Lighting
+    entities:
+      - light.fireplace_backlight
+      - light.living_room_sofa_strip
+      - light.living_room_sofa_strip_2
+
 sensor:
   platform: template
   sensors:
@@ -102,7 +110,7 @@ script:
   fireplace_fire:
     sequence:
       - service: light.turn_on
-        entity_id: light.fireplace_backlight
+        entity_id: light.fireplace_lighting
         data:
           rgb_color: [255,161,0]
           brightness: 144
@@ -113,7 +121,7 @@ script:
   fireplace_aquarium:
     sequence:
       - service: light.turn_on
-        entity_id: light.fireplace_backlight
+        entity_id: light.fireplace_lighting
         data:
           rgb_color: [17,82,255]
           brightness: 254
