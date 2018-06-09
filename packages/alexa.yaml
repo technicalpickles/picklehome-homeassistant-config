@@ -30,6 +30,7 @@ cloud:
         - switch.beach
         - switch.aquarium
         - switch.turtles
+        - switch.ducks
     
         - switch.bath_mode
         - switch.porch_mode
