@@ -35,10 +35,21 @@ input_select:
   fireplace_tv_source_selector:
     name: Fireplace TV Sources Selector
     options:
+      - Off
       - Fire
       - Beach
       - Aquarium
+      - Turtles
+      - Ducks
     icon: mdi:video-input-hdmi
+
+light:
+  - platform: group
+    name: Fireplace Lighting
+    entities:
+      - light.fireplace_backlight
+      - light.living_room_sofa_strip
+      - light.living_room_sofa_strip_2
 
 sensor:
   platform: template
@@ -63,13 +74,14 @@ automation:
   - alias: Fireplace TV is idle for more than 30 minutes, turn it off.
     trigger:
      platform: state
-     entity_id: media_player.fireplace_tv
+     entity_id: media_player.fireplace
      to: 'idle'
      for:
-       minutes: 30
+       #seconds: 15
+       minutes: 15
     action:
       - service: media_player.turn_off
-        entity_id: media_player.fireplace_tv
+        entity_id: media_player.fireplace
 
 script:
   fireplace_off:
@@ -81,12 +93,8 @@ script:
 
   fireplace_on:
     sequence:
-      - service: media_player.turn_off
+      - service: media_player.turn_on
         entity_id: media_player.fireplace_kodi
-      # play the last played thing again when turning on
-      - service: script.turn_on
-        data_template:
-          entity_id: "script.fireplace_{{ states('input_select.fireplace_tv_source_selector') | lower | replace(' ', '_') }}"
 
   fireplace_play:
     sequence:
@@ -101,7 +109,7 @@ script:
   fireplace_fire:
     sequence:
       - service: light.turn_on
-        entity_id: light.fireplace_backlight
+        entity_id: light.fireplace_lighting
         data:
           rgb_color: [255,161,0]
           brightness: 144
@@ -112,7 +120,7 @@ script:
   fireplace_aquarium:
     sequence:
       - service: light.turn_on
-        entity_id: light.fireplace_backlight
+        entity_id: light.fireplace_lighting
         data:
           rgb_color: [17,82,255]
           brightness: 254
@@ -120,16 +128,39 @@ script:
         data:
           file: "HD Open-Aquarium - Inside a Tropical Lagoon-iu6xIdAdJwo.mp4"
 
+  fireplace_turtles:
+    sequence:
+      - service: light.turn_on
+        entity_id: light.fireplace_lighting
+        data:
+          rgb_color: [24,128,255]
+          brightness: 134
+      - service: script.fireplace_play
+        data:
+          file: "♥♥ Giant Sea Turtles in Coral Reef (3 hours)-1nC-r3yIepk.mp4"
+
+  fireplace_ducks:
+    sequence:
+      - service: light.turn_on
+        entity_id: light.fireplace_lighting
+        data:
+          rgb_color: [0,5,255]
+          brightness: 133
+      - service: script.fireplace_play
+        data:
+          #file: "Duck Pond _ Relaxing Ducks on a Calm Lake in Ultra HD - Trailer-IeMVu0RS5gA.mp4"
+          file: "4K Duck Pond _ 1 Hour Lake_Pond_Water Relaxing Video with Nature Sounds-_rfNKyYHQZs-trimmed.mp4"
+
   fireplace_beach:
     sequence:
       - service: light.turn_on
-        entity_id: light.fireplace_backlight
+        entity_id: light.fireplace_lighting
         data:
           rgb_color: [17,82,255]
           brightness: 254
       - service: script.fireplace_play
         data:
-          file: Nature Sounds Ocean Waves for relaxation, yoga, meditation, reading, sleep, study [ Sleep Music ]-MD0tXdSsnBA.mp4
+          file: "Nature Sounds Ocean Waves for relaxation, yoga, meditation, reading, sleep, study [ Sleep Music ]-MD0tXdSsnBA.mp4"
 
 
 switch:
@@ -144,6 +175,8 @@ switch:
              off
            {%- endif %}
         turn_on:
+          - service: media_player.turn_on
+            entity_id: media_player.fireplace
           - service: media_player.select_source
             entity_id: media_player.fireplace
             data:
@@ -161,6 +194,8 @@ switch:
              off
            {%- endif %}
         turn_on:
+          - service: media_player.turn_on
+            entity_id: media_player.fireplace
           - service: media_player.select_source
             entity_id: media_player.fireplace
             data:
@@ -178,10 +213,49 @@ switch:
              off
            {%- endif %}
         turn_on:
+          - service: media_player.turn_on
+            entity_id: media_player.fireplace
           - service: media_player.select_source
             entity_id: media_player.fireplace
             data:
               source: Beach
+        turn_off:
+          - service: media_player.turn_off
+            entity_id: media_player.fireplace
+
+      turtles:
+        friendly_name: Turtles
+        value_template: >
+           {%- if is_state_attr('media_player.fireplace', 'source', 'Turtles') %}
+             on
+           {%- else %}
+             off
+           {%- endif %}
+        turn_on:
+          - service: media_player.turn_on
+            entity_id: media_player.fireplace
+          - service: media_player.select_source
+            entity_id: media_player.fireplace
+            data:
+              source: Turtles
+        turn_off:
+          - service: media_player.turn_off
+            entity_id: media_player.fireplace
+      ducks:
+        friendly_name: Ducks
+        value_template: >
+           {%- if is_state_attr('media_player.fireplace', 'source', 'Ducks') %}
+             on
+           {%- else %}
+             off
+           {%- endif %}
+        turn_on:
+          - service: media_player.turn_on
+            entity_id: media_player.fireplace
+          - service: media_player.select_source
+            entity_id: media_player.fireplace
+            data:
+              source: Ducks
         turn_off:
           - service: media_player.turn_off
             entity_id: media_player.fireplace
@@ -192,11 +266,7 @@ media_player:
     children:
       - media_player.fireplace_kodi
     state_template: >
-      {% if is_state('switch.fireplace_tv_power', 'off') %}
-      off
-      {% else %}
       {{ states('media_player.fireplace_kodi') }}
-      {% endif %}
     commands:
       turn_on:
         service: script.fireplace_on
@@ -215,14 +285,20 @@ media_player:
 
 group:
   fireplace_scripts:
+    control: hidden
     entities:
       - script.fireplace_off
       - script.fireplace_on
       - script.fireplace_fire
       - script.fireplace_aquarium
       - script.fireplace_beach
+      - script.fireplace_turtles
+      - script.fireplace_ducks
   fireplace_switches:
+    control: hidden
     entities:
       - switch.fireplace
       - switch.aquarium
       - switch.beach
+      - switch.ducks
+      - switch.turtles

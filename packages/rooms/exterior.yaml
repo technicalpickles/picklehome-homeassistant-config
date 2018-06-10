@@ -29,6 +29,9 @@ group:
       - group.kitchen_door_lights
       - group.kitchen_side_door_lights
       - group.exterior_christmas_lights
+      - light.deck_light
+      - light.cottage_backyard
+      - light.cottage_courtyard
   
   exterior_christmas_lights:
     name: Exterior Christmas Lights
