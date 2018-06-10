@@ -95,10 +95,6 @@ script:
     sequence:
       - service: media_player.turn_on
         entity_id: media_player.fireplace_kodi
-      # play the last played thing again when turning on
-      - service: script.turn_on
-        data_template:
-          entity_id: "script.fireplace_{{ states('input_select.fireplace_tv_source_selector') | lower | replace(' ', '_') }}"
 
   fireplace_play:
     sequence:
