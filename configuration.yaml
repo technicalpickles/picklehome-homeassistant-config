@@ -38,7 +38,6 @@ light:
 influxdb: !include influxdb.yaml
 media_player:
 - !include kodi.yaml
-- !include sonos.yaml
 mqtt: !include mqtt.yaml
 nest: !include nest.yaml
 notify:
