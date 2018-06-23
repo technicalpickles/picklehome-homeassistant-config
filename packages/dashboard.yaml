@@ -17,6 +17,7 @@ group:
       - script.good_night
       - script.good_morning
       - script.bed_time
+      - sensor.subjective_exterior_temperature
   
   house_locks:
     name: House Locks
