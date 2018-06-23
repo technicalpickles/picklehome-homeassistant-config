@@ -22,29 +22,23 @@ sensor:
           {%- endif %}
 
 automation:
-  - alias: "Apply southern comfort"
-    # check for the subject temperature to change at all, and stay there for 10 minutes
-    # `for` requires `to` to be set. `trigger` supports multiple triggers, so add
-    # one per possible value of sensor.subjective_exterior_temperature
+  - alias: "Apply southern comfort when subjective temperature changes"
     trigger:
-      - platform: state
-        entity_id: sensor.subjective_exterior_temperature
-        to: hot
-        for:
-          minutes: 10
-      - platform: state
-        entity_id: sensor.subjective_exterior_temperature
-        to: cold
-        for:
-          minutes: 10
-      - platform: state
-        entity_id: sensor.subjective_exterior_temperature
-        to: ok
-        for:
-          minutes: 10
+      platform: state
+      entity_id: sensor.subjective_exterior_temperature
     action:
-      service: script.turn_on
-      entity_id: script.apply_southern_comfort
+      - service: script.apply_southern_comfort
+        data_template:
+          from: '{{ trigger.from_state}}'
+          to:  '{{ trigger.to_state }}'
+
+  - alias: "Ensure southern comfort applied periodically"
+    trigger:
+      platform: time
+      minutes: '/15'
+      seconds: 00
+    action:
+      - service: script.apply_southern_comfort
 
 script:
   # use the regular schedule when it's okay out. this is 68-72 on auto, with fan on auto
@@ -95,6 +89,9 @@ script:
       - service: script.turn_on
         data_template:
           entity_id: script.climate_its_{{ states.sensor.subjective_exterior_temperature.state }}_outside
+      # only announce if there was a 'from' passed in, which happens for the sensor state trigger automation
+      - condition: template
+        value_template: "{{ from }}"
       - service: notify.slack
         data_template:
           message: "I do declare, it's {{states.sensor.subjective_exterior_temperature.state}} outside"
@@ -103,6 +100,7 @@ group:
   southern_comfort_scripts:
     name: Southern Comfort Scripts
     entities:
+      - sensor.subjective_exterior_temperature
       - script.apply_southern_comfort
       - script.climate_its_ok_outside
       - script.climate_its_hot_outside
