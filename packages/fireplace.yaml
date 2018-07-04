@@ -169,7 +169,7 @@ switch:
       fireplace:
         friendly_name: Fireplace
         value_template: >
-           {%- if is_state_attr('media_player.fireplace', 'source', 'Fire') %}
+           {%- if is_state('switch.fireplace_tv_power', 'on') and is_state_attr('media_player.fireplace', 'source', 'Fire') %}
              on
            {%- else %}
              off
@@ -188,7 +188,7 @@ switch:
       aquarium:
         friendly_name: Aquarium
         value_template: >
-           {%- if is_state_attr('media_player.fireplace', 'source', 'Aquarium') %}
+           {%- if is_state('switch.fireplace_tv_power', 'on') and is_state_attr('media_player.fireplace', 'source', 'Aquarium') %}
              on
            {%- else %}
              off
@@ -207,7 +207,7 @@ switch:
       beach:
         friendly_name: Beach
         value_template: >
-           {%- if is_state_attr('media_player.fireplace', 'source', 'Beach') %}
+           {%- if is_state('switch.fireplace_tv_power', 'on') and is_state_attr('media_player.fireplace', 'source', 'Beach') %}
              on
            {%- else %}
              off
@@ -226,7 +226,7 @@ switch:
       turtles:
         friendly_name: Turtles
         value_template: >
-           {%- if is_state_attr('media_player.fireplace', 'source', 'Turtles') %}
+           {%- if is_state('switch.fireplace_tv_power', 'on') and is_state_attr('media_player.fireplace', 'source', 'Turtles') %}
              on
            {%- else %}
              off
@@ -244,7 +244,7 @@ switch:
       ducks:
         friendly_name: Ducks
         value_template: >
-           {%- if is_state_attr('media_player.fireplace', 'source', 'Ducks') %}
+           {%- if is_state('switch.fireplace_tv_power', 'on') and is_state_attr('media_player.fireplace', 'source', 'Ducks') %}
              on
            {%- else %}
              off
