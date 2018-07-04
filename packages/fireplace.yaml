@@ -196,11 +196,7 @@ switch:
       aquarium:
         friendly_name: Aquarium
         value_template: >
-           {%- if is_state_attr('media_player.fireplace', 'source', 'Aquarium') %}
-             on
-           {%- else %}
-             off
-           {%- endif %}
+           {{ is_state_attr('media_player.fireplace', 'source', 'Aquarium') }}
         turn_on:
           - service: media_player.turn_on
             entity_id: media_player.fireplace
@@ -215,11 +211,7 @@ switch:
       beach:
         friendly_name: Beach
         value_template: >
-           {%- if is_state_attr('media_player.fireplace', 'source', 'Beach') %}
-             on
-           {%- else %}
-             off
-           {%- endif %}
+           {{ is_state_attr('media_player.fireplace', 'source', 'Beach') }}
         turn_on:
           - service: media_player.turn_on
             entity_id: media_player.fireplace
@@ -234,11 +226,7 @@ switch:
       turtles:
         friendly_name: Turtles
         value_template: >
-           {%- if is_state_attr('media_player.fireplace', 'source', 'Turtles') %}
-             on
-           {%- else %}
-             off
-           {%- endif %}
+           {{ is_state_attr('media_player.fireplace', 'source', 'Turtles') }}
         turn_on:
           - service: media_player.turn_on
             entity_id: media_player.fireplace
@@ -280,11 +268,6 @@ media_player:
         {{ states('media_player.fireplace_kodi') }}
       {%- endif %} 
     commands:
-      turn_on:
-        service: input_select.select_option
-        data_template:
-          entity_id: input_select.fireplace_tv_source_selector
-          option: 'Fireplace'
       turn_off:
         service: input_select.select_option
         data_template:
