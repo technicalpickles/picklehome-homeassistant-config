@@ -35,7 +35,7 @@ input_select:
   fireplace_tv_source_selector:
     name: Fireplace TV Sources Selector
     options:
-      - Off
+      - 'Off'
       - Fire
       - Beach
       - Aquarium
