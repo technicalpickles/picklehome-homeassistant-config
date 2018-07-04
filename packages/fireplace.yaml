@@ -137,7 +137,7 @@ script:
           brightness: 134
       - service: script.fireplace_play
         data:
-          file: "♥♥ Giant Sea Turtles in Coral Reef (3 hours)-1nC-r3yIepk.mp4"
+          file: "Giant Sea Turtles in Coral Reef (3 hours)-1nC-r3yIepk.mp4"
 
   fireplace_ducks:
     sequence:
