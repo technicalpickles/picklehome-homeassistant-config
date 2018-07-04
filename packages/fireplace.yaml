@@ -177,7 +177,7 @@ switch:
       fireplace:
         friendly_name: Fireplace
         value_template: >
-           {%- if is_state('switch.fireplace_tv_power', 'on') and is_state_attr('media_player.fireplace', 'source', 'Fire') %}
+           {%- if is_state_attr('media_player.fireplace', 'source', 'Fire') %}
              on
            {%- else %}
              off
@@ -196,7 +196,7 @@ switch:
       aquarium:
         friendly_name: Aquarium
         value_template: >
-           {%- if is_state('switch.fireplace_tv_power', 'on') and is_state_attr('media_player.fireplace', 'source', 'Aquarium') %}
+           {%- if is_state_attr('media_player.fireplace', 'source', 'Aquarium') %}
              on
            {%- else %}
              off
@@ -215,7 +215,7 @@ switch:
       beach:
         friendly_name: Beach
         value_template: >
-           {%- if is_state('switch.fireplace_tv_power', 'on') and is_state_attr('media_player.fireplace', 'source', 'Beach') %}
+           {%- if is_state_attr('media_player.fireplace', 'source', 'Beach') %}
              on
            {%- else %}
              off
@@ -234,7 +234,7 @@ switch:
       turtles:
         friendly_name: Turtles
         value_template: >
-           {%- if is_state('switch.fireplace_tv_power', 'on') and is_state_attr('media_player.fireplace', 'source', 'Turtles') %}
+           {%- if is_state_attr('media_player.fireplace', 'source', 'Turtles') %}
              on
            {%- else %}
              off
@@ -252,7 +252,7 @@ switch:
       ducks:
         friendly_name: Ducks
         value_template: >
-           {%- if is_state('switch.fireplace_tv_power', 'on') and is_state_attr('media_player.fireplace', 'source', 'Ducks') %}
+           {%- if is_state_attr('media_player.fireplace', 'source', 'Ducks') %}
              on
            {%- else %}
              off
@@ -274,12 +274,22 @@ media_player:
     children:
       - media_player.fireplace_kodi
     state_template: >
-      {{ states('media_player.fireplace_kodi') }}
+      {%- if is_state('switch.fireplace_tv_power', 'off') %}
+        idle
+      {%- else %}
+        {{ states('media_player.fireplace_kodi') }}
+      {%- endif %} 
     commands:
       turn_on:
-        service: script.fireplace_on
+        service: input_select.select_option
+        data_template:
+          entity_id: input_select.fireplace_tv_source_selector
+          option: 'Fireplace'
       turn_off:
-        service: script.fireplace_off
+        service: input_select.select_option
+        data_template:
+          entity_id: input_select.fireplace_tv_source_selector
+          option: 'Off'
       select_source:
         service: input_select.select_option
         data_template:
