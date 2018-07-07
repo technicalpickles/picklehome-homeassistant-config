@@ -30,6 +30,12 @@
 # - create a template switch, copying any of the existing as an example
 # - add that script to alexa.yaml's whitelist
 
+
+homeassistant:
+  customize:
+    sensor.fireplace_videos_directory:
+      hidden: true
+
 input_select:
   # this is the source of truth for what _should_ be playing on the fireplace tv
   fireplace_tv_source_selector:
@@ -38,7 +44,7 @@ input_select:
       - 'Off'
       - Fire
       - Beach
-      - Aquarium
+      - Fishes
       - Turtles
       - Ducks
     icon: mdi:video-input-hdmi
@@ -125,7 +131,7 @@ script:
         data:
           file: "The Best Fireplace Video (3 hours)-eyU3bRy2x44.mkv"
 
-  fireplace_aquarium:
+  fireplace_fishes:
     sequence:
       - service: light.turn_on
         entity_id: light.fireplace_lighting
@@ -193,8 +199,8 @@ switch:
           - service: media_player.turn_off
             entity_id: media_player.fireplace
 
-      aquarium:
-        friendly_name: Aquarium
+      fishes:
+        friendly_name: Fishes
         value_template: >
            {{ is_state_attr('media_player.fireplace', 'source', 'Aquarium') }}
         turn_on:
@@ -291,7 +297,7 @@ group:
       - script.fireplace_off
       - script.fireplace_on
       - script.fireplace_fire
-      - script.fireplace_aquarium
+      - script.fireplace_fishes
       - script.fireplace_beach
       - script.fireplace_turtles
       - script.fireplace_ducks
@@ -299,7 +305,7 @@ group:
     control: hidden
     entities:
       - switch.fireplace
-      - switch.aquarium
+      - switch.fishes
       - switch.beach
       - switch.ducks
       - switch.turtles
