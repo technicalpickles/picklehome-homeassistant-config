@@ -1,5 +1,7 @@
 homeassistant:
   name: Home
+  auth_providers:
+   - type: homeassistant
   latitude: !secret homeassistant_latitude
   longitude: !secret homeassistant_longitude
   elevation: !secret homeassistant_elevation
@@ -11,6 +13,7 @@ homeassistant:
   packages: !include_dir_named packages
 
 # core components
+auth:
 frontend:
   javascript_version: latest
   extra_html_url:
@@ -34,6 +37,8 @@ script: !include scripts.yaml
 
 # services & hardware components
 apcupsd:
+binary_sensor:
+- platform: rachio
 ecobee: !include ecobee.yaml
 hue: !include hue.yaml
 influxdb: !include influxdb.yaml
@@ -44,10 +49,11 @@ nest: !include nest.yaml
 notify:
 -  !include notify-slack.yaml
 prometheus:
+rachio: !include rachio.yaml
 sleepiq: !include sleepiq.yaml
 sensor:
   - !include darksky.yaml
 switch:
   - !include broadlink.yaml
-#  - !include rachio.yaml
+  - platform: rachio
 vera: !include vera.yaml
