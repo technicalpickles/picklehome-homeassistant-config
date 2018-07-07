@@ -30,15 +30,21 @@
 # - create a template switch, copying any of the existing as an example
 # - add that script to alexa.yaml's whitelist
 
+
+homeassistant:
+  customize:
+    sensor.fireplace_videos_directory:
+      hidden: true
+
 input_select:
   # this is the source of truth for what _should_ be playing on the fireplace tv
   fireplace_tv_source_selector:
     name: Fireplace TV Sources Selector
     options:
-      - Off
+      - 'Off'
       - Fire
       - Beach
-      - Aquarium
+      - Fishes
       - Turtles
       - Ducks
     icon: mdi:video-input-hdmi
@@ -66,7 +72,15 @@ automation:
       - platform: state
         entity_id: input_select.fireplace_tv_source_selector
     action:
-      # call a script, defined below, using the current value of the input selector
+      - service: script.turn_on
+        data_template:
+          entity_id: "script.fireplace_{{ states('input_select.fireplace_tv_source_selector') | lower | replace(' ', '_') }}"
+
+  - alias: Resume fireplace scene after boot
+    trigger:
+      platform: homeassistant
+      event: start
+    action:
       - service: script.turn_on
         data_template:
           entity_id: "script.fireplace_{{ states('input_select.fireplace_tv_source_selector') | lower | replace(' ', '_') }}"
@@ -117,7 +131,7 @@ script:
         data:
           file: "The Best Fireplace Video (3 hours)-eyU3bRy2x44.mkv"
 
-  fireplace_aquarium:
+  fireplace_fishes:
     sequence:
       - service: light.turn_on
         entity_id: light.fireplace_lighting
@@ -137,7 +151,7 @@ script:
           brightness: 134
       - service: script.fireplace_play
         data:
-          file: "♥♥ Giant Sea Turtles in Coral Reef (3 hours)-1nC-r3yIepk.mp4"
+          file: "Giant Sea Turtles in Coral Reef (3 hours)-1nC-r3yIepk.mp4"
 
   fireplace_ducks:
     sequence:
@@ -185,14 +199,10 @@ switch:
           - service: media_player.turn_off
             entity_id: media_player.fireplace
 
-      aquarium:
-        friendly_name: Aquarium
+      fishes:
+        friendly_name: Fishes
         value_template: >
-           {%- if is_state_attr('media_player.fireplace', 'source', 'Aquarium') %}
-             on
-           {%- else %}
-             off
-           {%- endif %}
+           {{ is_state_attr('media_player.fireplace', 'source', 'Aquarium') }}
         turn_on:
           - service: media_player.turn_on
             entity_id: media_player.fireplace
@@ -207,11 +217,7 @@ switch:
       beach:
         friendly_name: Beach
         value_template: >
-           {%- if is_state_attr('media_player.fireplace', 'source', 'Beach') %}
-             on
-           {%- else %}
-             off
-           {%- endif %}
+           {{ is_state_attr('media_player.fireplace', 'source', 'Beach') }}
         turn_on:
           - service: media_player.turn_on
             entity_id: media_player.fireplace
@@ -226,11 +232,7 @@ switch:
       turtles:
         friendly_name: Turtles
         value_template: >
-           {%- if is_state_attr('media_player.fireplace', 'source', 'Turtles') %}
-             on
-           {%- else %}
-             off
-           {%- endif %}
+           {{ is_state_attr('media_player.fireplace', 'source', 'Turtles') }}
         turn_on:
           - service: media_player.turn_on
             entity_id: media_player.fireplace
@@ -266,12 +268,17 @@ media_player:
     children:
       - media_player.fireplace_kodi
     state_template: >
-      {{ states('media_player.fireplace_kodi') }}
+      {%- if is_state('switch.fireplace_tv_power', 'off') %}
+        idle
+      {%- else %}
+        {{ states('media_player.fireplace_kodi') }}
+      {%- endif %} 
     commands:
-      turn_on:
-        service: script.fireplace_on
       turn_off:
-        service: script.fireplace_off
+        service: input_select.select_option
+        data_template:
+          entity_id: input_select.fireplace_tv_source_selector
+          option: 'Off'
       select_source:
         service: input_select.select_option
         data_template:
@@ -290,7 +297,7 @@ group:
       - script.fireplace_off
       - script.fireplace_on
       - script.fireplace_fire
-      - script.fireplace_aquarium
+      - script.fireplace_fishes
       - script.fireplace_beach
       - script.fireplace_turtles
       - script.fireplace_ducks
@@ -298,7 +305,7 @@ group:
     control: hidden
     entities:
       - switch.fireplace
-      - switch.aquarium
+      - switch.fishes
       - switch.beach
       - switch.ducks
       - switch.turtles
