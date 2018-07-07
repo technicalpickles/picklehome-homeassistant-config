@@ -1,36 +1,3 @@
-group.dashboard:
-  order: 1
-
-group.kitchen:
-  order: 2
-
-group.exterior:
-  order: 3
-
-group.media_room:
-  order: 4
-
-group.bedroom:
-  order: 5
-
-group.nursery:
-  order: 6
-
-group.living_room:
-  order: 7
-
-group.attic:
-  order: 8
-
-group.cottage:
-  order: 9
-
-group.laundry:
-  order: 10
-
-group.sun_room:
-  order: 11
-
 light.nursery:
   friendly_name: Nursery Lights
 light.media_room:
