@@ -28,7 +28,7 @@ cloud:
         #- media_player.fireplace
         - switch.fireplace
         - switch.beach
-        - switch.aquarium
+        - switch.fishes
         - switch.turtles
         - switch.ducks
     

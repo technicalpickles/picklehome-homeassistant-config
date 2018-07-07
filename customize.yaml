@@ -17,6 +17,3 @@ light.courtyard:
 
 media_player.fireplace:
   friendly_name: Fireplace Scene
-
-sensor.fireplace_videos_directory:
-  hidden: true
