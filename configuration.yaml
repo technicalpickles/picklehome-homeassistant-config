@@ -13,6 +13,8 @@ homeassistant:
 # core components
 frontend:
   javascript_version: latest
+  extra_html_url:
+    - /local/lovelace.html
 config:
 discovery:
 history:
