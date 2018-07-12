@@ -2,6 +2,7 @@ homeassistant:
   name: Home
   auth_providers:
    - type: homeassistant
+   - type: legacy_api_password
   latitude: !secret homeassistant_latitude
   longitude: !secret homeassistant_longitude
   elevation: !secret homeassistant_elevation
@@ -22,6 +23,9 @@ config:
 discovery:
 history:
 http:
+  api_password: !secret http_api_password
+  use_x_forwarded_for: true
+  trusted_proxies: 127.0.0.1
 logbook:
 recorder:
   purge_keep_days: 10
