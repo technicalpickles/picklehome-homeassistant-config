@@ -1,26 +1,27 @@
 homeassistant:
   name: Home
-  auth_providers:
-   - type: homeassistant
-   - type: legacy_api_password
   latitude: !secret homeassistant_latitude
   longitude: !secret homeassistant_longitude
   elevation: !secret homeassistant_elevation
   unit_system: !secret homeassistant_unit_system
   time_zone: !secret homeassistant_time_zone
 
-  # packages is where the real magic lives
   customize: !include customize.yaml
+  # packages is where the real magic lives
   packages: !include_dir_named packages
+
+  auth_providers:
+    - type: homeassistant
+    - type: legacy_api_password
 
 # core components
 auth:
+config:
+discovery:
 frontend:
   javascript_version: latest
   extra_html_url:
     - /local/lovelace.html
-config:
-discovery:
 history:
 http:
   api_password: !secret http_api_password
@@ -31,7 +32,6 @@ recorder:
   purge_keep_days: 10
 updater:
   include_used_components: true
-sun:
 
 # miscellany automations, see packages above for grouped functionality
 panel_iframe: !include panel_iframe.yaml
@@ -61,3 +61,4 @@ switch:
   - !include broadlink.yaml
   - platform: rachio
 vera: !include vera.yaml
+sun:
