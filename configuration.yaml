@@ -31,7 +31,8 @@ logbook:
 logger:
   default: info
   logs:
-    # turn off warnings when using legacy API https://github.com/home-assistant/home-assistant/issues/15423
+    # ignore auth warnings like:
+    # - Please use access_token instead api_password (https://github.com/home-assistant/home-assistant/issues/15423)
     homeassistant.components.http.auth: error
     homeassistant.components.http: error
 
@@ -39,6 +40,7 @@ logger:
     # - Could not handle track info: ""
     # - Update for media_player.kitchen fails (https://github.com/technicalpickles/picklehome-homeassistant-config/issues/35)
     homeassistant.components.media_player.sonos: error
+    soco.core: error
 
     # ignore warnings like:
     # - Found malformed XML at http://123.123.123.123:9080: status=ok
