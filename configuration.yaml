@@ -1,37 +1,54 @@
 homeassistant:
   name: Home
-  auth_providers:
-   - type: homeassistant
-   - type: legacy_api_password
   latitude: !secret homeassistant_latitude
   longitude: !secret homeassistant_longitude
   elevation: !secret homeassistant_elevation
   unit_system: !secret homeassistant_unit_system
   time_zone: !secret homeassistant_time_zone
 
-  # packages is where the real magic lives
   customize: !include customize.yaml
+  # packages is where the real magic lives
   packages: !include_dir_named packages
+
+  auth_providers:
+    - type: homeassistant
+    - type: legacy_api_password
 
 # core components
 auth:
+config:
+discovery:
 frontend:
   javascript_version: latest
   extra_html_url:
     - /local/lovelace.html
-config:
-discovery:
 history:
 http:
   api_password: !secret http_api_password
   use_x_forwarded_for: true
   trusted_proxies: 127.0.0.1
 logbook:
+logger:
+  default: info
+  logs:
+    # ignore auth warnings like:
+    # - Please use access_token instead api_password (https://github.com/home-assistant/home-assistant/issues/15423)
+    homeassistant.components.http.auth: error
+    homeassistant.components.http: error
+
+    # ignore sonos warnings, like:
+    # - Could not handle track info: ""
+    # - Update for media_player.kitchen fails (https://github.com/technicalpickles/picklehome-homeassistant-config/issues/35)
+    homeassistant.components.media_player.sonos: error
+    soco.core: error
+
+    # ignore warnings like:
+    # - Found malformed XML at http://123.123.123.123:9080: status=ok
+    netdisco.ssdp: error
 recorder:
   purge_keep_days: 10
 updater:
   include_used_components: true
-sun:
 
 # miscellany automations, see packages above for grouped functionality
 panel_iframe: !include panel_iframe.yaml
@@ -61,3 +78,4 @@ switch:
   - !include broadlink.yaml
   - platform: rachio
 vera: !include vera.yaml
+sun:
