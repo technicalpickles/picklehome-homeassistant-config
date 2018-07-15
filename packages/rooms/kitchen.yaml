@@ -30,3 +30,11 @@ group:
       - group.kitchen_lights
       - media_player.kitchen
       - switch.kitchen_smart_plug_18
+
+script:
+  kitchen_on:
+    sequence:
+      - service: hue.hue_activate_scene
+        data:
+          group_name: Kitchen
+          scene_name: Read

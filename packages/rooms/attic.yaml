@@ -34,3 +34,11 @@ group:
       - group.josh_office
       - group.josh_desk_lamps
       - group.tracy_desk_lamp
+
+script:
+  attic_off:
+    sequence:
+      - service: light.turn_off
+        entity_id: light.josh_desk
+      - service: light.turn_off
+        entity_id: light.tracy_desk
