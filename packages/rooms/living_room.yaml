@@ -33,10 +33,11 @@ group:
 script:
   living_room_off:
     sequence:
-      - service: media_player.turn_of
+      - service: media_player.turn_off
         entity_id: media_player.fireplace
       - service: light.turn_off
         entity_id: light.living_room
+
   living_room_on:
     sequence:
       - service: hue.hue_activate_scene
