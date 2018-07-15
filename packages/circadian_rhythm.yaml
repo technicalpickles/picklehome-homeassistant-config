@@ -145,6 +145,7 @@ script:
       - service: script.media_room_off
       - service: script.attic_off
       - service: script.bedroom_off
+      - service: script.kitchen_off
       - service: media_player.sonos_unjoin
   good_morning:
     sequence:

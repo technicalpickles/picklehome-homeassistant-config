@@ -38,3 +38,7 @@ script:
         data:
           group_name: Kitchen
           scene_name: Read
+  kitchen_off:
+    sequence:
+      - service: light.turn_off
+        entity_id: light.kitchen
