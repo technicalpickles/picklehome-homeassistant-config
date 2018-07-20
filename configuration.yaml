@@ -45,6 +45,7 @@ logger:
     # ignore warnings like:
     # - Found malformed XML at http://123.123.123.123:9080: status=ok
     netdisco.ssdp: error
+    ssdp: error
 recorder:
   purge_keep_days: 10
 updater:

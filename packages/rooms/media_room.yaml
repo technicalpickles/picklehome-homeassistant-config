@@ -25,3 +25,10 @@ group:
       - group.media_room_lights
       - group.media_room_tv
 
+script:
+  media_room_off:
+   sequence:
+     - service: light.turn_off
+       entity_id: light.media_room
+     - service: remote.turn_off
+       entity_id: remote.harmony_hub

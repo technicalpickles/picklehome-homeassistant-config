@@ -48,6 +48,12 @@ script:
         entity_id: climate.home
         data:
           fan_mode: 'auto'
+      # need to set operation_mode before set_temperature hand due to https://github.com/home-assistant/home-assistant/issues/15563
+      - service: climate.set_operation_mode
+        entity_id: climate.home
+        data:
+          operation_mode: 'auto'
+      # This currently fails with: Missing valid arguments for set_temperature otherwise
       - service: climate.set_temperature
         entity_id: climate.home
         data:
@@ -66,8 +72,7 @@ script:
         entity_id: climate.home
         data:
           operation_mode: 'cool'
-          target_temp_low: !secret southern_comfort_low
-          target_temp_high: !secret southern_comfort_ideal
+          temperature: !secret southern_comfort_ideal
 
   # when it's cold outside, set lower temperature to 70 and set fan to 'auto'
   climate_its_cold_outside:
@@ -80,8 +85,7 @@ script:
         entity_id: climate.home
         data:
           operation_mode: 'heat'
-          target_temp_low: !secret southern_comfort_ideal
-          target_temp_high: !secret southern_comfort_high
+          temperature: !secret southern_comfort_ideal
 
   # uses subject_exterior_temperature to call one of the climate
   apply_southern_comfort:

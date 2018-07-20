@@ -112,17 +112,6 @@ scene:
     entities:
       switch.nursery_night_lights:
         state: on
-
-  - name: Good Night
-    entities:
-      group.media_room: off # turn tv and stuff off
-      group.attic_lights: off # no lights upstairs
-      group.living_room: off # lamps and christmas lights
-      group.bedroom_lights: off # darkness required for sleep
-      group.sun_room_lights: off
-  
-      # only turn off courtyard light for exterior, since you can see it through the blinds of the master bath
-      light.cottage_courtyard: off
   
   - name: Everything Off
     entities:
@@ -132,17 +121,19 @@ scene:
   
   - name: Goodbye
     entities:
-      group.media_room: off # turn off tv and stuff
-      group.attic_lights: off # no lights upstairs
       group.living_room_lights: on # so it seems like someone is inside
       switch.christmas_lights: off # christmas tree safety
-      # what about sunroom & master bedroom? they turn on automatically at sunset
   
 script:
+  goodbye:
+    sequence:
+      - service: script.media_room_off
+      - service: script.attic_off
+      - service: script.living_room_on
+
   good_night:
     sequence:
       # update to sleeping if it wasn't already
-      # TODO consider adding a template switch, so we don't have to set this
       - service: input_select.select_option
         data:
           entity_id: input_select.house_mode
@@ -150,12 +141,14 @@ script:
       - service: notify.slack
         data:
           message: ":family::zzz:"
-      - service: scene.turn_on
-        entity_id: scene.good_night
+      - service: script.living_room_off
+      - service: script.media_room_off
+      - service: script.attic_off
+      - service: script.bedroom_off
+      - service: script.kitchen_off
       - service: media_player.sonos_unjoin
   good_morning:
     sequence:
-      # TODO consider adding a template switch, so we don't have to set this
       # update to Awake if it wasn't already
       - service: input_select.select_option
         data:
@@ -164,19 +157,12 @@ script:
       - service: notify.slack
         data:
           message: ":family: Good Morning :family:"
-      - service: hue.hue_activate_scene
-        data:
-          group_name: Kitchen
-          scene_name: Read
-      - service: hue.hue_activate_scene
-        data:
-          group_name: Living room
-          scene_name: Read
+      - service: script.kitchen_on
+      - service: script.living_room_on
       - service: media_player.sonos_unjoin
 
   bed_time:
     sequence:
-      # TODO consider adding a template switch, so we don't have to set this
       # update to Bed Time if it wasn't already
       - service: input_select.select_option
         data:
