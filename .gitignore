@@ -17,3 +17,4 @@ phue*.conf
 
 # manage this separately
 secrets.yaml
+www/private
