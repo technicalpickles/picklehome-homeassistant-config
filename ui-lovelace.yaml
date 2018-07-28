@@ -68,7 +68,9 @@ views:
 
       - type: entities
         title: House Modes
+        show_header_toggle: false
         entities:
+          - input_select.house_mode
           - switch.bath_mode
           - switch.porch_mode
           - script.good_night
@@ -79,21 +81,38 @@ views:
         title: Sun
         show_header_toggle: false
         entities:
-          - script.sunrise
-          - script.sunset
+          - automation.sunrise
+          - automation.sunset
 
-      - type: entities
+      - title: Home Climate
+        type: entities
         show_header_toggle: false
         entities:
           - climate.home
-          - input_boolean.guest_mode
-          - switch.fireplace
           - sensor.subjective_exterior_temperature
-
+          - automation.southern_comfort_applied_on_subjective_temperature_change
+          - automation.southern_comfort_applied_periodically
+          - script.apply_southern_comfort
+      - title: Cottage Climate
+        type: entities
+        show_header_toggle: false
+        entities:
+          - climate.cottage
+          - input_boolean.guest_mode
+          - automation.guest_mode_applied_periodically
+      - title: Fireplace
+        type: entities
+        show_header_toggle: false
+        entities:
+          - switch.fireplace
+          - switch.aquarium
+          - switch.beach
+          - switch.ducks
+          - switch.turtles
   - title: Living Room
     id: living-room
     cards:
-     - type: glance
+     - type: entities
        entities:
          - switch.fireplace
          - switch.aquarium
