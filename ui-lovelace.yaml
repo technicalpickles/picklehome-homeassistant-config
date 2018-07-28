@@ -5,7 +5,8 @@ views:
     cards:
       - type: picture-glance
         title: Living Room
-        image: /local/living_room.jpeg
+        image: /local/private/IMG_1492.jpg
+        #image: /local/living_room.jpeg
         navigation_path: /lovelace/living-room
         entities:
           - light.living_room
@@ -13,12 +14,41 @@ views:
 
       - type: picture-glance
         title: Kitchen
-        image: /local/kitchen.jpeg
+        image: /local/private/IMG_1490.jpg
+        #image: /local/kitchen.jpeg
         navigation_path: /lovelace/kitchen
         entities:
           - light.kitchen
           - lock.kitchen_front_door_11
           - lock.kitchen_side_door_13
+
+      - type: picture-glance
+        title: Nursery
+        image: /local/private/IMG_1493.jpg
+        navigation_path: /lovelace/nursery
+        entities:
+          - light.nursery
+
+      - type: picture-glance
+        title: Media Room
+        image: /local/private/IMG_1494.jpg
+        navigation_path: /lovelace/media-room
+        entities:
+          - light.media_room
+
+      - type: picture-glance
+        title: Bedroom
+        image: /local/private/IMG_1495.jpg
+        navigation_path: /lovelace/bedroom
+        entities:
+          - light.bedroom
+
+      - type: picture-glance
+        title: Sunroom
+        image: /local/sunroom.jpeg
+        navigation_path: /lovelace/sunroom
+        entities:
+          - lock.sun_room_door_14
 
       - type: picture-glance
         title: Cottage
@@ -71,6 +101,22 @@ views:
          - switch.ducks
          - switch.turtles
 
+  - title: Nursery
+    id: nursery
+    badges:
+     - sensor.nursery_temperature
+     - binary_sensor.nursery_occupancy
+    cards:
+     - type: glance
+       entities:
+         - switch.nursery_night_light_22
+         - light.nursery
+         - camera.kids_room
+     - type: media-control
+       entity: media_player.nursery
+     - type: picture-entity
+       entity: camera.kids_room
+       camera_image: camera.kids_room
   - title: Kitchen
     id: kitchen
     cards:
