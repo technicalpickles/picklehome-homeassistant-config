@@ -152,19 +152,49 @@ views:
          - switch.beach
          - switch.ducks
          - switch.turtles
-    - type: entities:
-      title: Living Room Lights
-      entities:
-        - light.fireplace_backlight
-        - light.living_room_lamp
-        - light.living_room_sofa_strip
-        - light.living_room_sofa_strip_2
-        - light.living_room_rear_overhead_1
-        - light.living_room_rear_overhead_2
+     - type: entities
+       title: Living Room Lights
+       entities:
+         - light.fireplace_backlight
+         - light.living_room_lamp
+         - light.living_room_sofa_strip
+         - light.living_room_sofa_strip_2
+         - light.living_room_rear_overhead_1
+         - light.living_room_rear_overhead_2
      - type: media-control
        entity: media_player.living_room
      - type: media-control
        entity: media_player.fireplace_kodi
+
+  - title: Media Room
+    id: media-room
+    badges:
+      - binary_sensor.media_room_occupancy
+      - sensor.media_room_temperature
+    cards:
+      - type: entities
+        name: Lights
+        entities:
+          - light.media_room_front_left
+          - light.media_room_front_right
+          - light.media_stand_lightstrip
+      - type: entities
+        show_header_toggle: false
+        name: TV
+        entities:
+          - switch.media_room_tv
+          - switch.directv
+          - switch.apple_tv
+          - switch.smart_tv
+          - switch.media_room_music
+      - type: media-control
+        entity: media_player.media_room
+      - type: media-control
+        entity: media_player.lvgrm
+      - type: media-control
+        entity: media_player.apple_tv_2
+      - type: media-control
+        entity: media_player.denon_avrs920w
 
   - title: Bedroom
     id: bedroom
@@ -187,6 +217,11 @@ views:
           - light.makeup_table
       - type: media-control
         entity: media_player.bedroom
+
+  - title: Sunroom
+    id: sunroom
+    badges:
+      - lock.sun_room_door_14
 
   - title: Nursery
     id: nursery
@@ -263,8 +298,13 @@ views:
     id: laundry
     badges:
       - switch.laundry_smart_plug_21
+
   - title: Cottage
     id: cottage
+    badges:
+      - switch.cottage_smart_plug_20
+      - climate.cottage
+      - input_boolean.guest_mode
     cards:
       - type: entities
         name: Locks
@@ -273,11 +313,8 @@ views:
           - lock.cottage_front_door_16
       - type: entities
         entities:
-          - climate.cottage
-          - group.cottage_outside_lights
-          - switch.cottage_smart_plug_20
-          - group.cottage_locks
-          - input_boolean.guest_mode
+          - light.cottage_courtyard
+          - light.cottage_backyard
 
   - title: Exterior
     id: exterior
@@ -302,3 +339,10 @@ views:
         title: Front Side Door Lights
         entities:
           - light.kitchen_side_door_light
+
+      - type: entities
+        title: Irrigation
+        show_header_toggle: false
+        entities:
+          - switch.back_yard_left_2
+          - switch.back_yard_right__2
