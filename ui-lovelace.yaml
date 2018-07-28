@@ -1,6 +1,7 @@
 title: Picklehome
 views:
   - title: Home
+    id: home
     icon: mdi:heart
     cards:
       - type: picture-glance
@@ -65,7 +66,10 @@ views:
         navigation_path: /lovelace/exterior
         entities:
           - light.exterior
-
+  - title: Automation
+    icon: mdi:wrench
+    id: automation
+    cards:
       - type: entities
         title: House Modes
         show_header_toggle: false
@@ -109,6 +113,7 @@ views:
           - switch.beach
           - switch.ducks
           - switch.turtles
+
   - title: Living Room
     id: living-room
     cards:
