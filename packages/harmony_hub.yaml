@@ -85,7 +85,3 @@ switch:
         turn_off:
           - service: remote.turn_off
             entity_id: remote.harmony_hub
-      #media_room_tv:
-      #  friendly_name: Super Nintendo
-      #  value_template: >
-      #     {{ states('remote.harmony_hub') }}
