@@ -120,6 +120,9 @@ views:
           - switch.beach
           - switch.ducks
           - switch.turtles
+          - media_player.fireplace
+          - input_select.fireplace_tv_source_selector
+          - media_player.fireplace_kodi
 
   - title: Interior Temperature
     id: interior-temperature
@@ -136,6 +139,11 @@ views:
     
   - title: Living Room
     id: living-room
+    badges:
+      - lock.front_door_12
+      - switch.christmas_tree
+      - light.living_room
+
     cards:
      - type: entities
        entities:
@@ -144,8 +152,19 @@ views:
          - switch.beach
          - switch.ducks
          - switch.turtles
+    - type: entities:
+      title: Living Room Lights
+      entities:
+        - light.fireplace_backlight
+        - light.living_room_lamp
+        - light.living_room_sofa_strip
+        - light.living_room_sofa_strip_2
+        - light.living_room_rear_overhead_1
+        - light.living_room_rear_overhead_2
      - type: media-control
        entity: media_player.living_room
+     - type: media-control
+       entity: media_player.fireplace_kodi
 
   - title: Bedroom
     id: bedroom
@@ -188,13 +207,13 @@ views:
 
   - title: Kitchen
     id: kitchen
+    badges:
+      - lock.kitchen_front_door_11
+      - lock.kitchen_side_door_13
+      - group.kitchen_lights
+      - switch.kitchen_smart_plug_18
+
     cards:
-      - type: entities
-        title: Locks
-        entities:
-          - lock.kitchen_front_door_11
-          - lock.kitchen_side_door_13
-       
       - type: entities
         title: Lights
         entities:
@@ -240,6 +259,10 @@ views:
           - light.tracy_desk_lamp_bulb_1
           - light.tracy_desk_lamp_bulb_2
           - light.tracy_desk_lamp_bulb_3
+  - title: Laundry
+    id: laundry
+    badges:
+      - switch.laundry_smart_plug_21
   - title: Cottage
     id: cottage
     cards:
