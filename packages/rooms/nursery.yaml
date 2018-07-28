@@ -10,6 +10,7 @@ group:
     entities:
       - binary_sensor.nursery_occupancy
       - sensor.nursery_temperature
+      - camera.kids_room
       - group.nursery_lights
       - switch.nursery_night_light_22
       - media_player.nursery
