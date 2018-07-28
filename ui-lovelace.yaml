@@ -144,6 +144,30 @@ views:
          - switch.beach
          - switch.ducks
          - switch.turtles
+     - type: media-control
+       entity: media_player.living_room
+
+  - title: Bedroom
+    id: bedroom
+    badges:
+      - binary_sensor.bedroom_occupancy
+      - sensor.bedroom_temperature
+    cards:
+      - type: entities
+        entities:
+          - binary_sensor.sleepnumber_ile_josh_is_in_bed
+          - sensor.sleepnumber_ile_josh_sleepnumber
+          - binary_sensor.sleepnumber_ile_tracy_is_in_bed
+          - sensor.sleepnumber_ile_tracy_sleepnumber
+          - sensor.everyone_in_bed
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - light.josh_night_stand
+          - light.tracy_night_stand
+          - light.makeup_table
+      - type: media-control
+        entity: media_player.bedroom
 
   - title: Nursery
     id: nursery
