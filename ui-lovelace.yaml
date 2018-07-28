@@ -66,6 +66,13 @@ views:
         navigation_path: /lovelace/exterior
         entities:
           - light.exterior
+      - type: glance
+        entities:
+          - lock.front_door_12
+          - lock.kitchen_front_door_11
+          - lock.kitchen_side_door_13
+          - lock.sun_room_door_14
+
   - title: Automation
     icon: mdi:wrench
     id: automation
@@ -114,6 +121,19 @@ views:
           - switch.ducks
           - switch.turtles
 
+  - title: Interior Temperature
+    id: interior-temperature
+    icon: mdi:thermostat
+    cards:
+      - type: glance
+        entities:
+          - sensor.bedroom_temperature
+          - sensor.media_room_temperature
+          - sensor.home_temperature
+          - sensor.nursery_temperature
+          - sensor.josh_office_temperature
+          - sensor.tracy_office_temperature
+    
   - title: Living Room
     id: living-room
     cards:
@@ -141,6 +161,7 @@ views:
      - type: picture-entity
        entity: camera.kids_room
        camera_image: camera.kids_room
+
   - title: Kitchen
     id: kitchen
     cards:
@@ -174,6 +195,27 @@ views:
         entities:
           - switch.kitchen_smart_plug_18
 
+  - title: Attic
+    id: attic
+    badges:
+      - binary_sensor.josh_office_occupancy
+      - sensor.josh_office_temperature
+      - binary_sensor.tracy_office_occupancy
+      - sensor.tracy_office_temperature
+      - switch.conference_call_mode
+      - switch.attic_fan
+    cards:
+      - type: entities 
+        title: Josh's Desk Lamps
+        entities:
+          - light.josh_desk_left
+          - light.josh_desk_right
+      - type: entities
+        title: Tracy's Desk Lamp
+        entities:
+          - light.tracy_desk_lamp_bulb_1
+          - light.tracy_desk_lamp_bulb_2
+          - light.tracy_desk_lamp_bulb_3
   - title: Cottage
     id: cottage
     cards:
