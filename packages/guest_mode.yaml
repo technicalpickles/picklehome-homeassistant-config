@@ -8,19 +8,19 @@ automation:
       platform: state
       entity_id: input_boolean.guest_mode
     action:
-      service: script.restore_guest_mode_climate
+      service: script.apply_guest_mode
 
-  - alias: Ensure Guest Mode applied periodically
+  - alias: Guest Mode applied periodically
     trigger:
       platform: time
       hours: '/2'
       minutes: 00
       seconds: 00
     action:
-      - service: script.apply_southern_comfort
+      - service: script.apply_guest_mode
 
 script:
-  restore_guest_mode_climate:
+  apply_guest_mode:
     sequence:
       - service_template: "script.guest_mode_{{states('input_boolean.guest_mode')}}"
       #- service: notify.slack
