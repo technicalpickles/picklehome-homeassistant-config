@@ -127,6 +127,9 @@ views:
   - title: Interior Temperature
     id: interior-temperature
     icon: mdi:thermostat
+    badges:
+      - climate.home
+      - climate.cottage
     cards:
       - type: glance
         entities:
@@ -136,6 +139,8 @@ views:
           - sensor.nursery_temperature
           - sensor.josh_office_temperature
           - sensor.tracy_office_temperature
+      - type: weather-forecast
+        entity: weather.home
     
   - title: Living Room
     id: living-room
