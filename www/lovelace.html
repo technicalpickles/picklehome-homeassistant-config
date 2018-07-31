@@ -1,7 +1,0 @@
-<script>
-    var hack_element = document.querySelector('home-assistant').shadowRoot.querySelector('home-assistant-main').shadowRoot.querySelector('ha-sidebar').shadowRoot.querySelector('paper-icon-item[data-panel="states"]');
-    if (hack_element) {
-        hack_element.setAttribute("data-panel", "lovelace");
-        localStorage.defaultPage = 'lovelace';
-    }
-</script>
