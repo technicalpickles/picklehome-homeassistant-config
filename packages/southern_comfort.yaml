@@ -22,7 +22,7 @@ sensor:
           {%- endif %}
 
 automation:
-  - alias: "Apply southern comfort when subjective temperature changes"
+  - alias: "Southern comfort applied on subjective temperature change"
     trigger:
       platform: state
       entity_id: sensor.subjective_exterior_temperature
@@ -32,7 +32,7 @@ automation:
           from: '{{ trigger.from_state}}'
           to:  '{{ trigger.to_state }}'
 
-  - alias: "Ensure southern comfort applied periodically"
+  - alias: "Southern comfort applied periodically"
     trigger:
       platform: time
       minutes: '/15'

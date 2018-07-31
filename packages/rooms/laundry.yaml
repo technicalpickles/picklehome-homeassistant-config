@@ -1,6 +1,0 @@
-group:
-  laundry:
-    name: Laundry
-    view: yes
-    entities:
-      - switch.laundry_smart_plug_21

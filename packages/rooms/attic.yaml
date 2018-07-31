@@ -1,39 +1,9 @@
-group:
-  josh_desk_lamps:
-    name: Josh's Desk Lamps
-    entities:
-      - light.josh_desk_left
-      - light.josh_desk_right
-  
-  josh_office:
-    name: Josh's Office
-    entities:
-      - switch.conference_call_mode
-  
-  tracy_desk_lamp:
-    name: Tracy's Desk Lamp
-    entities:
-      - light.tracy_desk_lamp_bulb_1
-      - light.tracy_desk_lamp_bulb_2
-      - light.tracy_desk_lamp_bulb_3
-  
-  attic_lights:
+light:
+  - platform: group
     name: Attic Lights
     entities:
-      - group.josh_desk_lamps
-      - group.tracy_desk_lamp
-  
-  attic:
-    name: Attic
-    view: yes
-    entities:
-      - binary_sensor.josh_office_occupancy
-      - sensor.josh_office_temperature
-      - binary_sensor.tracy_office_occupancy
-      - sensor.tracy_office_temperature
-      - group.josh_office
-      - group.josh_desk_lamps
-      - group.tracy_desk_lamp
+      - light.josh_desk
+      - light.tracy_desk
 
 script:
   attic_off:
