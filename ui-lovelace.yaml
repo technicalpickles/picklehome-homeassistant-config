@@ -123,6 +123,12 @@ views:
           - media_player.fireplace
           - input_select.fireplace_tv_source_selector
           - media_player.fireplace_kodi
+      - title: Attic Fan
+        type: entities
+        show_header_toggle: false
+        entities:
+          - automation.attic_fan_automatic_off_with_lights
+          - switch.attic_fan
 
   - title: Interior Temperature
     id: interior-temperature
