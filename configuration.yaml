@@ -21,6 +21,7 @@ discovery:
 frontend:
   javascript_version: latest
   extra_html_url: []
+  themes: !include_dir_named themes
 history:
 http:
   api_password: !secret http_api_password
