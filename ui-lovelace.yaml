@@ -172,6 +172,7 @@ views:
          - light.living_room_sofa_strip_2
          - light.living_room_rear_overhead_1
          - light.living_room_rear_overhead_2
+         - switch.mantle_tree
      - type: media-control
        entity: media_player.living_room
      - type: media-control

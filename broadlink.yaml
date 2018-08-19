@@ -37,3 +37,13 @@ switches:
     friendly_name: "Attic fan"
     command_on: 'sgoyAAYTEgcGEwYTBhMSBwYTEgcGEwYTBhMSBwYTEgcGExIHEgcSBwYTBhMGEwYTEgcSBwa4AAAAAAAA'
     command_off: 'sggyAAYTEgcGEwYTBhMSBwYTEgcGEwYTBhMSBwYTEgcGExIHEgcSBwYTBhMRBxIHBhMGEwa4AAAAAAAA'
+
+  mantle_tree:
+    friendly_name: "Mantle Tree"
+    command_on: 'shAyAAYUEggGFAYUBhQSBwYUEggGFAYUBRQSBwYUEgcGFBIHBhMGFBIIEggGFAUUEgcSCAa9AAAAAAAA'
+    command_off: 'sgwyAAYTEggGFAYTBhQSCAYTEggGFAYUBRQSBwYUEgcGFBIIBhQGExIIEggSCBIHBhQGEwa9AAAAAAAA'
+
+#  courtyard_cafe_lights:
+#    friendly_name: "Courtyard Cafe Lights"
+#    command_on: ''
+#    command_off: ''
