@@ -30,14 +30,20 @@ sensor:
 
 automation:
   # automations to detect mode changes
-  - alias: Out of bed in the morning causes Awake
+  - alias: Out of bed,  nursery door open, or kitchen playing in the morning causes Awake
     trigger:
-      platform: state
-      entity_id: sensor.everyone_in_bed
-      from: 'on'
-      to: 'off'
-      for:
-        minutes: 20
+      - platform: state
+        entity_id: sensor.everyone_in_bed
+        from: 'on'
+        to: 'off'
+        for:
+          minutes: 20
+      - platform: state
+        entity_id: binary_sensor.nursery_door_23
+        to: 'on'
+      - platform: state
+        entity_id: media_player.kitchen
+        to: 'playing'
     condition:
       condition: 'and'
       conditions:
