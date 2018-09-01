@@ -30,20 +30,26 @@ sensor:
 
 automation:
   # automations to detect mode changes
-  - alias: Out of bed in the morning causes Awake
+  - alias: Out of bed,  nursery door open, or kitchen playing in the morning causes Awake
     trigger:
-      platform: state
-      entity_id: sensor.everyone_in_bed
-      from: 'on'
-      to: 'off'
-      for:
-        minutes: 20
+      - platform: state
+        entity_id: sensor.everyone_in_bed
+        from: 'on'
+        to: 'off'
+        for:
+          minutes: 20
+      - platform: state
+        entity_id: binary_sensor.nursery_door_23
+        to: 'on'
+      - platform: state
+        entity_id: media_player.kitchen
+        to: 'playing'
     condition:
       condition: 'and'
       conditions:
         - condition: time
-          after: '5:00:00'
-          before: '14:00:00'
+          after: '6:30:00'
+          before: '9:00:00'
         - condition: state
           entity_id: input_select.house_mode
           state: 'Sleeping'
@@ -53,21 +59,31 @@ automation:
           entity_id: input_select.house_mode
           option: Awake
 
-  - alias: Everyone is in bed after Sunset changes to Bed Time
+  # FIXME use a specific time instead
+  - alias: Everyone is in bed or turning kitchen lights off after Alex in asleep changes to Bed Time
     trigger:
-      platform: state
-      entity_id: sensor.everyone_in_bed
-      from: 'off'
-      to: 'on'
+      - platform: state
+        entity_id: sensor.everyone_in_bed
+        from: 'off'
+        to: 'on'
+      - platform: state
+        entity_id: light.kitchen
+        to: 'off'
     condition:
-      condition: sun
-      after: sunset
+      condition: 'and'
+      conditions:
+        - condition: time
+          after: '20:00:00'
+        - condition: state
+          entity_id: input_select.house_mode
+          state: 'Awake'
     action:
+      # FIXME bed time shouldn't be a house state, track in bed separately
       - service: input_select.select_option
         data:
           entity_id: input_select.house_mode
           option: Bed Time
-  
+ 
   - alias: Lights out and in bed while in Bed Time changes to Sleeping
     trigger:
       platform: state
@@ -81,7 +97,7 @@ automation:
         data:
           entity_id: input_select.house_mode
           option: Sleeping
-  
+ 
   # what to do when the mode changes
   - alias: Awake Triggered
     trigger:
@@ -90,7 +106,7 @@ automation:
       to: Awake
     action:
       service: script.good_morning
-  
+ 
   - alias: Bed Time Triggered
     trigger:
       platform: state
@@ -98,7 +114,7 @@ automation:
       to: Bed Time
     action:
       service: script.bed_time
-  
+ 
   - alias: Sleeping Triggered
     trigger:
       platform: state
@@ -106,24 +122,24 @@ automation:
       to: Sleeping
     action:
       - service: script.good_night
-  
+ 
 scene:
   - name: Alex Bedtime
     entities:
       switch.nursery_night_lights:
         state: on
-  
+ 
   - name: Everything Off
     entities:
       group.media_room: off
       group.all_lights: off
       switch.christmas_lights: off
-  
+ 
   - name: Goodbye
     entities:
       group.living_room_lights: on # so it seems like someone is inside
       switch.christmas_lights: off # christmas tree safety
-  
+ 
 script:
   goodbye:
     sequence:
