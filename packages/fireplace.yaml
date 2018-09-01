@@ -272,7 +272,7 @@ media_player:
         idle
       {%- else %}
         {{ states('media_player.fireplace_kodi') }}
-      {%- endif %} 
+      {%- endif %}
     commands:
       turn_off:
         service: input_select.select_option

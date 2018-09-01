@@ -147,7 +147,7 @@ views:
           - sensor.tracy_office_temperature
       - type: weather-forecast
         entity: weather.home
-    
+
   - title: Living Room
     id: living-room
     badges:
@@ -296,7 +296,7 @@ views:
       - switch.conference_call_mode
       - switch.attic_fan
     cards:
-      - type: entities 
+      - type: entities
         title: Josh's Desk Lamps
         entities:
           - light.josh_desk_left
