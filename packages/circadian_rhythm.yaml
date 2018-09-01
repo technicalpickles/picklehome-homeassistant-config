@@ -48,8 +48,8 @@ automation:
       condition: 'and'
       conditions:
         - condition: time
-          after: '5:00:00'
-          before: '14:00:00'
+          after: '6:30:00'
+          before: '9:00:00'
         - condition: state
           entity_id: input_select.house_mode
           state: 'Sleeping'
