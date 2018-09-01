@@ -240,6 +240,7 @@ views:
     badges:
      - sensor.nursery_temperature
      - binary_sensor.nursery_occupancy
+     - binary_sensor.nursery_door_23
     cards:
      - type: glance
        entities:
