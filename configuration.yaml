@@ -12,7 +12,6 @@ homeassistant:
 
   auth_providers:
     - type: homeassistant
-    - type: legacy_api_password
 
 # core components
 auth:
