@@ -12,7 +12,6 @@ homeassistant:
 
   auth_providers:
     - type: homeassistant
-    - type: legacy_api_password
 
 # core components
 auth:
@@ -59,8 +58,6 @@ script: !include scripts.yaml
 
 # services & hardware components
 apcupsd:
-binary_sensor:
-- platform: rachio
 ecobee: !include ecobee.yaml
 hue: !include hue.yaml
 influxdb: !include influxdb.yaml
@@ -77,6 +74,5 @@ sensor:
   - !include darksky.yaml
 switch:
   - !include broadlink.yaml
-  - platform: rachio
 vera: !include vera.yaml
 sun:
