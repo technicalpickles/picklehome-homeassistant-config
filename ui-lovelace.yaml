@@ -1,14 +1,16 @@
 title: Picklehome
 views:
   - title: Home
-    id: home
+    path: home
     icon: mdi:heart
     cards:
       - type: picture-glance
         title: Living Room
         image: /local/private/IMG_1492.jpg
         #image: /local/living_room.jpeg
-        navigation_path: /lovelace/living-room
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/living-room
         entities:
           - light.living_room
           - lock.front_door_12
@@ -17,7 +19,9 @@ views:
         title: Kitchen
         image: /local/private/IMG_1490.jpg
         #image: /local/kitchen.jpeg
-        navigation_path: /lovelace/kitchen
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/kitchen
         entities:
           - light.kitchen
           - lock.kitchen_front_door_11
@@ -26,35 +30,45 @@ views:
       - type: picture-glance
         title: Nursery
         image: /local/private/IMG_1493.jpg
-        navigation_path: /lovelace/nursery
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/nursery
         entities:
           - light.nursery
 
       - type: picture-glance
         title: Media Room
         image: /local/private/IMG_1494.jpg
-        navigation_path: /lovelace/media-room
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/media-room
         entities:
           - light.media_room
 
       - type: picture-glance
         title: Bedroom
         image: /local/private/IMG_1495.jpg
-        navigation_path: /lovelace/bedroom
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/bedroom
         entities:
           - light.bedroom
 
       - type: picture-glance
         title: Sunroom
         image: /local/sunroom.jpeg
-        navigation_path: /lovelace/sunroom
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/sunroom
         entities:
           - lock.sun_room_door_14
 
       - type: picture-glance
         title: Cottage
         image: /local/cottage.jpeg
-        navigation_path: /lovelace/cottage
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/cottage
         entities:
           - climate.cottage
           - lock.cottage_back_door_15
@@ -63,7 +77,9 @@ views:
       - type: picture-glance
         title: Exterior
         image: /local/exterior.jpeg
-        navigation_path: /lovelace/exterior
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/exterior
         entities:
           - light.exterior
       - type: glance
@@ -149,7 +165,7 @@ views:
         entity: weather.home
 
   - title: Living Room
-    id: living-room
+    path: living-room
     badges:
       - lock.front_door_12
       - switch.christmas_tree
@@ -179,7 +195,7 @@ views:
        entity: media_player.fireplace_kodi
 
   - title: Media Room
-    id: media-room
+    path: media-room
     badges:
       - binary_sensor.media_room_occupancy
       - sensor.media_room_temperature
@@ -209,7 +225,7 @@ views:
         entity: media_player.denon_avrs920w
 
   - title: Bedroom
-    id: bedroom
+    path: bedroom
     badges:
       - binary_sensor.bedroom_occupancy
       - sensor.bedroom_temperature
@@ -231,12 +247,12 @@ views:
         entity: media_player.bedroom
 
   - title: Sunroom
-    id: sunroom
+    path: sunroom
     badges:
       - lock.sun_room_door_14
 
   - title: Nursery
-    id: nursery
+    path: nursery
     badges:
      - sensor.nursery_temperature
      - binary_sensor.nursery_occupancy
@@ -254,7 +270,7 @@ views:
        camera_image: camera.kids_room
 
   - title: Kitchen
-    id: kitchen
+    path: kitchen
     badges:
       - lock.kitchen_front_door_11
       - lock.kitchen_side_door_13
@@ -287,7 +303,7 @@ views:
           - switch.kitchen_smart_plug_18
 
   - title: Attic
-    id: attic
+    path: attic
     badges:
       - binary_sensor.josh_office_occupancy
       - sensor.josh_office_temperature
@@ -308,12 +324,12 @@ views:
           - light.tracy_desk_lamp_bulb_2
           - light.tracy_desk_lamp_bulb_3
   - title: Laundry
-    id: laundry
+    path: laundry
     badges:
       - switch.laundry_smart_plug_21
 
   - title: Cottage
-    id: cottage
+    path: cottage
     badges:
       - switch.cottage_smart_plug_20
       - climate.cottage
@@ -330,7 +346,7 @@ views:
           - light.cottage_backyard
 
   - title: Exterior
-    id: exterior
+    path: exterior
     icon: mdi:weather-sunny
     cards:
       - type: weather-forecast
