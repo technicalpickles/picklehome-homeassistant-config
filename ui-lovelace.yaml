@@ -220,9 +220,7 @@ views:
       - type: media-control
         entity: media_player.lvgrm
       - type: media-control
-        entity: media_player.apple_tv_2
-      - type: media-control
-        entity: media_player.denon_avrs920w
+        entity: media_player.media_room_appletv
 
   - title: Bedroom
     path: bedroom
