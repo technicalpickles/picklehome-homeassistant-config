@@ -310,11 +310,6 @@ views:
       - switch.attic_fan
     cards:
       - type: entities
-        title: Josh's Desk Lamps
-        entities:
-          - light.josh_desk_left
-          - light.josh_desk_right
-      - type: entities
         title: Tracy's Desk Lamp
         entities:
           - light.tracy_desk_lamp_bulb_1
@@ -337,6 +332,11 @@ views:
         entities:
           - lock.cottage_back_door_15
           - lock.cottage_front_door_16
+      - type: entities
+        title: Josh's Desk Lamps
+        entities:
+          - light.josh_desk_left
+          - light.josh_desk_right
       - type: entities
         entities:
           - light.cottage_courtyard
