@@ -131,7 +131,7 @@ script:
         data:
           file: "The Best Fireplace Video (3 hours)-eyU3bRy2x44.mkv"
 
-  fireplace_fishes:
+  fireplace_aquarium:
     sequence:
       - service: light.turn_on
         entity_id: light.fireplace_lighting
@@ -199,8 +199,8 @@ switch:
           - service: media_player.turn_off
             entity_id: media_player.fireplace
 
-      fishes:
-        friendly_name: Fishes
+      aquarium:
+        friendly_name: Aquarium
         value_template: >
            {{ is_state_attr('media_player.fireplace', 'source', 'Aquarium') }}
         turn_on:
@@ -297,7 +297,7 @@ group:
       - script.fireplace_off
       - script.fireplace_on
       - script.fireplace_fire
-      - script.fireplace_fishes
+      - script.fireplace_aquarium
       - script.fireplace_beach
       - script.fireplace_turtles
       - script.fireplace_ducks
@@ -305,7 +305,7 @@ group:
     control: hidden
     entities:
       - switch.fireplace
-      - switch.fishes
+      - switch.aquarium
       - switch.beach
       - switch.ducks
       - switch.turtles
