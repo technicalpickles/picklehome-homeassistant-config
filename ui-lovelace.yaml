@@ -210,11 +210,10 @@ views:
         show_header_toggle: false
         name: TV
         entities:
-          - switch.media_room_tv
           - switch.directv
           - switch.apple_tv
           - switch.smart_tv
-          - switch.media_room_music
+          - switch.nintendo_switch
       - type: media-control
         entity: media_player.media_room
       - type: media-control
