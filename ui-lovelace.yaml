@@ -132,7 +132,7 @@ views:
         show_header_toggle: false
         entities:
           - switch.fireplace
-          - switch.aquarium
+          - switch.fishes
           - switch.beach
           - switch.ducks
           - switch.turtles
@@ -175,7 +175,7 @@ views:
      - type: entities
        entities:
          - switch.fireplace
-         - switch.aquarium
+         - switch.fishes
          - switch.beach
          - switch.ducks
          - switch.turtles
@@ -372,3 +372,6 @@ views:
         entities:
           - switch.back_yard_left_2
           - switch.back_yard_right__2
+
+      - type: media-control
+        entity: media_player.deck
