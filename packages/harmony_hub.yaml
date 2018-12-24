@@ -69,10 +69,10 @@ switch:
         turn_off:
           - service: remote.turn_off
             entity_id: remote.harmony_hub
-      super_nintendo:
-        friendly_name: Super Nintendo
+      nintendo_switch:
+        friendly_name: Nintendo Switch
         value_template: >
-           {%- if is_state_attr('remote.harmony_hub', 'current_activity', 'Play Super Nintendo') %}
+           {%- if is_state_attr('remote.harmony_hub', 'current_activity', 'Play Switch') %}
              on
            {%- else %}
              off
@@ -81,7 +81,7 @@ switch:
           - service: remote.turn_on
             entity_id: remote.harmony_hub
             data:
-              activity: Play Super Nintendo
+              activity: Play Switch
         turn_off:
           - service: remote.turn_off
             entity_id: remote.harmony_hub
