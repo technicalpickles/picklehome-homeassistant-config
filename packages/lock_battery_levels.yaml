@@ -1,0 +1,30 @@
+# https://community.home-assistant.io/t/using-attributes-in-lovelace/72672/6
+#
+# TODO maybe use custom icons? https://www.martinvdm.nl/2018/08/19/homeassistant-custom-battery-sensor/
+sensor:
+  - platform: template
+    sensors: 
+      kitchen_front_door_battery:
+        value_template: '{{ states.lock.kitchen_front_door_11.attributes.battery_level }}' 
+        friendly_name: 'Kitchen Front Door Battery' 
+        unit_of_measurement: '%'
+      front_door_battery:
+        value_template: '{{ states.lock.front_door_12.attributes.battery_level }}' 
+        friendly_name: 'Front Door Battery' 
+        unit_of_measurement: '%'
+      sun_room_door_battery:
+        value_template: '{{ states.lock.sun_room_door_14.attributes.battery_level }}' 
+        friendly_name: 'Sun Room Battery' 
+        unit_of_measurement: '%'
+      kitchen_side_door_battery:
+        value_template: '{{ states.lock.kitchen_side_door_13.attributes.battery_level }}' 
+        friendly_name: 'Kitchen Side Door Battery' 
+        unit_of_measurement: '%'
+      cottage_back_door_battery:
+        value_template: '{{ states.lock.cottage_back_door_15.attributes.battery_level }}' 
+        friendly_name: 'Cottage Back Door Battery' 
+        unit_of_measurement: '%'
+      cottage_front_door_battery:
+        value_template: '{{ states.lock.cottage_front_door_16.attributes.battery_level }}' 
+        friendly_name: 'Cottage Front Door Battery' 
+        unit_of_measurement: '%'

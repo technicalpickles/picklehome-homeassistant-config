@@ -146,6 +146,17 @@ views:
           - automation.attic_fan_automatic_off_with_lights
           - switch.attic_fan
 
+      - title: Door Battery Levels
+        type: entities
+        show_header_toggle: false
+        entities:
+          - sensor.kitchen_front_door_battery
+          - sensor.front_door_battery
+          - sensor.sun_room_door_battery
+          - sensor.kitchen_side_door_battery
+          - sensor.cottage_back_door_battery
+          - sensor.cottage_front_door_battery
+
   - title: Interior Temperature
     id: interior-temperature
     icon: mdi:thermostat
