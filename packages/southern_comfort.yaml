@@ -30,7 +30,7 @@ automation:
       - service: script.apply_southern_comfort
         data_template:
           from: '{{ trigger.from_state}}'
-          to:  '{{ trigger.to_state }}'
+          to: '{{ trigger.to_state }}'
 
   - alias: "Southern comfort applied periodically"
     trigger:
@@ -109,4 +109,3 @@ group:
       - script.climate_its_ok_outside
       - script.climate_its_hot_outside
       - script.climate_its_cold_outside
-  

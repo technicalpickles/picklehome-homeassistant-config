@@ -21,7 +21,7 @@ group:
     entities:
       - light.cottage_backyard # FIXME this doesn't seem to be reachable, but can control from hue group?!
       - light.cottage_courtyard
-  
+
   exterior_lights:
     name: Exterior Lights
     entities:
@@ -32,7 +32,7 @@ group:
       - light.deck_light
       - light.cottage_backyard
       - light.cottage_courtyard
-  
+
   exterior_christmas_lights:
     name: Exterior Christmas Lights
     entities:
@@ -47,7 +47,7 @@ group:
 # see https://github.com/technicalpickles/picklehome-homeassistant-config/issues/47
 #      - switch.back_yard_left
 #      - switch.back_yard_right
-  
+
   back_yard:
     name: Back Yard
     entities:
@@ -64,7 +64,7 @@ group:
       - sensor.dark_sky_humidity
       - sensor.dark_sky_precip_probability
       - sensor.dark_sky_apparent_temperature
-  
+
   exterior:
     name: Exterior
     view: yes

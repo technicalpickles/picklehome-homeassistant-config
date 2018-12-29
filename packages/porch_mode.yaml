@@ -19,7 +19,6 @@ script:
       - service: notify.slack
         data:
           message: ":house_with_garden: PORCH TIME :house_with_garden:"
-    
       - service: script.turn_on
         data:
           entity_id: script.porch_mode_auto_off
