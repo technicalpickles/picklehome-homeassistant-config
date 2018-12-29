@@ -87,12 +87,12 @@ automation:
 
   - alias: Fireplace TV is idle for more than 30 minutes, turn it off.
     trigger:
-     platform: state
-     entity_id: media_player.fireplace
-     to: 'idle'
-     for:
-       #seconds: 15
-       minutes: 15
+      platform: state
+      entity_id: media_player.fireplace
+      to: 'idle'
+      for:
+        #seconds: 15
+        minutes: 15
     action:
       - service: media_player.turn_off
         entity_id: media_player.fireplace
@@ -125,7 +125,7 @@ script:
       - service: light.turn_on
         entity_id: light.fireplace_lighting
         data:
-          rgb_color: [255,161,0]
+          rgb_color: [255, 161, 0]
           brightness: 144
       - service: script.fireplace_play
         data:
@@ -136,7 +136,7 @@ script:
       - service: light.turn_on
         entity_id: light.fireplace_lighting
         data:
-          rgb_color: [17,82,255]
+          rgb_color: [17, 82, 255]
           brightness: 254
       - service: script.fireplace_play
         data:
@@ -147,7 +147,7 @@ script:
       - service: light.turn_on
         entity_id: light.fireplace_lighting
         data:
-          rgb_color: [24,128,255]
+          rgb_color: [24, 128, 255]
           brightness: 134
       - service: script.fireplace_play
         data:
@@ -158,7 +158,7 @@ script:
       - service: light.turn_on
         entity_id: light.fireplace_lighting
         data:
-          rgb_color: [0,5,255]
+          rgb_color: [0, 5, 255]
           brightness: 133
       - service: script.fireplace_play
         data:
@@ -170,7 +170,7 @@ script:
       - service: light.turn_on
         entity_id: light.fireplace_lighting
         data:
-          rgb_color: [17,82,255]
+          rgb_color: [17, 82, 255]
           brightness: 254
       - service: script.fireplace_play
         data:

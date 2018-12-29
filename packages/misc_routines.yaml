@@ -6,7 +6,6 @@ script:
         data:
           group_name: Bedroom
           scene_name: Dimmed
-  
       # make sure bedroom isn't part of some other group
       - service: media_player.sonos_unjoin
         entity_id: media_player.bedroom

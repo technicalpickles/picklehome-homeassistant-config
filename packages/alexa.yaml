@@ -22,16 +22,16 @@ cloud:
         - light.nursery
         - light.tracy_desk
         - light.tracy_night_stand
-    
+
         - input_boolean.guest_mode
-    
+
         #- media_player.fireplace
         - switch.fireplace
         - switch.beach
         - switch.fishes
         - switch.turtles
         - switch.ducks
-    
+
         - switch.bath_mode
         - switch.porch_mode
         - switch.christmas_tree_19
@@ -42,11 +42,11 @@ cloud:
         - switch.smart_tv
         - switch.super_nintendo
         - switch.attic_fan
-    
+
         - script.goodnight
         - script.good_morning
         - script.bed_time
-    
+
       # and exclude lights we don't need individual control over
       exclude_entities:
         - light.front_door_1
@@ -80,7 +80,7 @@ cloud:
         - light.deck_light
         - light.cottage_courtyard
         - light.all_hue_lights
-    
+
     entity_config:
       media_player.fireplace:
         display_categories: TV

@@ -183,27 +183,27 @@ views:
       - light.living_room
 
     cards:
-     - type: entities
-       entities:
-         - switch.fireplace
-         - switch.fishes
-         - switch.beach
-         - switch.ducks
-         - switch.turtles
-     - type: entities
-       title: Living Room Lights
-       entities:
-         - light.fireplace_backlight
-         - light.living_room_lamp
-         - light.living_room_sofa_strip
-         - light.living_room_sofa_strip_2
-         - light.living_room_rear_overhead_1
-         - light.living_room_rear_overhead_2
-         - switch.mantle_tree
-     - type: media-control
-       entity: media_player.living_room
-     - type: media-control
-       entity: media_player.fireplace_kodi
+      - type: entities
+        entities:
+          - switch.fireplace
+          - switch.fishes
+          - switch.beach
+          - switch.ducks
+          - switch.turtles
+      - type: entities
+        title: Living Room Lights
+        entities:
+          - light.fireplace_backlight
+          - light.living_room_lamp
+          - light.living_room_sofa_strip
+          - light.living_room_sofa_strip_2
+          - light.living_room_rear_overhead_1
+          - light.living_room_rear_overhead_2
+          - switch.mantle_tree
+      - type: media-control
+        entity: media_player.living_room
+      - type: media-control
+        entity: media_player.fireplace_kodi
 
   - title: Media Room
     path: media-room
@@ -262,20 +262,20 @@ views:
   - title: Nursery
     path: nursery
     badges:
-     - sensor.nursery_temperature
-     - binary_sensor.nursery_occupancy
-     - binary_sensor.nursery_door_23
+      - sensor.nursery_temperature
+      - binary_sensor.nursery_occupancy
+      - binary_sensor.nursery_door_23
     cards:
-     - type: glance
-       entities:
-         - switch.nursery_night_light_22
-         - light.nursery
-         - camera.kids_room
-     - type: media-control
-       entity: media_player.nursery
-     - type: picture-entity
-       entity: camera.kids_room
-       camera_image: camera.kids_room
+      - type: glance
+        entities:
+          - switch.nursery_night_light_22
+          - light.nursery
+          - camera.kids_room
+      - type: media-control
+        entity: media_player.nursery
+      - type: picture-entity
+        entity: camera.kids_room
+        camera_image: camera.kids_room
 
   - title: Kitchen
     path: kitchen
