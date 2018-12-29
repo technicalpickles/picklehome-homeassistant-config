@@ -64,11 +64,11 @@ ecobee: !include ecobee.yaml
 hue: !include hue.yaml
 influxdb: !include influxdb.yaml
 media_player:
-- !include kodi.yaml
+  - !include kodi.yaml
 mqtt: !include mqtt.yaml
 nest: !include nest.yaml
 notify:
--  !include notify-slack.yaml
+  - !include notify-slack.yaml
 prometheus:
 rachio: !include rachio.yaml
 sleepiq: !include sleepiq.yaml
