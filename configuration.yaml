@@ -44,16 +44,43 @@ cloud:
   alexa:
     filter:
       include_domains:
+      # start with include_domain defaults, less ones we exclude
       - alert
       - cover
       - fan
       - input_boolean
-      - light
       - lock
-      - media_player
       - scene
       - switch
+      # technically don't need to exclude them if we only include some domains
+      # but this lets us list them out and comment individually on why
+      exclude_domains:
+        # we have lots of lights, some with just numbers ie Kitchen 1 through Kitchen 8
+        # so we'll exclude and list out specifically
+        - light
+        # We're using the Sonos Skill, which finds all the media players already
+        # so hass would be duplicating them.
+        # we'll specifically include media_players we want voice control for
+        - media_player
+      include_entities:
+      # hue light groups
+      - light.bedroom
+      - light.break_room
+      - light.exterior
+      - light.kitchen
+      - light.media_room
+      - light.living_room
+      - light.break_room
+      - light.network_closet
+      - light.tracy_desk
+      - light.office
+      - light.nursery
 
+      # individual hue lights
+      - light.tracy_night_stand
+      - light.josh_night_stand
+      - light.makeup_table
+      - light.lady_cave_reading_lamp
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
