@@ -1,0 +1,65 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 32.036018
+  longitude: -81.098116
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/New_York
+  # Customization file
+  customize: !include customize.yaml
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Discover some devices automatically
+discovery:
+
+homekit_controller:
+ios:
+
+# Sensors
+sensor:
+  # Weather prediction
+  - platform: yr
+
+# Thermostat
+ecobee:
+  api_key: !secret ecobee_api_key
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+cloud:
+  alexa:
+    filter:
+      include_domains:
+      - alert
+      - cover
+      - fan
+      - input_boolean
+      - light
+      - lock
+      - media_player
+      - scene
+      - switch
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+input_boolean:
+  josh_working:
+    name: Josh working
+    initial: off
+    icon: mdi:office-building

@@ -1,0 +1,30 @@
+- alias: Josh is working
+  trigger:
+    platform: state
+    entity_id: input_boolean.josh_working
+    to: 'on'
+  action:
+  - service: light.turn_on
+    entity_id: light.office
+  - service: light.turn_on
+    entity_id: light.break_room
+  - service: climate.set_temperature
+    entity_id: climate.cottage
+    data:
+      temperature: 72
+      hvac_mode: cool
+- alias: Josh is not working
+  trigger:
+    platform: state
+    entity_id: input_boolean.josh_working
+    to: 'off'
+  action:
+  - service: light.turn_off
+    entity_id: light.office
+  - service: light.turn_off
+    entity_id: light.break_room
+  - service: climate.set_temperature
+    entity_id: climate.cottage
+    data:
+      temperature: 78
+      hvac_mode: cool
